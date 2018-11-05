@@ -1,0 +1,129 @@
+package src;
+
+
+import static java.lang.System.out;
+import java.util.*;
+
+/**
+ * @author armandtene
+ *
+ */
+public class Competitor
+{
+	private static int Number;
+	private static String firstName;
+	private static String middleName;
+	private static String lastName;
+	private static int level;
+	private static String age;	
+	public static float Score;
+	public static float OverallScore;
+	public String Competitor;
+	
+	//Constructor
+	
+	public Competitor(int num, String fname, String lname, String mname, int lv, String dob, float mScore, float OScore) {
+		Number = num;
+		firstName = fname;
+		middleName = mname;
+		lastName = lname;
+		level = lv;
+		age = dob;
+		Score = mScore;
+		OverallScore = OScore;
+}
+	
+	
+	          //method
+
+
+
+	public static String getCompetitor() {
+		return Number + " " + firstName + " " + lastName + " " + age + " " + level;
+	}
+	
+	public static int getNumber() {
+		return Number;
+	}
+	
+	public static String getName() {
+		return firstName + " " + middleName + " " + lastName;
+	
+	}
+	
+	public static int getlevel() {
+		return level;
+	}
+	
+	public static String getage() {
+		return age;
+	}
+	
+	public static double getOverallScore(int[] scores, int level) {
+		double w = 1/level;
+		int sumall = 0;
+		for(int i=0; i< 4; ++i) {
+			sumall = sumall + scores[i];
+		}
+		double wsumall = w*sumall;
+		
+		return wsumall;
+	}
+	
+	
+	public static final String getFullDetails(int cnumber, String firstName, String middleName, String lastName, int age, int clevel ) {
+		
+		int[] cscores = getScoreArray();
+		double wscore  = getOverallScore(cscores, clevel);
+		
+		return 	firstName + " " + middleName + " " + lastName + " is a level " + clevel + " aged " + age + " has a score of: " + wscore;
+		}
+		
+	public static String getShortDetails() {
+		return " CN" + Number + " has Overall score 5" + "stands for Competitor's Number";}
+	
+	
+	// Main Method
+
+		public static void main(String[] args) 
+		{
+		
+		
+			System.out.println(getFullDetails(110, "Ali", "G", "Lake", 30, 2));
+
+		}
+
+	
+	            // ArrayList
+	
+			
+	
+	static int [] ArrayScores = new int[5];
+	 
+
+	    	// Array method Score calculation
+		
+	  public static int[] getScoreArray() 
+	  {
+		  int i;
+		  int allscores[] = new int[4];
+		  Random Generator = new Random();
+		  
+		  for(i=0; i<4	; i++) {
+			   float p = Generator.nextInt(1 - 0 + 1) + 0;
+			   if(p<=0.1) {
+				   allscores[i] = 5;
+			   }else if(p<=0.3) {
+				   allscores[i] = 4;
+			   }else if(p<=0.6) {
+				   allscores[i] = 3;
+			   }else if(p<=1) {
+				   allscores[i] = 2;
+			   } 
+		  }
+			  
+		  return allscores;
+		    
+       }
+
+}
