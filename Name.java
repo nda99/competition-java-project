@@ -1,14 +1,7 @@
-package ndaAssignment1;
 
-/**
- * Class to define and manage the name of a competitor.
- * @author Nathan
- * @see ndaAssignment1.HaggisChef
- * @see ndaAssignment1.MainClass
- * 
- */
 public class Name {
-	private String name;
+
+private String name;
 	
 	/**
 	 * Constructor of Name object from an input String (name of competitor). 
@@ -61,5 +54,5 @@ public class Name {
 			}
 		}
 		return init;
-	}
+}
 }
