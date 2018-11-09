@@ -37,6 +37,7 @@ public class MainClass {
 			//"D:\\Eclipse\\toto.txt"
 			in = new Manager(fileIn);
 		}; 
+		System.out.print(fileIn + "\n");
 		
 		while (failpath) {
 			System.out.print("Please type name of output file:\n");

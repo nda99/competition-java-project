@@ -84,4 +84,8 @@ public class HockeyCompetitor extends Competitor{
 		return super.score[4];
 	}
 
+	public String getNationality()
+	{
+		return country;
+	}
 }

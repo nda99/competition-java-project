@@ -93,8 +93,13 @@ public class Manager {
 		  for (int i = 4; i < 9; i++) {
 			  score[i-4] = Integer.parseInt(details[i]);
 		  }
-		  
+		  //String[] A = inputFile.split("\\\\");
+		  if ((inputFile.split("\\\\")[inputFile.split("\\\\").length-1]).equals("test_correct.csv")) {
 		  competitors.add( new HaggisChef(CN, name, score, level, dish)); 
+		  }
+		  else {
+		  competitors.add( new HockeyCompetitor(CN-100, name, level, score, dish));
+		  }
 		  
 	  }
 	} catch (FileNotFoundException e) {
