@@ -1,3 +1,4 @@
+package competition;
 
 public abstract class Competitor {
 	

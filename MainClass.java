@@ -1,4 +1,4 @@
-package ndaAssignment1;
+package competition;
 
 import java.io.IOException;
 import java.util.Scanner;
