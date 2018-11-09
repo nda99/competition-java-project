@@ -1,8 +1,11 @@
+package competition;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public abstract class CompetitorList {
+import competition.HaggisChef;
+
+public class CompetitorList {
 	
 	
 	private ArrayList<Competitor> competitors = new ArrayList<Competitor>();
@@ -48,6 +51,19 @@ public abstract class CompetitorList {
      * Method which loops through list to find competitor with HIGHEST SCORE.
      * @return Competitor object holding the details of the competitor with highest score.
      */
+	
+	public HaggisChef getBestHaggisChef() {
+		double score = -1;
+		HaggisChef best = null;
+		for (Competitor c : this.competitors) {
+			if (c.getOverallScore() > score && c instanceof HaggisChef) {
+				score = c.getOverallScore();
+				best = (HaggisChef) c;
+			}
+		}
+
+		return best;
+	}
 	
 	public Competitor getBestCompetitor() {
 		double score = -1;
@@ -127,7 +143,7 @@ public abstract class CompetitorList {
 				+ "Haggis Competition is %s with an overall score of %1.1f \nTotal number of competitors: "
 				+ "%d, Min score: %1.1f, Max score: %1.1f, Avg score: %1.1f\nScore:"
 				+ "     0  1   2   3   4   5\nFrequency: %s", 
-				winner, maxScore, total, minScore, maxScore, avgScore, Arrays.toString(getFreq()).replace("[", "").replace("]", "").replaceAll(","," "),getLevelFreq());
+				winner, maxScore, total, minScore, maxScore, avgScore, Arrays.toString(getFreq()).replace("[", "").replace("]", "").replaceAll(","," "));//,getLevelFreq());
 		
 		return stats;
 }
@@ -138,12 +154,28 @@ public abstract class CompetitorList {
 	 * @see getFreq
 	 * @see getStats
 	 */
-public abstract String getReport();
+	public String getReport() {
+		String rep = String.format("--------\nREPORT:\n%20.50s %18.10s %18.30s %26.6s %15.8s\n", "Competitor", "Level", "Dish", "Scores",
+				"Overall");
 
+		for (Competitor c : competitors) {
+			if (c instanceof HaggisChef) {
+			// rep = String.format(rep + "%1.20s %10.10s %2.5d %2.5d %2.5d %2.5d %2.5d
+			// %10.8f\n",h.getName(),h.getLevel(),h.getScoreArray()[0],h.getScoreArray()[1],h.getScoreArray()[2],h.getScoreArray()[3],h.getScoreArray()[4],h.getOverallScore());
+
+			rep = String.format(rep + "%3.3s %25.25s %10.10s %31.31s %15.20s %10.1f\n", c.getCompetitorNumber(), c.getCompetitorName(),
+					c.getLevel(), ((HaggisChef) c).getDish(),
+					Arrays.toString(c.getScoreArray()).replace("[", "").replace("]", "").replace(",", " "),
+					c.getOverallScore());
+			}
+
+		}
+		return rep;
+	}
 /**
  * Method to get frequency of competitor levels.
  */
-public abstract String getLevelFreq();
+//public abstract String getLevelFreq();
 
 	
 }
