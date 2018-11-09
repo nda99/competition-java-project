@@ -1,4 +1,4 @@
-package ndaAssignment1;
+package competition;
 
 import java.util.Arrays;
 
@@ -10,7 +10,7 @@ import java.util.Arrays;
  * @see ndaAssignment1.MainClass
  * @see ndaAssignment1.Name
  */
-public class HaggisChef {
+public class HaggisChef extends Competitor{
 	private int competitorNumber;
 	private Name competitorName;
 	private int[] score;
@@ -27,6 +27,7 @@ public class HaggisChef {
 	 * @see HaggisChef
 	 */
 	public HaggisChef(int competitorNumber, Name competitorName, int[] score, String level, String dish) {
+		super(competitorNumber, competitorName, score, level);
 		this.competitorNumber = competitorNumber;
 		this.competitorName = competitorName;
 		this.score = Arrays.copyOf(score, score.length); //prevents modification of values in array
@@ -92,24 +93,8 @@ public class HaggisChef {
 		
 		return String.format("CN %d (%s) has overall score %1.1f.\n", competitorNumber, competitorName.getInitials(), getOverallScore());
 	}
-	
-	/** Simple method to get the scores of the competitor
-	 * 
-	 * @return int [] array with all scores of the competitor
-	 */
-	public int[] getScoreArray() {
-		return score;
-	}
-	
-	/** Simple method to get the name of the competitor name for report
-	 * 
-	 * @return String with full name of a competitor
-	 */
-	public String getName() {
-	
-		return competitorName.getFullName();
-	}
-	
+
+
 	/** Simple method to get the name of the dish prepared by the competitor
 	 * 
 	 * @return String with the name of the dish
@@ -118,21 +103,6 @@ public class HaggisChef {
 		return dish;
 	}
 	
-	/** Simple method to get the level of the competitor 
-	 * 
-	 * @return String with level of competitor
-	 */
-	public String getLevel() {
-		return level;
-	}
-	
-	/** Simple method to get the number of the competitor 
-	 * 
-	 * @return Integer containing the competitor's number
-	 */
-	public int getCN() {
-		return competitorNumber;
-	}
 
 
 }
