@@ -1,3 +1,4 @@
+package competition;
 
 public class HockeyCompetitor extends Competitor{
 
