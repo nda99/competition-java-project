@@ -1,4 +1,4 @@
-package competition
+package competition;
 
 import static java.lang.System.out;
 import java.util.*;

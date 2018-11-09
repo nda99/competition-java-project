@@ -2,10 +2,10 @@ package competition;
 
 public abstract class Competitor {
 	
-	private int competitorNumber;
-	private Name competitorName;
-	private int[] score;
-	private String level;
+	protected int competitorNumber;
+	protected Name competitorName;
+	protected int[] score;
+	protected String level;
 	
 	
 	
@@ -21,6 +21,7 @@ public abstract class Competitor {
 	{
 		this.competitorNumber = competitorNumber;
 		this.competitorName = competitorName;
+		this.score = score;
 		this.level = level;
 	}
 	

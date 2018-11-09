@@ -15,7 +15,7 @@ import java.util.Scanner;
  */
 public class Manager { 
 	
-	private ArrayList<HaggisChef> competitors = new ArrayList<HaggisChef>();
+	private ArrayList<Competitor> competitors = new ArrayList<Competitor>();
 	private String inputFile;
 	private CompetitorList list = null;
 	/**
@@ -116,7 +116,7 @@ public class Manager {
 	 * @return false if there is no problem with output file path.
 	 */
 	public boolean printFile(String outputFile) throws IOException {
-		HaggisChef best;
+		Competitor best;
 		best = list.getBestCompetitor();
 		FileWriter file = null;
 		boolean failpath = false;		
@@ -137,8 +137,8 @@ public class Manager {
 		
 		try {
 			file.write(best.getFullDetails());
-			
-			file.write(list.getReport());
+			String rep =list.getReport();
+			file.write(rep);
 			
 			file.write(list.getStats());			
 			
