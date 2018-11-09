@@ -1,9 +1,9 @@
 package competition;
 
+
+
 import java.util.ArrayList;
 import java.util.Arrays;
-
-import competition.HaggisChef;
 
 public class CompetitorList {
 	

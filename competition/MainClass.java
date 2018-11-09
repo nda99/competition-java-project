@@ -1,4 +1,4 @@
-package ndaAssignment1;
+package competition;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -25,7 +25,7 @@ public class MainClass {
 		int CN;
 		boolean failpath = true;
 		String fileIn,output;
-		HaggisChef userChoice = null;
+		Competitor userChoice = null;
 		System.out.print("---------------------------------------\nWelcome to the Haggis Competition application!\n");
 		System.out.print("\nPlease type name of input file:\n");
 		fileIn = input.nextLine();
