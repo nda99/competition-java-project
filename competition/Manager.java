@@ -16,7 +16,7 @@ import java.util.Scanner;
 public class Manager { 
 	
 	private ArrayList<Competitor> competitors = new ArrayList<Competitor>();
-	private String inputFile;
+	private static String inputFile;
 	private CompetitorList list = null;
 	/**
 	 * Constructor for a a Manager object related to a specific file.
@@ -26,6 +26,13 @@ public class Manager {
 		this.inputFile = inputFile;
 	}
 	
+	/**
+	 * Method to get the name of input file
+	 * @return input file name
+	 */
+	public static String getInputName() {
+		return inputFile;
+	}
 	/** Method to read file and return a competitor list.
 	 * @see getFile method reads input file
 	 * @see Manager

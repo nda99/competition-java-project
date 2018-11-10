@@ -148,6 +148,23 @@ public class CompetitorList {
 		return stats;
 }
 	
+	public String getHeader() {
+		
+		String header = null;
+		
+		if (Manager.getInputName().equals("test_correct.csv")) {
+			header = String.format("--------\nREPORT:\n%20.50s %18.10s %18.30s %26.6s %15.8s\n", "Competitor", "Level", "Dish", "Scores",
+					"Overall");
+		}
+		
+		else {
+			header = String.format("--------\nREPORT:\n%20.50s %18.10s %18.30s %26.6s %15.8s\n", "Competitor", "Level", "Country", "Scores",
+					"Overall");
+		}
+		
+		return header;
+	}
+	
 	/**
 	 * Method to build the report based on the list of competitors.
 	 * @return String variable containing report information based on the list.
@@ -155,7 +172,7 @@ public class CompetitorList {
 	 * @see getStats
 	 */
 	public String getReport() {
-		String rep = String.format("--------\nREPORT:\n%20.50s %18.10s %18.30s %26.6s %15.8s\n", "Competitor", "Level", "Dish", "Scores",
+		String rep = getHeader(); String.format("--------\nREPORT:\n%20.50s %18.10s %18.30s %26.6s %15.8s\n", "Competitor", "Level", "Dish", "Scores",
 				"Overall");
 
 		for (Competitor c : competitors) {
