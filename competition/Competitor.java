@@ -125,6 +125,12 @@ public abstract class Competitor {
 		this.level = level;
 	}
 	
+	public String getCompetitorType()
+	{
+		String type = "Hockey";
+		return type;
+	}
+	
 	
 	
 
