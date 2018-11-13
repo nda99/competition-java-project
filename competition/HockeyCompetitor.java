@@ -39,7 +39,7 @@ public class HockeyCompetitor extends Competitor{
 	@Override
 	public double getOverallScore() 
 	{ 
-		double overall = getLevelWeight(getLevel())*(getFirstMatchScore()+getSecondMatchScore()+getThirdMatchScore()+getFourthMatchScore()+getFifthMatchScore())/score.length;
+		double overall = (double) getLevelWeight(getLevel())*(getFirstMatchScore()+getSecondMatchScore()+getThirdMatchScore()+getFourthMatchScore()+getFifthMatchScore())/score.length;
 		return (overall); 
 	}
 	
