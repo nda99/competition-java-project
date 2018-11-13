@@ -8,7 +8,7 @@ public class GUI extends JFrame{
 	public GUI()
 	{
 		
-		
+		//i just added this comment
 	}
 	
 	public void getInputName() {
