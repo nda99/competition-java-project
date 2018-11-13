@@ -104,8 +104,16 @@ public class Manager {
 		  if ((inputFile.split("\\\\")[inputFile.split("\\\\").length-1]).equals("test_correct.csv")) {
 		  competitors.add( new HaggisChef(CN, name, score, level, dish)); 
 		  }
-		  else {
+		  else if ((inputFile.split("\\\\")[inputFile.split("\\\\").length-1]).equals("test_hockey.csv")){
 		  competitors.add( new HockeyCompetitor(CN-100, name, level, score, dish));
+		  }
+		  
+		  else if ((inputFile.split("\\\\")[inputFile.split("\\\\").length-1]).equals("test_dart.csv")){
+			  competitors.add( new DartCompetitor(CN-100, name, level, score, CN-50));
+		  }
+		  
+		  else {
+			  competitors.add( new Baseballers(CN-100, name, level, score, dish, CN-50));
 		  }
 		  
 	  }
