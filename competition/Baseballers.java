@@ -1,3 +1,4 @@
+package competition;
 
 public class Baseballers extends Competitor {
 
@@ -10,7 +11,8 @@ public class Baseballers extends Competitor {
 	private String FullDetails;
 	private String ShortDetails;
 
-	public Baseballers(String nationality, int age) {
+	public Baseballers(int competitorNumber, Name competitorName, int[] score, String level, String nationality, int age) {
+		super(competitorNumber,competitorName,score,level);
 		//this.number = number;
 		//this.name = new Name(name);
 		//this.category = category;
@@ -110,16 +112,16 @@ public class Baseballers extends Competitor {
 //		this.score = score;
 //	}
 //
-//	public String getFullDetails() {
-//		return "Competitor number " + number + ", name " + name.getFullName() + ", category " + category +
-//				", country " + nationality + ".\n" + name.getFirstName() + " aged " + age + " has received these scores: " +
-//				score[0] + ", " + score[1] + ", " + score[2] + ", " + score[3] + ", " + score[4] +
-//				".\nThis gives him/her an overall score of " + getOverallScore() + ".";
-//	}
+	public String getFullDetails() {
+		return "Competitor number " + number + ", name " + name.getFullName() + ", category " + category +
+				", country " + nationality + ".\n" + name.getFirstName() + " aged " + age + " has received these scores: " +
+				score[0] + ", " + score[1] + ", " + score[2] + ", " + score[3] + ", " + score[4] +
+				".\nThis gives him/her an overall score of " + getOverallScore() + ".";
+	}
 //
-//	public void setFullDetails(String fullDetails) {
-//		FullDetails = fullDetails;
-//	}
+	public void setFullDetails(String fullDetails) {
+		FullDetails = fullDetails;
+	}
 //
 //	public String getShortDetails() {
 //		String shortDetails = "CN "+ this.getNumber()+" ("+name.shortName() +") has overall score " + this.getOverallScore() + ".";
