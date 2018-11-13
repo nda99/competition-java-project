@@ -65,6 +65,22 @@ public class CompetitorList {
 		return best;
 	}
 	
+	
+	/*** Method which loops throught the list of hockey competitotrs and returns the highest score
+	 * @return Competitor of type hockeycompetitor holding details of the competitor
+	 **/
+		public HockeyCompetitor getBestHockeyCompetitor() {
+		double score = -1;
+		HockeyCompetitor best = null;
+		for (Competitor c : this.competitors) {
+			if (c.getOverallScore() > score && c instanceof HockeyCompetitor) {
+				score = c.getOverallScore();
+				best = (HockeyCompetitor) c;
+			}
+		}
+
+		return best;
+	}
 	public Competitor getBestCompetitor() {
 		double score = -1;
 		Competitor best = null;
