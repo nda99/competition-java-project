@@ -21,7 +21,7 @@ public class CompetitionListGUI extends JFrame{
 		JPanel northPanel = new JPanel();
 		String title =c.getCompetitorType()+"COMPETITION";
 		JLabel GUItitle = this.createOneLabel(title, Color.blue);
-		this.add(GUItitle,BorderLayout.NORTH);		
+		justAFrame.add(GUItitle,BorderLayout.NORTH);		
 	
 		
 	}
