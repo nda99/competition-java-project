@@ -1,7 +1,7 @@
 package competition;
 
 
-
+// plamen is in
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -208,6 +208,15 @@ public class CompetitorList {
 
 				rep = String.format(rep + "%3.3s %25.25s %10.10s %31.31s %15.20s %10.1f\n", c.getCompetitorNumber(), c.getCompetitorName(),
 						c.getLevel(), ((HockeyCompetitor) c).getNationality(),
+						Arrays.toString(c.getScoreArray()).replace("[", "").replace("]", "").replace(",", " "),
+						c.getOverallScore());
+				}
+			if (c instanceof Baseballers) {
+				// rep = String.format(rep + "%1.20s %10.10s %2.5d %2.5d %2.5d %2.5d %2.5d
+				// %10.8f\n",h.getName(),h.getLevel(),h.getScoreArray()[0],h.getScoreArray()[1],h.getScoreArray()[2],h.getScoreArray()[3],h.getScoreArray()[4],h.getOverallScore());
+
+				rep = String.format(rep + "%3.3s %25.25s %10.10s %31.31s %15.20s %10.1f\n", c.getCompetitorNumber(), c.getCompetitorName(),
+						c.getLevel(), ((Baseballers) c).getNationality(),
 						Arrays.toString(c.getScoreArray()).replace("[", "").replace("]", "").replace(",", " "),
 						c.getOverallScore());
 				}

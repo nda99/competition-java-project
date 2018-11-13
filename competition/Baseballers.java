@@ -11,11 +11,11 @@ public class Baseballers extends Competitor {
 	private String FullDetails;
 	private String ShortDetails;
 
-	public Baseballers(int competitorNumber, Name competitorName, int[] score, String level, String nationality, int age) {
+	public Baseballers(int competitorNumber, Name competitorName, String level, int[] score,  String nationality, int age) {
 		super(competitorNumber,competitorName,score,level);
-		//this.number = number;
-		//this.name = new Name(name);
-		//this.category = category;
+		this.competitorNumber = competitorNumber;
+		this.competitorName = competitorName;
+		this.level = level;
 		// this.OverallScore = OverallScore;
 		this.nationality = nationality;
 		this.age = age;
@@ -25,26 +25,27 @@ public class Baseballers extends Competitor {
 	public double getOverallScore() {
 		// int[] myIntArray={ 5,4,4,5,3};
 		int weight ;
-	//	String cat = this.getCategory();
+		String cat = this.getLevel();
 
 
-//		if(this.getCategory() .equals("Rookie"))
-//			{
-//			weight = 1;
-//			}
-//		else if( this.getCategory() .equals("Advanced"))
-//		{
-//				 weight = 2;
-//		}else{
-//			weight = 3;
-//		}
+		if(cat .equals("Rookie"))
+			{
+			weight = 1;
+			}
+		else if( cat.equals("Advanced"))
+		{
+				 weight = 2;
+		}else{
+			weight = 3;
+		}
 			
 		
 		double overall = (double) weight*(this.score[0] + this.score[1] + this.score[2] + this.score[3] + this.score[4])
 				/ this.score.length;
+		
 		return overall;
 
-//	}
+	}
 //		//scores array
 //	public void setBaseballerScore(int scoreGained1, int scoreGained2, int scoreGained3, int scoreGained4,
 //			int scoreGained5) {
@@ -113,8 +114,8 @@ public class Baseballers extends Competitor {
 //	}
 //
 	public String getFullDetails() {
-		return "Competitor number " + number + ", name " + name.getFullName() + ", category " + category +
-				", country " + nationality + ".\n" + name.getFirstName() + " aged " + age + " has received these scores: " +
+		return "Competitor number " + competitorNumber + ", name " + competitorName.getFullName() + ", category " + level +
+				", country " + nationality + ".\n" + competitorName.getFirstName() + " aged " + age + " has received these scores: " +
 				score[0] + ", " + score[1] + ", " + score[2] + ", " + score[3] + ", " + score[4] +
 				".\nThis gives him/her an overall score of " + getOverallScore() + ".";
 	}
