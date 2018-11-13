@@ -1,7 +1,7 @@
 package competition;
 
 
-
+// plamen is in
 import java.util.ArrayList;
 import java.util.Arrays;
 
