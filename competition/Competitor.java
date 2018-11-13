@@ -21,7 +21,7 @@ public abstract class Competitor {
 	{
 		this.competitorNumber = competitorNumber;
 		this.competitorName = competitorName;
-		this.score = score;
+		this.score = score.clone();
 		this.level = level;
 	}
 	

@@ -109,11 +109,11 @@ public class Manager {
 		  }
 		  
 		  else if ((inputFile.split("\\\\")[inputFile.split("\\\\").length-1]).equals("test_dart.csv")){
-			  competitors.add( new DartCompetitor(CN-100, name, level, score, CN-50));
+			  competitors.add( new DartCompetitor(CN+200, name, level, score, CN-50));
 		  }
 		  
 		  else {
-			  competitors.add( new Baseballers(CN-100, name, level, score, dish, CN-50));
+			  competitors.add( new Baseballers(CN+100, name, level, score, dish, CN-50));
 		  }
 		  
 	  }
