@@ -1,7 +1,7 @@
 package competition;
 
 
-
+// plamen is in
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -65,6 +65,22 @@ public class CompetitorList {
 		return best;
 	}
 	
+	
+	/*** Method which loops throught the list of hockey competitotrs and returns the highest score
+	 * @return Competitor of type hockeycompetitor holding details of the competitor
+	 **/
+		public HockeyCompetitor getBestHockeyCompetitor() {
+		double score = -1;
+		HockeyCompetitor best = null;
+		for (Competitor c : this.competitors) {
+			if (c.getOverallScore() > score && c instanceof HockeyCompetitor) {
+				score = c.getOverallScore();
+				best = (HockeyCompetitor) c;
+			}
+		}
+
+		return best;
+	}
 	public Competitor getBestCompetitor() {
 		double score = -1;
 		Competitor best = null;
@@ -148,6 +164,23 @@ public class CompetitorList {
 		return stats;
 }
 	
+	public String getHeader() {
+		
+		String header = null;
+		
+		if (Manager.getInputName().equals("test_correct.csv")) {
+			header = String.format("--------\nREPORT:\n%20.50s %18.10s %18.30s %26.6s %15.8s\n", "Competitor", "Level", "Dish", "Scores",
+					"Overall");
+		}
+		
+		else {
+			header = String.format("--------\nREPORT:\n%20.50s %18.10s %18.30s %26.6s %15.8s\n", "Competitor", "Level", "Country", "Scores",
+					"Overall");
+		}
+		
+		return header;
+	}
+	
 	/**
 	 * Method to build the report based on the list of competitors.
 	 * @return String variable containing report information based on the list.
@@ -155,7 +188,7 @@ public class CompetitorList {
 	 * @see getStats
 	 */
 	public String getReport() {
-		String rep = String.format("--------\nREPORT:\n%20.50s %18.10s %18.30s %26.6s %15.8s\n", "Competitor", "Level", "Dish", "Scores",
+		String rep = getHeader(); String.format("--------\nREPORT:\n%20.50s %18.10s %18.30s %26.6s %15.8s\n", "Competitor", "Level", "Dish", "Scores",
 				"Overall");
 
 		for (Competitor c : competitors) {
@@ -168,6 +201,25 @@ public class CompetitorList {
 					Arrays.toString(c.getScoreArray()).replace("[", "").replace("]", "").replace(",", " "),
 					c.getOverallScore());
 			}
+			
+			if (c instanceof HockeyCompetitor) {
+				// rep = String.format(rep + "%1.20s %10.10s %2.5d %2.5d %2.5d %2.5d %2.5d
+				// %10.8f\n",h.getName(),h.getLevel(),h.getScoreArray()[0],h.getScoreArray()[1],h.getScoreArray()[2],h.getScoreArray()[3],h.getScoreArray()[4],h.getOverallScore());
+
+				rep = String.format(rep + "%3.3s %25.25s %10.10s %31.31s %15.20s %10.1f\n", c.getCompetitorNumber(), c.getCompetitorName(),
+						c.getLevel(), ((HockeyCompetitor) c).getNationality(),
+						Arrays.toString(c.getScoreArray()).replace("[", "").replace("]", "").replace(",", " "),
+						c.getOverallScore());
+				}
+			if (c instanceof Baseballers) {
+				// rep = String.format(rep + "%1.20s %10.10s %2.5d %2.5d %2.5d %2.5d %2.5d
+				// %10.8f\n",h.getName(),h.getLevel(),h.getScoreArray()[0],h.getScoreArray()[1],h.getScoreArray()[2],h.getScoreArray()[3],h.getScoreArray()[4],h.getOverallScore());
+
+				rep = String.format(rep + "%3.3s %25.25s %10.10s %31.31s %15.20s %10.1f\n", c.getCompetitorNumber(), c.getCompetitorName(),
+						c.getLevel(), ((Baseballers) c).getNationality(),
+						Arrays.toString(c.getScoreArray()).replace("[", "").replace("]", "").replace(",", " "),
+						c.getOverallScore());
+				}
 
 		}
 		return rep;

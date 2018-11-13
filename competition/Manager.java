@@ -16,7 +16,7 @@ import java.util.Scanner;
 public class Manager { 
 	
 	private ArrayList<Competitor> competitors = new ArrayList<Competitor>();
-	private String inputFile;
+	private static String inputFile;
 	private CompetitorList list = null;
 	/**
 	 * Constructor for a a Manager object related to a specific file.
@@ -26,6 +26,13 @@ public class Manager {
 		this.inputFile = inputFile;
 	}
 	
+	/**
+	 * Method to get the name of input file
+	 * @return input file name
+	 */
+	public static String getInputName() {
+		return inputFile;
+	}
 	/** Method to read file and return a competitor list.
 	 * @see getFile method reads input file
 	 * @see Manager
@@ -93,8 +100,21 @@ public class Manager {
 		  for (int i = 4; i < 9; i++) {
 			  score[i-4] = Integer.parseInt(details[i]);
 		  }
-		  
+		  //String[] A = inputFile.split("\\\\");
+		  if ((inputFile.split("\\\\")[inputFile.split("\\\\").length-1]).equals("test_correct.csv")) {
 		  competitors.add( new HaggisChef(CN, name, score, level, dish)); 
+		  }
+		  else if ((inputFile.split("\\\\")[inputFile.split("\\\\").length-1]).equals("test_hockey.csv")){
+		  competitors.add( new HockeyCompetitor(CN-100, name, level, score, dish));
+		  }
+		  
+		  else if ((inputFile.split("\\\\")[inputFile.split("\\\\").length-1]).equals("test_dart.csv")){
+			  competitors.add( new DartCompetitor(CN-100, name, level, score, CN-50));
+		  }
+		  
+		  else {
+			  competitors.add( new Baseballers(CN-100, name, level, score, dish, CN-50));
+		  }
 		  
 	  }
 	} catch (FileNotFoundException e) {

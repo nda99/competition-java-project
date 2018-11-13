@@ -8,33 +8,45 @@ import java.util.*;
  */
 public class DartCompetitor extends Competitor{
 	
-	private String age;	
-	private float OverallScore;
-	private  String Competitor;
-	private int level;
-	
+	private int age;	
+	private int competitorNumber;
+	private Name competitorName;
+	private int[] score;
+	private String level;
+	private int levelWeight = 3;
 	//Constructor
-	public DartCompetitor(int num, Name fullname,  String lv, String dob, int[] mScore) 
+	public DartCompetitor(int competitorNumber, Name competitorName,  String level, int[] score, int age) 
 	{
-		super(num,fullname,mScore,lv);
+		super(competitorNumber,competitorName,score,level);
 		
-	
+		this.competitorNumber = competitorNumber;
+		this.competitorName = competitorName;
+		this.level = level;
+		this.age = age;
 		
+		if (level == "1") {
+			levelWeight = 1;
+		}
+		
+		else if(level == "2") {
+			levelWeight = 2;
+		}
+				
 	}
 	
 		//method
 		
-		public  String getage() {
+		public  int getage() {
 			return age;
 		}
 		
 
-		public String getFullDetails(int cnumber, String firstName, String middleName, String lastName, int age, int clevel ) {
+		public String getFullDetails()  {
 			
 			int[] cscores = super.getScoreArray();
 			double wscore  = getOverallScore();
 			
-			return 	firstName + " " + middleName + " " + lastName + " is a level " + clevel + " aged " + age + " has a score of: " + wscore;
+			return 	String.format(competitorName.getFullName() + " is a level " + level + " aged %d has a score of: %f", age, wscore);
 			}
 			
 		public  String getShortDetails() {
@@ -44,7 +56,7 @@ public class DartCompetitor extends Competitor{
 		// Main Method
 		@Override
 		public double getOverallScore() {
-			double w = 1/level;
+			double w = 1/levelWeight;
 			int sumall = 0;
 			for(int i=0; i< 4; ++i) {
 				sumall = sumall + super.score[i];
@@ -54,14 +66,14 @@ public class DartCompetitor extends Competitor{
 			return wsumall;
 		}
 	
-	@Override
-	public String getFullDetails() {
-	int[] cscores = super.getScoreArray();
-	double wscore  = getOverallScore();
+	//@Override
+	//public String getFullDetails() {
+	//int[] cscores = super.getScoreArray();
+	//double wscore  = getOverallScore();
 					
-	return 	super.getCompetitorName()+ " is a level " + level + " aged " + age + " has a score of: " + wscore;
+	//return 	super.getCompetitorName()+ " is a level " + level + " aged " + age + " has a score of: " + wscore;
 				
-	}
+	//}
 
 	}
 

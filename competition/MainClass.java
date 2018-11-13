@@ -14,21 +14,36 @@ import java.util.Scanner;
  *
  */
 public class MainClass {
-
+	
+	private static String fileIn = null;
+	
+	public static String getFileIn() {
+		return fileIn;
+	}
+	
+	public static void setFileIn(String fileName) {
+		fileIn = fileName;
+	}
+	
 	public static void main(String[] args) throws IOException {
 		
 		// Console (display short details for users' choice) :
 		@SuppressWarnings("resource")
 		
+		GUI gui = new GUI();
 		
 		Scanner input =new Scanner(System.in);
 		int CN;
 		boolean failpath = true;
-		String fileIn,output;
+		String output;
 		Competitor userChoice = null;
 		System.out.print("---------------------------------------\nWelcome to the Haggis Competition application!\n");
-		System.out.print("\nPlease type name of input file:\n");
-		fileIn = input.nextLine();
+		//System.out.print("\nPlease type name of input file:\n");
+		//MainClass.fileIn = input.nextLine();
+		gui.getInputName();
+		while (fileIn==null) {
+			System.out.print("");
+		}
 		//"D:\\Eclipse\\toto.txt"
 		Manager in = new Manager(fileIn);
 		
@@ -37,6 +52,7 @@ public class MainClass {
 			//"D:\\Eclipse\\toto.txt"
 			in = new Manager(fileIn);
 		}; 
+		System.out.print(fileIn + "\n");
 		
 		while (failpath) {
 			System.out.print("Please type name of output file:\n");
