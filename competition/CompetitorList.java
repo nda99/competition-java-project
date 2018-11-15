@@ -1,7 +1,6 @@
 package competition;
 
 
-// plamen is in
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -20,6 +19,13 @@ public class CompetitorList {
 	
 	}
 	
+	/** Method to get the competitorList
+	 * @return competitorList
+	 * **/
+	public ArrayList<Competitor> getCompetitorList()
+	{
+		return competitors;
+	}
 
 	/**
 	 * Method to get a competitor of choice based on his/her Competitor Number (CN)

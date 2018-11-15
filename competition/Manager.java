@@ -73,12 +73,12 @@ public class Manager {
 		  }
 		  
 		  // Check if levels are correct		  
-		  if (details[2].equals("Amateur")==false && details[2].equals("Cook")==false && details[2].equals("Chef")==false && details[2].equals("MasterChef")==false) {
+		 /* if (details[2].equals("Amateur")==false && details[2].equals("Cook")==false && details[2].equals("Chef")==false && details[2].equals("MasterChef")==false) {
 			  System.err.println("ERROR: Levels are incorrect.\nPlease correct your input file with correct levels"
 			  		+ " (Amateur, Cook, Chef or MasterChef):\n");
 			  filefail = true;
 			  break;
-		  }
+		  }*/
 		  //check for missing fields
 		  if (details.length < 9) {
 			  System.err.println("ERROR: There are missing fields in the input file. Please correct your input file or enter a valid one:");
