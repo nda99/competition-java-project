@@ -17,10 +17,16 @@ public class MainClass {
 	
 	private static String fileIn = null;
 	
+	private static FileIO_GUI gui = null;
+	
 	public static String getFileIn() {
 		return fileIn;
 	}
 	
+	public static FileIO_GUI getFileGUI() {
+		return gui;
+	}
+		
 	public static void setFileIn(String fileName) {
 		fileIn = fileName;
 	}
@@ -28,9 +34,9 @@ public class MainClass {
 	public static void main(String[] args) throws IOException {
 		
 		// Console (display short details for users' choice) :
-		@SuppressWarnings("resource")
+		//@SuppressWarnings("resource");
 		
-		GUI gui = new GUI();
+		gui = new FileIO_GUI();
 		
 		Scanner input =new Scanner(System.in);
 		int CN;
@@ -44,14 +50,32 @@ public class MainClass {
 		while (fileIn==null) {
 			System.out.print("");
 		}
-		//"D:\\Eclipse\\toto.txt"
+		System.out.print(".");
 		Manager in = new Manager(fileIn);
 		
 		while(in.getFile()) {
-			fileIn = input.nextLine();
+			//gui.displayFileError();
+			fileIn=null;
+			while (fileIn==null) {
+				System.out.print("");
+			}
+			
+			System.out.print(".");
 			//"D:\\Eclipse\\toto.txt"
 			in = new Manager(fileIn);
 		}; 
+		
+		while (failpath) {
+			System.out.print("Please type name of output file:\n");
+
+			output = input.nextLine();
+			failpath = in.printFile(output);
+		}
+
+		//"D:\\Eclipse\\toto.txt"
+
+		
+
 		System.out.print(fileIn + "\n");
 		
 		while (failpath) {

@@ -60,12 +60,13 @@ public class Manager {
 		  for(int i=0; i <details.length;i++) { 
 			  // Check if input has blank/null fields
 			  if (details[i].length()==0 || details[i] ==" ") {
-				  System.err.println("ERROR: There are blank fields in the input file. Please correct your input file or select a valid one:");
+				  MainClass.getFileGUI().displayFileError("ERROR: There are blank fields in the input file.\nPlease correct your input file or select a valid one.");;
+				  //System.err.println("ERROR: There are blank fields in the input file. Please correct your input file or select a valid one:");
 				  filefail = true;
 			  }
 			  // Check if scores are 0, 1, 2, 4 or 5.
 			  if (i >= 4 && details[i].equals("0")==false && details[i].equals("1")==false && details[i].equals("2")==false && details[i].equals("3")==false && details[i].equals("4")==false && details[i].equals("5")==false ) {
-				  System.err.println("ERROR: Scores are incorrect. Please correct your input file with scores from 0 to 5:\n");
+				  MainClass.getFileGUI().displayFileError("ERROR: Scores are incorrect. Please correct your input file with scores from 0 to 5:\n");
 				  filefail = true;
 				  break;
 			  }
@@ -74,19 +75,19 @@ public class Manager {
 		  
 		  // Check if levels are correct		  
 		  if (details[2].equals("Amateur")==false && details[2].equals("Cook")==false && details[2].equals("Chef")==false && details[2].equals("MasterChef")==false) {
-			  System.err.println("ERROR: Levels are incorrect.\nPlease correct your input file with correct levels"
+			  MainClass.getFileGUI().displayFileError("ERROR: Levels are incorrect.\nPlease correct your input file with correct levels"
 			  		+ " (Amateur, Cook, Chef or MasterChef):\n");
 			  filefail = true;
 			  break;
 		  }
 		  //check for missing fields
 		  if (details.length < 9) {
-			  System.err.println("ERROR: There are missing fields in the input file. Please correct your input file or enter a valid one:");
+			  MainClass.getFileGUI().displayFileError("ERROR: There are missing fields in the input file. Please correct your input file or enter a valid one:");
 			  filefail=true;
 		  }
 		  // check for extra fields
 		  if (details.length > 9) {
-			  System.err.println("ERROR: There are extra fields in the input file. Please correct your input file or enter a valid one:");
+			  MainClass.getFileGUI().displayFileError("ERROR: There are extra fields in the input file. Please correct your input file or enter a valid one:");
 			  filefail=true;
 		  }
 		  
@@ -119,7 +120,7 @@ public class Manager {
 	  }
 	} catch (FileNotFoundException e) {
 		// TODO Auto-generated catch block
-		System.err.println(String.format("File '%s' not found, please enter valid file:", file));
+		MainClass.getFileGUI().displayFileError(String.format("File '%s' not found, please enter valid file:", file));
 		filefail = true;
 	}
 	  this.list = new CompetitorList(competitors);
