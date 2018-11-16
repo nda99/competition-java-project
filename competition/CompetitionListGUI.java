@@ -20,7 +20,7 @@ public class CompetitionListGUI extends JFrame{
 	 JTextArea table;
 	 JTextField searchtext;
 	 JButton searchBtn;
-	static CompetitorList list;
+	 CompetitorList list;
 		
 	/**Constructor to receive the list**/
 public CompetitionListGUI(CompetitorList c) {
@@ -86,12 +86,13 @@ public CompetitionListGUI(CompetitorList c) {
 		  northPanel.add(searchBtn); 
 		  this.add(northPanel, BorderLayout.NORTH);
 				  }
-	public static JPanel displayCompetitorList()
+	public JPanel displayCompetitorList()
 	{
 		JPanel myPanel = new JPanel(); 
 		//int size = competitors.size();
 		//System.out.println(size);
 		ArrayList<Competitor> comptList = list.getCompetitorList();
+		
 		myPanel.setLayout(new GridLayout(comptList.size(),7));
 
 		for(Competitor c : comptList)
@@ -126,7 +127,7 @@ public CompetitionListGUI(CompetitorList c) {
 	
 
 	
-	public static void setupGUI()
+	public void setupGUI()
 	{
 		
 
