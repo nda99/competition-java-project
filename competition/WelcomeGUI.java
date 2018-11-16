@@ -60,7 +60,12 @@ public class WelcomeGUI {
 		
 		seeDetails.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
+		    	if (MainClass.getFileIn()==null) {
+		    		
+		    	}
+		    	else {
 		    	CompetitionListGUI.setupGUI();
+		    	}
 		      }
 		    });
 	}

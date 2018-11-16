@@ -79,9 +79,9 @@ public class MainClass {
 		
 		CompetitorList list = in.getList();
 		
-		//CompetitionListGUI compList = new CompetitionListGUI(list);
+		CompetitionListGUI compList = new CompetitionListGUI(list);
 		
-		CompetitionListGUI.setupGUI();
+		compList.setupGUI();
 		
 		
 		
