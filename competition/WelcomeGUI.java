@@ -64,7 +64,7 @@ public class WelcomeGUI {
 		    		
 		    	}
 		    	else {
-		    	CompetitionListGUI.setupGUI();
+		    	MainClass.getListGUI().setupGUI();
 		    	}
 		      }
 		    });

@@ -19,6 +19,12 @@ public class MainClass {
 	
 	private static FileIO_GUI gui = null;
 	
+	private static CompetitionListGUI compList =null;
+	
+	public static CompetitionListGUI getListGUI() {
+		return compList;
+	}
+	
 	public static String getFileIn() {
 		return fileIn;
 	}
@@ -79,7 +85,7 @@ public class MainClass {
 		
 		CompetitorList list = in.getList();
 		
-		CompetitionListGUI compList = new CompetitionListGUI(list);
+		compList = new CompetitionListGUI(list);
 		
 		compList.setupGUI();
 		
