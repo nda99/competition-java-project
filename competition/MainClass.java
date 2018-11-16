@@ -44,6 +44,8 @@ public class MainClass {
 		// Console (display short details for users' choice) :
 		//@SuppressWarnings("resource");
 		
+		WelcomeGUI welcome = new WelcomeGUI();
+		
 		gui = new FileIO_GUI();
 		
 		Scanner input =new Scanner(System.in);
