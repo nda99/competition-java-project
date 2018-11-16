@@ -74,7 +74,7 @@ public class Manager {
 		  }
 		  
 		  // Check if levels are correct		  
-<<<<<<< HEAD
+
 		 /* if (details[2].equals("Amateur")==false && details[2].equals("Cook")==false && details[2].equals("Chef")==false && details[2].equals("MasterChef")==false) {
 			  System.err.println("ERROR: Levels are incorrect.\nPlease correct your input file with correct levels"
 =======

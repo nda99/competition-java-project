@@ -98,7 +98,7 @@ public class FileIO_GUI extends JFrame{
 	}
 	
 	
-	private JLabel createOneLabel (String s, Color c) {
+	static JLabel createOneLabel (String s, Color c) {
 		Font f = new Font(Font.SANS_SERIF, Font.BOLD, 18);
 		JLabel label= new JLabel(s, JLabel.CENTER);
 		label.setFont(f);

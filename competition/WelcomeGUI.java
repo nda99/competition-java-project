@@ -23,6 +23,7 @@ public class WelcomeGUI {
 		JFrame welcomeFrame = new JFrame();
 		JButton chooseInput, chooseOutput, seeDetails;
 		JPanel centralPanel = new JPanel();
+		JLabel welcome = new JLabel();
 		
 		chooseInput = new JButton("Choose input file");
 		chooseOutput = new JButton("Save File");
@@ -33,11 +34,23 @@ public class WelcomeGUI {
 		centralPanel.add(seeDetails);
 		//welcomeFrame.add
 		
-		welcomeFrame.setSize(800,800);
+		
+		
+		welcome = FileIO_GUI.createOneLabel("Welcome to the Competition Manager Applet\n Please select an option:", Color.WHITE);
+		
+		
+		welcomeFrame.setSize(800,600);
 		welcomeFrame.setLayout(new BorderLayout(0,0));
 		welcomeFrame.setTitle("Welcome to the Competition App");
+		welcomeFrame.add(welcome,BorderLayout.NORTH);
 		welcomeFrame.add(centralPanel,BorderLayout.CENTER);
 		welcomeFrame.setVisible(true);
+		
+		chooseInput.addActionListener(new ActionListener() {
+	    public void actionPerformed(ActionEvent e) {
+	    	MainClass.getFileGUI().getInputName();
+	      }
+	    });
 	}
 	
 }

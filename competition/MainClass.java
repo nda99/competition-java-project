@@ -45,6 +45,7 @@ public class MainClass {
 		//@SuppressWarnings("resource");
 		
 		WelcomeGUI welcome = new WelcomeGUI();
+		//welcome.displayWelcome();
 		
 		gui = new FileIO_GUI();
 		
@@ -56,7 +57,7 @@ public class MainClass {
 		System.out.print("---------------------------------------\nWelcome to the Haggis Competition application!\n");
 		//System.out.print("\nPlease type name of input file:\n");
 		//MainClass.fileIn = input.nextLine();
-		gui.getInputName();
+		welcome.displayWelcome();
 		while (fileIn==null) {
 			System.out.print("");
 		}
