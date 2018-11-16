@@ -61,6 +61,7 @@ public class MainClass {
 		while (fileIn==null) {
 			System.out.print("");
 		}
+		
 		System.out.print(".");
 		Manager in = new Manager(fileIn);
 		
@@ -75,6 +76,14 @@ public class MainClass {
 			//"D:\\Eclipse\\toto.txt"
 			in = new Manager(fileIn);
 		}; 
+		
+		CompetitorList list = in.getList();
+		
+		//CompetitionListGUI compList = new CompetitionListGUI(list);
+		
+		CompetitionListGUI.setupGUI();
+		
+		
 		
 		gui.closeWindow("input");
 		
@@ -102,7 +111,6 @@ public class MainClass {
 		System.out.print("Enter competitor number for short details: ");
 		CN = input.nextInt();
 		
-		CompetitorList list = in.getList();
 		userChoice = list.getCompetitor(CN);
 		
 		if (userChoice !=null) {
