@@ -41,7 +41,7 @@ public class WelcomeGUI {
 		
 		welcomeFrame.setSize(800,600);
 		welcomeFrame.setLayout(new BorderLayout(0,0));
-		welcomeFrame.setTitle("Welcome to the Competition App");
+		welcomeFrame.setTitle("Competition App Group 9");
 		welcomeFrame.add(welcome,BorderLayout.NORTH);
 		welcomeFrame.add(centralPanel,BorderLayout.CENTER);
 		welcomeFrame.setVisible(true);
@@ -51,6 +51,18 @@ public class WelcomeGUI {
 	    	MainClass.getFileGUI().getInputName();
 	      }
 	    });
+		
+		chooseOutput.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		    	MainClass.getFileGUI().getOutputFile();
+		      }
+		    });
+		
+		seeDetails.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		    	CompetitionListGUI.setupGUI();
+		      }
+		    });
 	}
 	
 }
