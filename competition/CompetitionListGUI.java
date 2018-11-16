@@ -14,7 +14,8 @@ import javax.swing.*;
 public class CompetitionListGUI extends JFrame{
 
 	 //GUI components
-	 JButton edit;     
+	 static JButton edit;
+	 static JButton view;
 	 JScrollPane scrollList; 
 	 JTextArea table;
 	 JTextField searchtext;
@@ -46,29 +47,7 @@ public CompetitionListGUI(CompetitorList c) {
 	}   
 	
 	
-	/* private void setupSouthPanel() {         
-		 //search panel contains label, text field and button         
-		 JPanel searchPanel = new JPanel();         
-		 searchPanel.setLayout(new GridLayout(1,3));         
-		 searchPanel.add(new JLabel("Enter ID"));            
-		// searchField = new JTextField(5);         
-		 searchPanel.add(searchField);            
-		 search = new JButton("Search");           
-		 searchPanel.add(search);             
-		 //specify action when button is pressed         
-		 search.addActionListener(this) ;                  
-		 //Set up the area where the results will be displayed.         
-		 result= new JTextField(25);              
-		 result.setEditable(false);                  
-		 //set up south panel containing 2 previous areas         
-		 JPanel southPanel = new JPanel();         
-		 southPanel.setLayout(new GridLayout(2,1));         
-		 southPanel.add(searchPanel);         
-		 southPanel.add(result);                  
-		 //add south panel to the content pane         
-		 this.add(southPanel, BorderLayout.SOUTH);         
-		 } 
-	 }*/
+
 	   public void actionPerformed(ActionEvent event)
 	   {
 		   if(event.getSource() == "search")
@@ -104,15 +83,7 @@ public CompetitionListGUI(CompetitorList c) {
 		  searchBtn = new JButton("Search");
 		 // searchBtn.addChangeListener();
 		  northPanel.add(searchtext);
-		  northPanel.add(searchBtn);
-		  
-		/*  showListByName = new JButton("List By Name");         
-		  showListByName.addActionListener(this);                  
-		  close = new JButton("Close");         
-		  close.addActionListener(this);                 
-		  northPanel.add (showListById);        
-		  northPanel.add(showListByName);         
-		  northPanel.add(close);       */  
+		  northPanel.add(searchBtn); 
 		  this.add(northPanel, BorderLayout.NORTH);
 				  }
 	public static JPanel displayCompetitorList()
@@ -121,7 +92,7 @@ public CompetitionListGUI(CompetitorList c) {
 		//int size = competitors.size();
 		//System.out.println(size);
 		ArrayList<Competitor> comptList = list.getCompetitorList();
-		myPanel.setLayout(new GridLayout(comptList.size(),5));
+		myPanel.setLayout(new GridLayout(comptList.size(),7));
 
 		for(Competitor c : comptList)
 		{
@@ -139,7 +110,8 @@ public CompetitionListGUI(CompetitorList c) {
 			myPanel.add(level);
 			myPanel.add(score);
 			//myPanel.add(extra);
-			JButton edit = new JButton("Edit");
+			edit = new JButton("Edit");
+			view = new JButton("View");
 			myPanel.add(edit);
 			
 
@@ -156,10 +128,7 @@ public CompetitionListGUI(CompetitorList c) {
 	
 	public static void setupGUI()
 	{
-		Manager m = new Manager("comptList.csv");
-		m.getFile();
-		list = m.getList();
-		//CompetitionListGUI cgui = new CompetitionListGUI(competitors);
+		
 
 		//this.setLayout(new BorderLayout(5,5));
 		JFrame frame = new JFrame();
