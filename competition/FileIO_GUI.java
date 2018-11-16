@@ -4,7 +4,8 @@ import javax.swing.*;
 import java.awt.event.*;
 public class FileIO_GUI extends JFrame{
 	JLabel n,s,e,w,c;
-	JFrame justAFrame = new JFrame();
+	JFrame inputWindow = new JFrame();
+	JFrame outputWindow = new JFrame();
 	
 	public FileIO_GUI()
 	{
@@ -12,6 +13,9 @@ public class FileIO_GUI extends JFrame{
 		//i just added this comment
 	}
 	
+	/**
+	 * Method to generate a window for the user to enter the input file name
+	 */
 	public void getInputName() {
 		JButton openFile, browseFile;
 		JPanel northPanel = new JPanel();
@@ -20,28 +24,28 @@ public class FileIO_GUI extends JFrame{
 		northPanel.add (openFile);
 		northPanel.add (browseFile);
 		
-		
+		inputWindow.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		JPanel southPanel = new JPanel();
 		//southPanel.setLayout(new GridLayout(2,1));
 		JTextField searchField = new JTextField(20);
 		southPanel.add(searchField);
 		
-	//JFrame justAFrame = new JFrame();
-	this.justAFrame.setSize(400,200);
-	justAFrame.setLocation(200,200);
-	justAFrame.setLayout(new BorderLayout(0,0));
-	justAFrame.setTitle("File selector");
-	justAFrame.setVisible(true);
+	//JFrame inputWindow = new JFrame();
+	this.inputWindow.setSize(400,200);
+	inputWindow.setLocation(200,200);
+	inputWindow.setLayout(new BorderLayout(0,0));
+	inputWindow.setTitle("File selector");
+	inputWindow.setVisible(true);
 	
 	//String speed = JOptionPane.showInputDialog(null, "Speed in miles per hour?");
 
 	
 	n = this.createOneLabel("Please enter the full path of your input file:", Color.WHITE);
 	s = this.createOneLabel("Please enter the full path of your output file:", Color.YELLOW);
-	justAFrame.add(n,BorderLayout.NORTH);
+	inputWindow.add(n,BorderLayout.NORTH);
 
-	justAFrame.add(northPanel,BorderLayout.SOUTH);
-	justAFrame.add(southPanel,BorderLayout.CENTER);
+	inputWindow.add(northPanel,BorderLayout.SOUTH);
+	inputWindow.add(southPanel,BorderLayout.CENTER);
 
 
 		String searchString = null;
@@ -103,21 +107,100 @@ public class FileIO_GUI extends JFrame{
 		return label;
 		}
 	
+	/**
+	 * Method to show error message window given a String input.
+	 */
 	public void displayFileError(String error) {
 		
-		JOptionPane.showMessageDialog(justAFrame,
+		JOptionPane.showMessageDialog(inputWindow,
 			    error,
 			    "I/O Error :(",
 			    JOptionPane.ERROR_MESSAGE);
 	}
+	
 	/**
 	 * Method to show default error message window if no String is provided.
 	 */
 	public void displayFileError() {
 		
-		JOptionPane.showMessageDialog(justAFrame,
+		JOptionPane.showMessageDialog(inputWindow,
 			    "Oops! Something went wrong with your file, please try again.",
 			    "I/O Error :(",
 			    JOptionPane.ERROR_MESSAGE);
+	}
+	
+	public void getOutputFile() {
+			JButton openFile, browseFile;
+			JPanel northPanel = new JPanel();
+			openFile = new JButton("Open file");
+			browseFile = new JButton("Browse...");
+			northPanel.add (openFile);
+			northPanel.add (browseFile);
+			
+			
+			JPanel southPanel = new JPanel();
+			//southPanel.setLayout(new GridLayout(2,1));
+			JTextField searchField = new JTextField(20);
+			southPanel.add(searchField);
+			
+		//JFrame inputWindow = new JFrame();
+		this.outputWindow.setSize(400,200);
+		outputWindow.setLocation(200,200);
+		outputWindow.setLayout(new BorderLayout(0,0));
+		outputWindow.setTitle("File selector");
+		outputWindow.setVisible(true);
+		//String speed = JOptionPane.showInputDialog(null, "Speed in miles per hour?");
+
+		
+		n = this.createOneLabel("Please enter the full path of your input file:", Color.WHITE);
+		s = this.createOneLabel("Please enter the full path of your output file:", Color.YELLOW);
+		outputWindow.add(s,BorderLayout.NORTH);
+
+		outputWindow.add(northPanel,BorderLayout.SOUTH);
+		outputWindow.add(southPanel,BorderLayout.CENTER);
+
+
+			String searchString = null;
+			
+				openFile.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		    	
+		    	String searchString = searchField.getText();
+		    	System.out.println(searchString);
+		    	MainClass.setFileIn(searchString);
+		    	//System.exit(0);
+		      }
+		    });
+
+
+
+		
+		browseFile.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) {
+			
+			JFileChooser chooser = new JFileChooser();
+		    chooser.setCurrentDirectory(new java.io.File("."));
+		    chooser.setDialogTitle("Choose an input file to process:");
+		    chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+		    chooser.setAcceptAllFileFilterUsed(false);
+
+		    if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+		        System.out.println("getCurrentDirectory(): "+ chooser.getCurrentDirectory());
+		        System.out.println("getSelectedFile() : "+ chooser.getSelectedFile());
+		        MainClass.setFileOut("" + chooser.getSelectedFile());
+		    } else {
+		        System.out.println("No Selection ");
+		    }
+		}});
+	}
+	
+	public void closeWindow(String window){
+		
+		if (window.equals("input")){
+			inputWindow.dispose();
+		}
+		
+		if (window.equals("output")){
+			outputWindow.dispose();
+		}
 	}
 }

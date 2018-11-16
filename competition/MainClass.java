@@ -6,21 +6,25 @@ import java.util.Scanner;
 //import javax.swing.*;
 
 /**
- * Main class for Haggis Chef competition application
+ * Main class for Competition application
  * @author Nathan
  * @version 1.0
- * @see ndaAssignment1.HaggisChef
- * @see ndaAssignment1.Manager
  *
  */
 public class MainClass {
 	
 	private static String fileIn = null;
 	
+	private static String fileOut = null;
+	
 	private static FileIO_GUI gui = null;
 	
 	public static String getFileIn() {
 		return fileIn;
+	}
+	
+	public static String getFileOut() {
+		return fileOut;
 	}
 	
 	public static FileIO_GUI getFileGUI() {
@@ -29,6 +33,10 @@ public class MainClass {
 		
 	public static void setFileIn(String fileName) {
 		fileIn = fileName;
+	}
+	
+	public static void setFileOut(String fileName) {
+		fileOut = fileName;
 	}
 	
 	public static void main(String[] args) throws IOException {
@@ -65,25 +73,26 @@ public class MainClass {
 			in = new Manager(fileIn);
 		}; 
 		
+		gui.closeWindow("input");
+		
+		gui.getOutputFile();
+		while (fileOut==null) {
+			System.out.print("");
+		}
+		failpath = in.printFile(fileOut);
+		
 		while (failpath) {
-			System.out.print("Please type name of output file:\n");
-
-			output = input.nextLine();
-			failpath = in.printFile(output);
+			fileIn=null;
+			while (fileIn==null) {
+				System.out.print("");
+			}
 		}
 
 		//"D:\\Eclipse\\toto.txt"
-
+		gui.closeWindow("output");
 		
-
 		System.out.print(fileIn + "\n");
 		
-		while (failpath) {
-			System.out.print("Please type name of output file:\n");
-			output = input.nextLine();
-			failpath = in.printFile(output);
-		}
-
 		
 		while(userChoice == null) { //loops until valid CN is provided
 		
