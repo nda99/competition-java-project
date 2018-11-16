@@ -154,9 +154,9 @@ public CompetitionListGUI(CompetitorList c) {
 	
 
 	
-	public static void main(String[] args) 
+	public static void setupGUI()
 	{
-		Manager m = new Manager("test_correct.csv");
+		Manager m = new Manager("comptList.csv");
 		m.getFile();
 		list = m.getList();
 		//CompetitionListGUI cgui = new CompetitionListGUI(competitors);
@@ -165,7 +165,7 @@ public CompetitionListGUI(CompetitorList c) {
 		JFrame frame = new JFrame();
 		frame.setSize(100,400);
 		frame.setLocation(100,100);
-		frame.setTitle("Competition Group9");
+		frame.setTitle("Competition App");
 		frame.setVisible(true);
 		frame.setLayout(new BorderLayout(0,0));
 			
