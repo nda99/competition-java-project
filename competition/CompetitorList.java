@@ -19,6 +19,8 @@ public class CompetitorList {
 	
 	}
 	
+	
+	
 	/** Method to get the competitorList
 	 * @return competitorList
 	 * **/
@@ -26,7 +28,14 @@ public class CompetitorList {
 	{
 		return competitors;
 	}
-
+	
+	/**Method to get the size of the competitorList
+	 * 	@return int the size of the arraylist
+**/
+	public int size()
+	{
+		return competitors.size();
+	}
 	/**
 	 * Method to get a competitor of choice based on his/her Competitor Number (CN)
 	 * @param CN competitor number
