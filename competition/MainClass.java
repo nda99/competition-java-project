@@ -17,11 +17,21 @@ public class MainClass {
 	
 	private static String fileIn = null;
 	
+	private static String type = null;
+	
 	private static String fileOut = null;
 	
-	private static FileIO_GUI gui = null;
+	private static WelcomeGUI gui = null;
 	
 	static CompetitionListGUI compList =null;
+	
+	public static String getType() {
+		return type;
+	}
+	
+	public static void setType(String t) {
+		type = t;
+	}
 	
 	public static CompetitionListGUI setListGUI() {
 		return compList;
@@ -39,7 +49,7 @@ public class MainClass {
 		return fileOut;
 	}
 	
-	public static FileIO_GUI getFileGUI() {
+	public static WelcomeGUI getFileGUI() {
 		return gui;
 	}
 		
@@ -59,7 +69,7 @@ public class MainClass {
 		WelcomeGUI welcome = new WelcomeGUI();
 		//welcome.displayWelcome();
 		
-		gui = new FileIO_GUI();
+		gui = new WelcomeGUI();
 		
 		Scanner input =new Scanner(System.in);
 		int CN;
