@@ -4,12 +4,15 @@ import javax.swing.*;
 import java.awt.event.*;
 
 
+
 /**
  * Class for displaying welcoming window GUI.
  * @author Nathan
  *
  */
 public class WelcomeGUI {
+	
+	JFrame welcomeFrame = new JFrame();
 	
 	public WelcomeGUI()
 	{
@@ -20,7 +23,7 @@ public class WelcomeGUI {
 
 	public void displayWelcome() {
 
-		JFrame welcomeFrame = new JFrame();
+		
 		JButton chooseInput, chooseOutput, seeDetails;
 		JPanel centralPanel = new JPanel();
 		JLabel welcome = new JLabel();
@@ -42,6 +45,7 @@ public class WelcomeGUI {
 		welcomeFrame.setSize(800,600);
 		welcomeFrame.setLayout(new BorderLayout(0,0));
 		welcomeFrame.setTitle("Competition App Group 9");
+		welcomeFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		welcomeFrame.add(welcome,BorderLayout.NORTH);
 		welcomeFrame.add(centralPanel,BorderLayout.CENTER);
 		welcomeFrame.setVisible(true);
@@ -54,14 +58,19 @@ public class WelcomeGUI {
 		
 		chooseOutput.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	MainClass.getFileGUI().getOutputFile();
+		    	if (MainClass.getFileIn()==null) {
+		    		displayFileError("ERROR: You can't save a file before chosing the input!\nPlease open a file by clicking on 'Choose a File'.");
+		    	}
+		    	else {
+		    		MainClass.getFileGUI().getOutputFile();
+		    	}
 		      }
 		    });
 		
 		seeDetails.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	if (MainClass.getFileIn()==null) {
-		    		
+		    		displayFileError("ERROR: You can't display details without chosing a file!\nPlease open a file by clicking on 'Choose a File'.");
 		    	}
 		    	else {
 		    	MainClass.getListGUI().setupGUI();
@@ -69,5 +78,17 @@ public class WelcomeGUI {
 		      }
 		    });
 	}
+	
+	/**
+	 * Method to show error message window given a String input.
+	 */
+	public void displayFileError(String error) {
+		
+		JOptionPane.showMessageDialog(welcomeFrame,
+			    error,
+			    "ERROR :(",
+			    JOptionPane.ERROR_MESSAGE);
+	}
+	
 	
 }

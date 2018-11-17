@@ -13,13 +13,19 @@ import java.util.Scanner;
  */
 public class MainClass {
 	
+	static Manager in = null;
+	
 	private static String fileIn = null;
 	
 	private static String fileOut = null;
 	
 	private static FileIO_GUI gui = null;
 	
-	private static CompetitionListGUI compList =null;
+	static CompetitionListGUI compList =null;
+	
+	public static CompetitionListGUI setListGUI() {
+		return compList;
+	}
 	
 	public static CompetitionListGUI getListGUI() {
 		return compList;
@@ -69,42 +75,39 @@ public class MainClass {
 		}
 		
 		System.out.print(".");
-		Manager in = new Manager(fileIn);
+		//Manager in = new Manager(fileIn);
 		
-		while(in.getFile()) {
+		//while(in.getFile()) {
 			//gui.displayFileError();
-			fileIn=null;
-			while (fileIn==null) {
-				System.out.print("");
-			}
+			//fileIn=null;
+			//while (fileIn==null) {
+				//System.out.print("");
+			//}
 			
-			System.out.print(".");
+			//System.out.print(".");
 			//"D:\\Eclipse\\toto.txt"
-			in = new Manager(fileIn);
-		}; 
+			//in = new Manager(fileIn);
+		//}; 
 		
-		CompetitorList list = in.getList();
+
 		
-		compList = new CompetitionListGUI(list);
-		
-		compList.setupGUI();
+		//compList.setupGUI();
 		
 		
 		
-		gui.closeWindow("input");
-		
-		gui.getOutputFile();
+		//gui.closeWindow("input");
+
 		while (fileOut==null) {
 			System.out.print("");
 		}
-		failpath = in.printFile(fileOut);
+		//failpath = in.printFile(fileOut);
 		
-		while (failpath) {
-			fileIn=null;
-			while (fileIn==null) {
-				System.out.print("");
-			}
-		}
+		//while (failpath) {
+			//fileIn=null;
+			//while (fileIn==null) {
+				//System.out.print("");
+			//}
+		//}
 
 		//"D:\\Eclipse\\toto.txt"
 		gui.closeWindow("output");
@@ -117,7 +120,7 @@ public class MainClass {
 		System.out.print("Enter competitor number for short details: ");
 		CN = input.nextInt();
 		
-		userChoice = list.getCompetitor(CN);
+		//userChoice = list.getCompetitor(CN);
 		
 		if (userChoice !=null) {
 		System.out.println(userChoice.getShortDetails());

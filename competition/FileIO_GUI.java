@@ -2,6 +2,7 @@ package competition;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
+import java.io.IOException;
 public class FileIO_GUI extends JFrame{
 	JLabel n,s,e,w,c;
 	JFrame inputWindow = new JFrame();
@@ -50,15 +51,26 @@ public class FileIO_GUI extends JFrame{
 
 		String searchString = null;
 		
-			openFile.addActionListener(new ActionListener() {
-	    public void actionPerformed(ActionEvent e) {
-	    	
-	    	String searchString = searchField.getText();
-	    	System.out.println(searchString);
-	    	MainClass.setFileIn(searchString);
-	    	//System.exit(0);
-	      }
-	    });
+		openFile.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		    	
+		    	String searchString = searchField.getText();
+		    	
+		    	Manager in = new Manager(searchString);
+				
+				if(in.getFile()==false) {
+
+		    	
+		    	System.out.println(searchString);
+		    	MainClass.setFileIn(searchString);
+		    	MainClass.in = in;
+				CompetitorList list = in.getList();
+				
+				MainClass.compList = new CompetitionListGUI(list);
+		    	//System.exit(0);
+				}
+		      }
+		    });
 
 
 
@@ -71,10 +83,19 @@ public class FileIO_GUI extends JFrame{
 	    chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 	    chooser.setAcceptAllFileFilterUsed(false);
 
+    	
 	    if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
 	        System.out.println("getCurrentDirectory(): "+ chooser.getCurrentDirectory());
 	        System.out.println("getSelectedFile() : "+ chooser.getSelectedFile());
-	        MainClass.setFileIn("" + chooser.getSelectedFile());
+	        
+	        
+	        Manager in = new Manager(chooser.getSelectedFile().toString());
+	        if(in.getFile()==false) {   
+	        	MainClass.setFileIn(chooser.getSelectedFile().toString());
+	        	MainClass.in = in;
+				CompetitorList list = in.getList();				
+				MainClass.compList = new CompetitionListGUI(list);
+	        }
 	    } else {
 	        System.out.println("No Selection ");
 	    }
@@ -164,10 +185,21 @@ public class FileIO_GUI extends JFrame{
 			
 				openFile.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	
-		    	String searchString = searchField.getText();
+		    	boolean failpath = false;
+		    	String searchString = searchField.getText();		    	
 		    	System.out.println(searchString);
-		    	MainClass.setFileIn(searchString);
+
+		    	Manager manager = MainClass.in;
+		    	
+		    	try {
+					failpath = manager.printFile(searchString);
+					
+			    	if (failpath==false) MainClass.setFileOut(searchString);
+					
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 		    	//System.exit(0);
 		      }
 		    });
@@ -187,6 +219,8 @@ public class FileIO_GUI extends JFrame{
 		        System.out.println("getCurrentDirectory(): "+ chooser.getCurrentDirectory());
 		        System.out.println("getSelectedFile() : "+ chooser.getSelectedFile());
 		        MainClass.setFileOut("" + chooser.getSelectedFile());
+		        
+		        
 		    } else {
 		        System.out.println("No Selection ");
 		    }

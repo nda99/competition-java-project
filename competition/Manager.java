@@ -159,6 +159,7 @@ public class Manager {
 			// TODO Auto-generated catch block
 			System.err.println(String.format("Error: Filepath '%s' is not valid, please select a valid filepath", outputFile));
 			failpath = true;
+			 MainClass.getFileGUI().displayFileError(String.format("Error: Filepath '%s' is not valid, please select a valid filepath", outputFile));
 		}
 		
 		try {
