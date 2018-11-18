@@ -76,50 +76,18 @@ public class MainClass {
 		boolean failpath = true;
 		String output;
 		Competitor userChoice = null;
-		System.out.print("---------------------------------------\nWelcome to the Haggis Competition application!\n");
-		//System.out.print("\nPlease type name of input file:\n");
-		//MainClass.fileIn = input.nextLine();
+		System.out.print("---------------------------------------\nWelcome to the Competition application!\n");
+
 		welcome.displayWelcome();
 		while (fileIn==null) {
 			System.out.print("");
 		}
 		
-		System.out.print(".");
-		//Manager in = new Manager(fileIn);
-		
-		//while(in.getFile()) {
-			//gui.displayFileError();
-			//fileIn=null;
-			//while (fileIn==null) {
-				//System.out.print("");
-			//}
-			
-			//System.out.print(".");
-			//"D:\\Eclipse\\toto.txt"
-			//in = new Manager(fileIn);
-		//}; 
-		
-
-		
-		//compList.setupGUI();
-		
-		
-		
-		//gui.closeWindow("input");
 
 		while (fileOut==null) {
 			System.out.print("");
 		}
-		//failpath = in.printFile(fileOut);
-		
-		//while (failpath) {
-			//fileIn=null;
-			//while (fileIn==null) {
-				//System.out.print("");
-			//}
-		//}
 
-		//"D:\\Eclipse\\toto.txt"
 		gui.closeWindow("output");
 		
 		System.out.print(fileIn + "\n");
@@ -137,10 +105,6 @@ public class MainClass {
 		}
 			
 		}
-		//ArrayList<HaggisChef> competitor= new Manager().getFile();
-		
-		//CompetitorList list = new CompetitorList(new Manager().getFile());
-		
 		
 		
 	}

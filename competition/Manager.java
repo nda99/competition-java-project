@@ -49,7 +49,7 @@ public class Manager {
 
 	  
 	  Name name = new Name("");
-	  String level = "", dish = "";
+	  String level = "", attribute = "";
 	  int CN;
 	  int [] score = new int[5];
 	  CN=999;
@@ -101,25 +101,25 @@ public class Manager {
 		  CN = Integer.parseInt(details[0]);
 		  name = new Name(details[1]);
 		  level = details[2];
-		  dish = details[3];
+		  attribute = details[3];
 		  
 		  for (int i = 4; i < 9; i++) {
 			  score[i-4] = Integer.parseInt(details[i]);
 		  }
 		  //String[] A = inputFile.split("\\\\");
-		  if ((inputFile.split("\\\\")[inputFile.split("\\\\").length-1]).equals("test_correct.csv")) {
-		  competitors.add( new HaggisChef(CN, name, score, level, dish)); 
+		  if (MainClass.getType().equals("Haggis")) {
+		  competitors.add( new HaggisChef(CN, name, score, level, attribute)); 
 		  }
-		  else if ((inputFile.split("\\\\")[inputFile.split("\\\\").length-1]).equals("test_hockey.csv")){
-		  competitors.add( new HockeyCompetitor(CN-100, name, level, score, dish));
+		  else if (MainClass.getType().equals("Hockey")){
+		  competitors.add( new HockeyCompetitor(CN-100, name, level, score, attribute));
 		  }
 		  
-		  else if ((inputFile.split("\\\\")[inputFile.split("\\\\").length-1]).equals("test_dart.csv")){
+		  else if ((MainClass.getType().equals("Dart"))){
 			  competitors.add( new DartCompetitor(CN+200, name, level, score, CN-50));
 		  }
 		  
 		  else {
-			  competitors.add( new Baseballers(CN+100, name, level, score, dish, CN-50));
+			  competitors.add( new Baseballers(CN+100, name, level, score, attribute, CN-50));
 		  }
 		  
 	  }
