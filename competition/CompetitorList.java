@@ -1,7 +1,6 @@
 package competition;
 
 
-// plamen is in
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -20,7 +19,23 @@ public class CompetitorList {
 	
 	}
 	
-
+	
+	
+	/** Method to get the competitorList
+	 * @return competitorList
+	 * **/
+	public ArrayList<Competitor> getCompetitorList()
+	{
+		return competitors;
+	}
+	
+	/**Method to get the size of the competitorList
+	 * 	@return int the size of the arraylist
+**/
+	public int size()
+	{
+		return competitors.size();
+	}
 	/**
 	 * Method to get a competitor of choice based on his/her Competitor Number (CN)
 	 * @param CN competitor number
@@ -168,13 +183,28 @@ public class CompetitorList {
 		
 		String header = null;
 		
-		if (Manager.getInputName().equals("test_correct.csv")) {
+		if ((MainClass.getType().equals("Haggis"))) {
 			header = String.format("--------\nREPORT:\n%20.50s %18.10s %18.30s %26.6s %15.8s\n", "Competitor", "Level", "Dish", "Scores",
 					"Overall");
 		}
 		
-		else {
+		else if ((MainClass.getType().equals("Hockey"))){
 			header = String.format("--------\nREPORT:\n%20.50s %18.10s %18.30s %26.6s %15.8s\n", "Competitor", "Level", "Country", "Scores",
+					"Overall");
+		}
+		
+		else if ((MainClass.getType().equals("Dart"))){
+			header = String.format("--------\nREPORT:\n%20.50s %18.10s %18.30s %26.6s %15.8s\n", "Competitor", "Level", "Country", "Scores",
+					"Overall");
+		}
+		
+		else if ((MainClass.getType().equals("Baseball"))){
+			header = String.format("--------\nREPORT:\n%20.50s %18.10s %18.30s %26.6s %15.8s\n", "Competitor", "Level", "Age", "Scores",
+					"Overall");
+		}
+		
+		else {
+			header = String.format("--------\nREPORT:\n%20.50s %18.10s %18.30s %26.6s %15.8s\n", "Competitor", "Level", "Attribute", "Scores",
 					"Overall");
 		}
 		

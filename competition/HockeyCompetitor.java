@@ -39,7 +39,7 @@ public class HockeyCompetitor extends Competitor{
 	@Override
 	public double getOverallScore() 
 	{ 
-		double overall = getLevelWeight(getLevel())*(getFirstMatchScore()+getSecondMatchScore()+getThirdMatchScore()+getFourthMatchScore()+getFifthMatchScore())/super.score.length;
+		double overall = (double) getLevelWeight(getLevel())*(getFirstMatchScore()+getSecondMatchScore()+getThirdMatchScore()+getFourthMatchScore()+getFifthMatchScore())/score.length;
 		return (overall); 
 	}
 	
@@ -49,7 +49,7 @@ public class HockeyCompetitor extends Competitor{
 	}
 	public int getFirstMatchScore()
 	{
-		return super.score[0];
+		return score[0];
 	}
 	public void setSecondMatchScore(int score)
 	{
@@ -57,7 +57,7 @@ public class HockeyCompetitor extends Competitor{
 	}
 	public int getSecondMatchScore()
 	{
-		return super.score[1];
+		return score[1];
 	}
 	public void setThirdMatchScore(int score)
 	{
@@ -65,7 +65,7 @@ public class HockeyCompetitor extends Competitor{
 	}
 	public int getThirdMatchScore()
 	{
-		return super.score[2];
+		return score[2];
 	}
 	public void setFourthMatchScore(int score)
 	{
@@ -73,7 +73,7 @@ public class HockeyCompetitor extends Competitor{
 	}
 	public int getFourthMatchScore()
 	{
-		return super.score[3];
+		return score[3];
 	}
 	public void setFifthMatchScore(int score)
 	{
@@ -81,11 +81,12 @@ public class HockeyCompetitor extends Competitor{
 	}
 	public int getFifthMatchScore()
 	{
-		return super.score[4];
+		return score[4];
 	}
 
 	public String getNationality()
 	{
 		return country;
 	}
+	
 }

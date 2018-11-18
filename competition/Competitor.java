@@ -21,7 +21,7 @@ public abstract class Competitor {
 	{
 		this.competitorNumber = competitorNumber;
 		this.competitorName = competitorName;
-		this.score = score;
+		this.score = score.clone();
 		this.level = level;
 	}
 	
@@ -123,6 +123,12 @@ public abstract class Competitor {
 	 */
 	public void setLevel(String level) {
 		this.level = level;
+	}
+	
+	public String getCompetitorType()
+	{
+		String type = "Hockey";
+		return type;
 	}
 	
 	
