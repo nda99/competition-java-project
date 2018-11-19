@@ -1,3 +1,4 @@
+package pdpd;
 import javax.swing.*;
 import java.awt.event.*;
 
@@ -43,9 +44,9 @@ public class EditCompetitors extends JFrame  implements ActionListener{
 			int n = JOptionPane.showConfirmDialog(this, "Are you sure? ", "Confirmation Dialog", JOptionPane.YES_NO_CANCEL_OPTION);
 		}}
 	
-	public static void main(String[] args){
+	//public static void main(String[] args){
 	
 		EditCompetitors gui = new EditCompetitors();
 		
 	}
-}
+//}
