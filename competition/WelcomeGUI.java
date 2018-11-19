@@ -3,6 +3,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 import java.io.IOException;
+import java.util.InputMismatchException;
 
 
 
@@ -17,8 +18,8 @@ public class WelcomeGUI extends JFrame{
 	JPanel stat = new JPanel();
 	JLabel n,s,e,w,c;
 
-	JLabel file = createOneLabel("File selected: NONE",Color.WHITE);
-	JLabel type = createOneLabel("Type selected: NONE",Color.WHITE);
+	JLabel file = createOneLabel("File selected: NONE",Color.WHITE,18);
+	JLabel type = createOneLabel("Type selected: NONE",Color.WHITE,18);
 	JFrame inputWindow = new JFrame();
 	JFrame outputWindow = new JFrame();
 	
@@ -51,38 +52,53 @@ public class WelcomeGUI extends JFrame{
 	    // adding menu to menu bar
 	    menuBar.add(compTypes);
 		
-		JButton chooseInput, chooseOutput, seeDetails;
+	    //Creating Search Field
+	    JTextField searchCompetitor = new JTextField(10);
+	    
+	    
+	    // Creating Panels
+		JButton chooseInput, chooseOutput, seeDetails, confirmCN;
 		JPanel titlePanel = new JPanel();
 		JPanel centralPanel = new JPanel();
 		JPanel southPanel = new JPanel();
+		JPanel searchPanel = new JPanel();
 		JPanel Panel = new JPanel();
 		//JPanel bottomPanel = new JPanel();
 		JLabel welcome1 = new JLabel();
 		JLabel welcome2 = new JLabel();
+		JLabel shortDetails = new JLabel();
 		chooseInput = new JButton("Choose input file...");
 		chooseOutput = new JButton("Save Report");
 		seeDetails = new JButton("Competition Details");
+		confirmCN = new JButton("Go");
 		//centralPanel.setLayout(new BorderLayout(5,5));
-		Panel.setLayout(new GridLayout(2,1));
-		centralPanel.add(chooseInput);
-		centralPanel.add(chooseOutput);
-		centralPanel.add(seeDetails);
-		centralPanel.setBackground(Color.WHITE);
-		southPanel.add(menuBar);
+		Panel.setLayout(new GridLayout(3,1));
+		
+		southPanel.add(chooseInput);
+		southPanel.add(chooseOutput);
+		southPanel.add(seeDetails);
 		southPanel.setBackground(Color.WHITE);
+		centralPanel.add(menuBar);
+		centralPanel.setBackground(Color.WHITE);
+		shortDetails = createOneLabel("Enter Competitor Number for short details:", Color.WHITE,12);
+		searchPanel.add(shortDetails);
+		searchPanel.add(searchCompetitor);
+		searchPanel.add(confirmCN);
+		searchPanel.setBackground(Color.WHITE);
 		Panel.add(centralPanel);
 		Panel.add(southPanel);
+		Panel.add(searchPanel);
 		Panel.setBackground(Color.WHITE);
 		//centralPanel.add(compTypes);
 		//welcomeFrame.add
 		
-		
-		
-		welcome1 = createOneLabel("Welcome to the Competition Manager Applet", Color.WHITE);
-		welcome2 = createOneLabel("Please select an option:", Color.WHITE);
+		welcome1 = createOneLabel("Welcome to the Competition Manager Applet", Color.WHITE,18);
+		welcome2 = createOneLabel("Please select an option:", Color.WHITE,18);
 		titlePanel.setLayout(new GridLayout(2,1));
 		titlePanel.add(welcome1);
 		titlePanel.add(welcome2);
+		
+		// Adding Panels to main frame
 		welcomeFrame.setSize(800,300);
 		welcomeFrame.setLocation(300,300);
 		welcomeFrame.setBackground(Color.WHITE);
@@ -97,6 +113,30 @@ public class WelcomeGUI extends JFrame{
 		welcomeFrame.add(stat,BorderLayout.SOUTH);
 		//welcomeFrame.add(menuBar,BorderLayout.CENTER);
 		welcomeFrame.setVisible(true);
+		
+		confirmCN.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		    	if (Manager.getFileIn()==null) {
+		    		displayFileError("The database is empty.\nPlease open a competition file before searching for a competitor.");
+		    	}
+		    	else {
+		    	try {
+		    		int CN = Integer.parseInt(searchCompetitor.getText());
+		    		Competitor c = Manager.getList().getCompetitor(CN);
+		    		if (c==null){
+		    			displayFileError("Sorry, but the competitor number you provided does not match anyone.\nPlease try entering another number.");	
+		    		}
+		    		else {
+		    		displayDialog(c.getShortDetails());
+		    		}
+		    		
+		    	}
+		    	catch(NumberFormatException i){
+		    		displayFileError("You must input an integer as Competitor Number!");
+		    	}
+		    	}
+		      }
+		    });
 		
 		baseball.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
@@ -199,17 +239,17 @@ public class WelcomeGUI extends JFrame{
         type.removeAll();
 		
 		if (Manager.getFileIn()==null) {
-			file = createOneLabel("File selected: NONE",Color.WHITE);
+			file = createOneLabel("File selected: NONE",Color.WHITE,18);
 		}
 		else {
-			file = createOneLabel(String.format("File selected: %s",Manager.getFileIn()),Color.WHITE);
+			file = createOneLabel(String.format("File selected: %s",Manager.getFileIn()),Color.WHITE,18);
 		}
 
 		if (Manager.getType()==null) {
-			type = createOneLabel("Type selected: NONE",Color.WHITE);
+			type = createOneLabel("Type selected: NONE",Color.WHITE,18);
 		}
 		else {
-			type = createOneLabel(String.format("Type selected: %s",Manager.getType()),Color.WHITE);
+			type = createOneLabel(String.format("Type selected: %s",Manager.getType()),Color.WHITE,18);
 		}
 		stat.removeAll();
 		//stat.setLayout(new GridLayout(2,1));
@@ -223,8 +263,8 @@ public class WelcomeGUI extends JFrame{
 		//frame.setVisible(true); 
 	}
 	
-	static JLabel createOneLabel (String s, Color c) {
-		Font f = new Font(Font.SANS_SERIF, Font.BOLD, 18);
+	static JLabel createOneLabel (String s, Color c, int size) {
+		Font f = new Font(Font.SANS_SERIF, Font.BOLD, size);
 		JLabel label= new JLabel(s, JLabel.CENTER);
 		label.setFont(f);
 		label.setBackground(c);
@@ -248,12 +288,14 @@ public class WelcomeGUI extends JFrame{
 	 * Method to generate a window for the user to enter the input file name
 	 */
 	public void getInputName() {
-		JButton openFile, browseFile;
+		JButton openFile, browseFile, goBack;
 		JPanel northPanel = new JPanel();
 		openFile = new JButton("Open file");
 		browseFile = new JButton("Browse...");
+		goBack = new JButton("Go Back");
 		northPanel.add (openFile);
 		northPanel.add (browseFile);
+		northPanel.add(goBack);
 		inputWindow.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		JPanel southPanel = new JPanel();
 		//southPanel.setLayout(new GridLayout(2,1));
@@ -270,8 +312,8 @@ public class WelcomeGUI extends JFrame{
 	//String speed = JOptionPane.showInputDialog(null, "Speed in miles per hour?");
 
 	
-	n = WelcomeGUI.createOneLabel("Please enter the full path of your input file:", Color.WHITE);
-	s = WelcomeGUI.createOneLabel("Please enter the full path of your output file:", Color.YELLOW);
+	n = WelcomeGUI.createOneLabel("Please enter the full path of your input file:", Color.WHITE,18);
+	s = WelcomeGUI.createOneLabel("Please enter the full path of your output file:", Color.YELLOW,18);
 	inputWindow.add(n,BorderLayout.NORTH);
 
 	inputWindow.add(northPanel,BorderLayout.SOUTH);
@@ -338,6 +380,13 @@ public class WelcomeGUI extends JFrame{
 	    }
 	}});
 	
+	goBack.addActionListener(new ActionListener() {
+	    public void actionPerformed(ActionEvent e) {
+			inputWindow.dispose();
+			buildInfoPanel(welcomeFrame);
+	      }
+	    });
+	
 	}
 	
 	public void getOutputFile() {
@@ -363,8 +412,8 @@ public class WelcomeGUI extends JFrame{
 	//String speed = JOptionPane.showInputDialog(null, "Speed in miles per hour?");
 
 	
-	n = WelcomeGUI.createOneLabel("Please enter the full path of your input file:", Color.WHITE);
-	s = WelcomeGUI.createOneLabel("Please enter the full path of your output file:", Color.YELLOW);
+	n = WelcomeGUI.createOneLabel("Please enter the full path of your input file:", Color.WHITE,18);
+	s = WelcomeGUI.createOneLabel("Please enter the full path of your output file:", Color.YELLOW,18);
 	outputWindow.add(s,BorderLayout.NORTH);
 
 	outputWindow.add(northPanel,BorderLayout.SOUTH);
@@ -411,13 +460,15 @@ public class WelcomeGUI extends JFrame{
 	        Manager.setFileOut("" + chooser.getSelectedFile());
 	        try {
 				Manager.printFile(Manager.getFileOut());
+				displayDialog(String.format("Report %s saved successfully!", chooser.getSelectedFile()));
+				outputWindow.dispose();
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 	        
 	    } else {
-	        System.out.println("No Selection ");
+	        displayDialog("No Selection");
 	    }
 	}});
 }
