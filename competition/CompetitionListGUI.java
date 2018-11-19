@@ -200,7 +200,13 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 			// myPanel.add(extra);
 			edit = new JButton("Edit");
 			view = new JButton("View");
-
+			view.addActionListener(new ActionListener() {
+			    public void actionPerformed(ActionEvent e) {
+		    ViewGUI v = new ViewGUI(c);
+		    v.setupGUI();
+			      }
+			    });
+			
 			centerPanel.add(edit);
 			centerPanel.add(view);
 

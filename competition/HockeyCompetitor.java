@@ -13,8 +13,11 @@ public class HockeyCompetitor extends Competitor{
 
 	@Override
 	public String getFullDetails() {
-		String details= "Competitor number "+super.competitorNumber+", name "+getCompetitorName()+" country "+country+ "\n"+getCompetitorName()+ " is a "+level+ " and received these super.score "+super.score[0]+","+super.score[1]+","+super.score[2]+","+super.score[3]+","+super.score[4]+" and This gives him an an overall score of "+ getOverallScore(); 
-	     return details;
+		String details= "Competitor number "+super.competitorNumber+", name "+getCompetitorName()+" country "+country+ "\n"+getCompetitorName()+ " is a "+level ;
+		details += "and received these scores "+super.score[0]+","+super.score[1]+","+super.score[2]+","+super.score[3]+","+super.score[4]+" and This gives him an an overall score of "+ getOverallScore(); 
+				 
+
+				return details;
 	}
 	
 	@Override

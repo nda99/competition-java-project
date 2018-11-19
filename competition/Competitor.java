@@ -128,8 +128,8 @@ public abstract class Competitor {
 	
 	public String getCompetitorType()
 	{
-		//String type = Manager.getType();
-		String type = "Hockey";
+		String type = Manager.getType();
+		//String type = "Hockey";
 
 		return type;
 	}

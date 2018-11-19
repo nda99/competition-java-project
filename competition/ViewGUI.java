@@ -22,6 +22,7 @@ public class ViewGUI extends JFrame implements ActionListener{
 	{
 		compt = c;
 		this.setLayout(new BorderLayout(100,100));
+		this.setSize(400,500);
 		JLabel title;
 		title = new JLabel("Competitor Details",JLabel.CENTER);
 		Font f = new Font(Font.SANS_SERIF, Font.BOLD, 20); 
@@ -45,7 +46,7 @@ public class ViewGUI extends JFrame implements ActionListener{
 
 	
 	public void setupGUI() {
-		/*frame.setSize(100,300);
+		/*frame
 		frame.setLocation(100,100);
 		frame.setTitle("Competition App");
 		frame.setVisible(true);
@@ -75,10 +76,9 @@ public class ViewGUI extends JFrame implements ActionListener{
 
 
 	private JPanel setupCenterPanel(Competitor c) {
-		System.out.println("Hello");
 
-		centerPanel.setLayout(new GridLayout(0,7,0,0));
-		Font f = new Font(Font.SANS_SERIF, Font.BOLD, 14); 
+		centerPanel.setLayout(new GridLayout(2,1,0,0));
+		Font f = new Font(Font.SANS_SERIF, Font.BOLD, 18); 
 		JLabel fullDetailsHDR = new JLabel("Full Details:",JLabel.LEFT);
 		JLabel shortDetailsHDR = new JLabel("Short Details:",JLabel.LEFT);
 		JLabel fullDetails = new JLabel(c.getFullDetails(),JLabel.CENTER);
@@ -87,10 +87,13 @@ public class ViewGUI extends JFrame implements ActionListener{
 
 		fullDetailsHDR.setFont(f);
 		shortDetailsHDR.setFont(f);
+		fullDetails.setFont(f);
+		shortDetails.setFont(f);
 	
 		centerPanel.add(fullDetailsHDR);
-		centerPanel.add(shortDetailsHDR);
 		centerPanel.add(fullDetails);
+		centerPanel.add(shortDetailsHDR);
+
 		centerPanel.add(shortDetails);
 		
 		
