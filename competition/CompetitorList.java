@@ -3,6 +3,7 @@ package competition;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 public class CompetitorList {
 	
@@ -60,7 +61,24 @@ public class CompetitorList {
 
 		return choice;
 
-}
+	}
+	/** Method to get competior of choice based on his/her Competitor Name
+	 * **/
+	public Competitor getCompetitorName(String name) {
+
+		Competitor choice = null;
+
+		for (Competitor c : this.competitors) {
+			if (c.getCompetitorName() == name) {
+				choice = c;
+				break;
+			}
+		}
+
+
+		return choice;
+
+	}
 	
     /**
      * Method which loops through list to find competitor with HIGHEST SCORE.
@@ -258,6 +276,35 @@ public class CompetitorList {
  * Method to get frequency of competitor levels.
  */
 //public abstract String getLevelFreq();
+	
+	 /**
+	  * Method to list all the competitors
+    * @return All the competitor details
+    */
+   public ArrayList<Competitor> listDetails()
+   {
+       
+       return competitors;
+   }
+   
+   /**
+    * Method which sorts competitors based on names
+    * @return All the competitor details in name order
+    */
+   public ArrayList<Competitor> listByName()
+   {
+   	Collections.sort(competitors, new CompetitorNameComprator());
+   	return listDetails();
+   }
+   
+   /**
+    * @return All the competitors details in id order
+    */
+   public  ArrayList<Competitor> listByCN()
+   {
+   	Collections.sort(this.competitors,new CompetitorNoComparator());
+   	return listDetails();
+   }
 
 	
 }
