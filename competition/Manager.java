@@ -36,6 +36,11 @@ public class Manager {
 		inputFile = input;
 	}
 	
+	public static void setList() {
+
+		  list = new CompetitorList(competitors);
+	}
+	
 	public static String getType() {
 		return type;
 	}
@@ -170,27 +175,25 @@ public class Manager {
 		  }
 		  //String[] A = inputFile.split("\\\\");
 		  if (getType().equals("Haggis")) {
-		  competitors.add( new HaggisChef(CN, name, score, level, attribute)); 
+		  list.add( new HaggisChef(CN, name, score, level, attribute)); 
 		  }
 		  else if (getType().equals("Hockey")){
-		  competitors.add( new HockeyCompetitor(CN-100, name, level, score, attribute));
+		  list.add( new HockeyCompetitor(CN-100, name, level, score, attribute));
 		  }
 		  
 		  else if ((getType().equals("Dart"))){
-			  competitors.add( new DartCompetitor(CN+200, name, level, score, CN-50));
+			  list.add( new DartCompetitor(CN+200, name, level, score, CN-50));
 		  }
 		  
 		  else {
-			  competitors.add( new Baseballers(CN+100, name, level, score, attribute, CN-50));
+			  list.add( new Baseballers(CN+100, name, level, score, attribute, CN-50));
 		  }
-		  
 	  }
 	} catch (FileNotFoundException e) {
 		// TODO Auto-generated catch block
 		getFileGUI().displayFileError(String.format("File '%s' not found, please enter valid file:", file));
 		filefail = true;
 	}
-	  list = new CompetitorList(competitors);
 	  return filefail;
 	} 
 	

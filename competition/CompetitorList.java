@@ -183,22 +183,22 @@ public class CompetitorList {
 		
 		String header = null;
 		
-		if ((MainClass.getType().equals("Haggis"))) {
+		if ((Manager.getType().equals("Haggis"))) {
 			header = String.format("--------\nREPORT:\n%20.50s %18.10s %18.30s %26.6s %15.8s\n", "Competitor", "Level", "Dish", "Scores",
 					"Overall");
 		}
 		
-		else if ((MainClass.getType().equals("Hockey"))){
+		else if ((Manager.getType().equals("Hockey"))){
 			header = String.format("--------\nREPORT:\n%20.50s %18.10s %18.30s %26.6s %15.8s\n", "Competitor", "Level", "Country", "Scores",
 					"Overall");
 		}
 		
-		else if ((MainClass.getType().equals("Dart"))){
+		else if ((Manager.getType().equals("Dart"))){
 			header = String.format("--------\nREPORT:\n%20.50s %18.10s %18.30s %26.6s %15.8s\n", "Competitor", "Level", "Country", "Scores",
 					"Overall");
 		}
 		
-		else if ((MainClass.getType().equals("Baseball"))){
+		else if ((Manager.getType().equals("Baseball"))){
 			header = String.format("--------\nREPORT:\n%20.50s %18.10s %18.30s %26.6s %15.8s\n", "Competitor", "Level", "Age", "Scores",
 					"Overall");
 		}
@@ -253,6 +253,10 @@ public class CompetitorList {
 
 		}
 		return rep;
+	}
+	
+	public void add(Competitor c) {
+		this.competitors.add(c);
 	}
 /**
  * Method to get frequency of competitor levels.

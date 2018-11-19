@@ -13,58 +13,58 @@ import java.util.Scanner;
  */
 public class MainClass {
 	
-	static Manager in = null;
+//	static Manager in = null;
+//	
+//	private static String fileIn = null;
+//	
+//	private static String type = null;
+//	
+//	private static String fileOut = null;
+//	
+//	private static WelcomeGUI gui = null;
+//	
+//	static CompetitionListGUI compList =null;
 	
-	private static String fileIn = null;
-	
-	private static String type = null;
-	
-	private static String fileOut = null;
-	
-	private static WelcomeGUI gui = null;
-	
-	static CompetitionListGUI compList =null;
-	
-	public static String getType() {
-		return type;
-	}
-	
-	public static void setGui(WelcomeGUI g) {
-		gui = g;
-	}
-	
-	public static void setType(String t) {
-		type = t;
-	}
-	
-	public static CompetitionListGUI setListGUI() {
-		return compList;
-	}
-	
-	public static CompetitionListGUI getListGUI() {
-		return compList;
-	}
-	
-	public static String getFileIn() {
-		return fileIn;
-	}
-	
-	public static String getFileOut() {
-		return fileOut;
-	}
-	
-	public static WelcomeGUI getFileGUI() {
-		return gui;
-	}
-		
-	public static void setFileIn(String fileName) {
-		fileIn = fileName;
-	}
-	
-	public static void setFileOut(String fileName) {
-		fileOut = fileName;
-	}
-	
+//	public static String getType() {
+//		return type;
+//	}
+//	
+//	public static void setGui(WelcomeGUI g) {
+//		gui = g;
+//	}
+//	
+//	public static void setType(String t) {
+//		type = t;
+//	}
+//	
+//	public static CompetitionListGUI setListGUI() {
+//		return compList;
+//	}
+//	
+//	public static CompetitionListGUI getListGUI() {
+//		return compList;
+//	}
+//	
+//	public static String getFileIn() {
+//		return fileIn;
+//	}
+//	
+//	public static String getFileOut() {
+//		return fileOut;
+//	}
+//	
+//	public static WelcomeGUI getFileGUI() {
+//		return gui;
+//	}
+//		
+//	public static void setFileIn(String fileName) {
+//		fileIn = fileName;
+//	}
+//	
+//	public static void setFileOut(String fileName) {
+//		fileOut = fileName;
+//	}
+//	
 	
 	
 	public static void main(String[] args) throws IOException {
@@ -73,6 +73,7 @@ public class MainClass {
 		//@SuppressWarnings("resource");
 		
 		//Manager man = new Manager(fileIn);
+		Manager.setList();
 		Manager.showGUI();
 		
 		
