@@ -29,6 +29,10 @@ public class MainClass {
 		return type;
 	}
 	
+	public static void setGui(WelcomeGUI g) {
+		gui = g;
+	}
+	
 	public static void setType(String t) {
 		type = t;
 	}
@@ -61,50 +65,57 @@ public class MainClass {
 		fileOut = fileName;
 	}
 	
+	
+	
 	public static void main(String[] args) throws IOException {
 		
 		// Console (display short details for users' choice) :
 		//@SuppressWarnings("resource");
 		
-		WelcomeGUI welcome = new WelcomeGUI();
+		//Manager man = new Manager(fileIn);
+		Manager.showGUI();
+		
+		
+		//WelcomeGUI welcome = new WelcomeGUI();
 		//welcome.displayWelcome();
 		
-		gui = new WelcomeGUI();
-		
-		Scanner input =new Scanner(System.in);
-		int CN;
-		boolean failpath = true;
-		String output;
-		Competitor userChoice = null;
-		System.out.print("---------------------------------------\nWelcome to the Competition application!\n");
+//		gui = new WelcomeGUI();
+//		
+//		Scanner input =new Scanner(System.in);
+//		int CN;
+//		boolean failpath = true;
+//		String output;
+//		Competitor userChoice = null;
+//		System.out.print("---------------------------------------\nWelcome to the Competition application!\n");
 
-		welcome.displayWelcome();
-		while (fileIn==null) {
-			System.out.print("");
-		}
+		//welcome.displayWelcome();
 		
+//		while (fileIn==null) {
+//			System.out.print("");
+//		}
+//		
+//
+//		while (fileOut==null) {
+//			System.out.print("");
+//		}
 
-		while (fileOut==null) {
-			System.out.print("");
-		}
-
-		gui.closeWindow("output");
+		//gui.closeWindow("output");
 		
-		System.out.print(fileIn + "\n");
+		//System.out.print(fileIn + "\n");
 		
 		
-		while(userChoice == null) { //loops until valid CN is provided
-		
-		System.out.print("Enter competitor number for short details: ");
-		CN = input.nextInt();
-		
-		//userChoice = list.getCompetitor(CN);
-		
-		if (userChoice !=null) {
-		System.out.println(userChoice.getShortDetails());
-		}
-			
-		}
+//		while(userChoice == null) { //loops until valid CN is provided
+//		
+//		System.out.print("Enter competitor number for short details: ");
+//		CN = input.nextInt();
+//		
+//		//userChoice = list.getCompetitor(CN);
+//		
+//		if (userChoice !=null) {
+//		System.out.println(userChoice.getShortDetails());
+//		}
+//			
+//		}
 		
 		
 	}

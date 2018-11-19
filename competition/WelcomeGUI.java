@@ -103,7 +103,7 @@ public class WelcomeGUI extends JFrame{
 		baseball.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 	    		welcomeFrame.dispose();
-		    	MainClass.setType("Baseball");
+		    	Manager.setType("Baseball");
 		    	buildInfoPanel(welcomeFrame);
 		    	//welcomeFrame.setVisible(false); 
 		      }
@@ -112,7 +112,7 @@ public class WelcomeGUI extends JFrame{
 		dart.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 	    		welcomeFrame.dispose();
-		    	MainClass.setType("Dart");
+		    	Manager.setType("Dart");
 		    	buildInfoPanel(welcomeFrame);
 		    	//welcomeFrame.setVisible(false); 
 		      }
@@ -122,7 +122,7 @@ public class WelcomeGUI extends JFrame{
 		hockey.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 	    		welcomeFrame.dispose();
-		    	MainClass.setType("Hockey");
+		    	Manager.setType("Hockey");
 		    	buildInfoPanel(welcomeFrame);
 		    	//welcomeFrame.setVisible(false); 
 		      }
@@ -131,7 +131,7 @@ public class WelcomeGUI extends JFrame{
 		haggis.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 	    		welcomeFrame.dispose();
-		    	MainClass.setType("Haggis");
+		    	Manager.setType("Haggis");
 		    	buildInfoPanel(welcomeFrame);
 		    	//welcomeFrame.setVisible(false); 
 		      }
@@ -140,13 +140,13 @@ public class WelcomeGUI extends JFrame{
 		
 		chooseInput.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
-	    	if (MainClass.getType()==null) {
+	    	if (Manager.getType()==null) {
 
 	    		displayFileError("ERROR: You can't open a file without chosing the competition type!\nPlease chose a competition type using the drop-down menu.");
 	    	}
 	    	else {
     		welcomeFrame.dispose();
-	    	MainClass.getFileGUI().getInputName();
+	    	Manager.getFileGUI().getInputName();
 	    	}
 	    	//welcomeFrame.setVisible(false); 
 	      }
@@ -154,23 +154,23 @@ public class WelcomeGUI extends JFrame{
 		
 		chooseOutput.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	if (MainClass.getFileIn()==null) {
+		    	if (Manager.getFileIn()==null) {
 
 		    		displayFileError("ERROR: You can't save a file before chosing the input!\nPlease open a file by clicking on 'Choose a File'.");
 		    	}
 		    	else {
-		    		MainClass.getFileGUI().getOutputFile();
+		    		Manager.getFileGUI().getOutputFile();
 		    	}
 		      }
 		    });
 		
 		seeDetails.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
-		    	if (MainClass.getFileIn()==null) {
+		    	if (Manager.getFileIn()==null) {
 		    		displayFileError("ERROR: You can't display details without chosing a file!\nPlease open a file by clicking on 'Choose a File'.");
 		    	}
 		    	else {
-		    	MainClass.getListGUI().setupGUI();
+		    	Manager.getListGUI().setupGUI();
 		    	}
 		      }
 		    });
@@ -200,18 +200,18 @@ public class WelcomeGUI extends JFrame{
         file.removeAll();
         type.removeAll();
 		
-		if (MainClass.getFileIn()==null) {
+		if (Manager.getFileIn()==null) {
 			file = createOneLabel("File selected: NONE",Color.WHITE);
 		}
 		else {
-			file = createOneLabel(String.format("File selected: %s",MainClass.getFileIn()),Color.WHITE);
+			file = createOneLabel(String.format("File selected: %s",Manager.getFileIn()),Color.WHITE);
 		}
 
-		if (MainClass.getType()==null) {
+		if (Manager.getType()==null) {
 			type = createOneLabel("Type selected: NONE",Color.WHITE);
 		}
 		else {
-			type = createOneLabel(String.format("Type selected: %s",MainClass.getType()),Color.WHITE);
+			type = createOneLabel(String.format("Type selected: %s",Manager.getType()),Color.WHITE);
 		}
 		stat.removeAll();
 		//stat.setLayout(new GridLayout(2,1));
@@ -287,17 +287,17 @@ public class WelcomeGUI extends JFrame{
 		    	
 		    	String searchString = searchField.getText();
 		    	
-		    	Manager in = new Manager(searchString);
-				
-				if(in.getFile()==false) {
+		    	//Manager in = new Manager(searchString);
+				Manager.setFileIn(searchString);
+				if(Manager.getFile()==false) {
 
 		    	
 		    	System.out.println(searchString);
-		    	MainClass.setFileIn(searchString);
-		    	MainClass.in = in;
-				CompetitorList list = in.getList();
+		        Manager.setFileIn(searchString);
+		    	//MainClass.in = in;
+				CompetitorList list = Manager.getList();
 				
-				MainClass.compList = new CompetitionListGUI(list);
+				Manager.compList = new CompetitionListGUI(list);
 				inputWindow.dispose();
 				displayDialog("The file " + searchString + " has been loaded successfully" );
 				buildInfoPanel(welcomeFrame);
@@ -323,12 +323,12 @@ public class WelcomeGUI extends JFrame{
 	        System.out.println("getSelectedFile() : "+ chooser.getSelectedFile());
 	        
 	        
-	        Manager in = new Manager(chooser.getSelectedFile().toString());
-	        if(in.getFile()==false) {   
-	        	MainClass.setFileIn(chooser.getSelectedFile().toString());
-	        	MainClass.in = in;
-				CompetitorList list = in.getList();				
-				MainClass.compList = new CompetitionListGUI(list);
+	        Manager.setFileIn(chooser.getSelectedFile().toString());
+	        if(Manager.getFile()==false) {   
+	        	Manager.setFileIn(chooser.getSelectedFile().toString());
+	        	//MainClass.in = in;
+				CompetitorList list = Manager.getList();				
+				Manager.compList = new CompetitionListGUI(list);
 				displayDialog("The file '" + chooser.getSelectedFile() + "' has been loaded successfully" );
 
 				inputWindow.dispose();
@@ -381,12 +381,12 @@ public class WelcomeGUI extends JFrame{
 	    	String searchString = searchField.getText();		    	
 	    	System.out.println(searchString);
 
-	    	Manager manager = MainClass.in;
+	    	//Manager manager = MainClass.in;
 	    	
 	    	try {
-				failpath = manager.printFile(searchString);
+				failpath = Manager.printFile(searchString);
 				
-		    	if (failpath==false) MainClass.setFileOut(searchString);
+		    	if (failpath==false) Manager.setFileOut(searchString);
 				
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
@@ -410,7 +410,7 @@ public class WelcomeGUI extends JFrame{
 	    if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
 	        System.out.println("getCurrentDirectory(): "+ chooser.getCurrentDirectory());
 	        System.out.println("getSelectedFile() : "+ chooser.getSelectedFile());
-	        MainClass.setFileOut("" + chooser.getSelectedFile());
+	        Manager.setFileOut("" + chooser.getSelectedFile());
 	        
 	        
 	    } else {

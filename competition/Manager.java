@@ -15,16 +15,67 @@ import java.util.Scanner;
  */
 public class Manager { 
 	
-	private ArrayList<Competitor> competitors = new ArrayList<Competitor>();
+	private static ArrayList<Competitor> competitors = new ArrayList<Competitor>();
 	private static String inputFile;
-	private CompetitorList list = null;
+	private static CompetitorList list = null;
+	
+	private static String fileIn = null;
+	
+	private static String type = null;
+	
+	private static String fileOut = null;
+	
+	private static WelcomeGUI gui = null;
+	
+	static CompetitionListGUI compList =null;
 	/**
 	 * Constructor for a a Manager object related to a specific file.
 	 * @param inputFile String variable holding the path of the desired input file.
 	 */
-	public Manager(String inputFile) {
-		this.inputFile = inputFile;
+	public Manager(String input) {
+		inputFile = input;
 	}
+	
+	public static String getType() {
+		return type;
+	}
+	
+	public static void setGui(WelcomeGUI g) {
+		gui = g;
+	}
+	
+	public static void setType(String t) {
+		type = t;
+	}
+	
+	public static CompetitionListGUI setListGUI() {
+		return compList;
+	}
+	
+	public static CompetitionListGUI getListGUI() {
+		return compList;
+	}
+	
+	public static String getFileIn() {
+		return fileIn;
+	}
+	
+	public static String getFileOut() {
+		return fileOut;
+	}
+	
+	public static WelcomeGUI getFileGUI() {
+		return gui;
+	}
+		
+	public static void setFileIn(String fileName) {
+		fileIn = fileName;
+	}
+	
+	public static void setFileOut(String fileName) {
+		fileOut = fileName;
+	}
+	
 	
 	/**
 	 * Method to get the name of input file
@@ -33,15 +84,26 @@ public class Manager {
 	public static String getInputName() {
 		return inputFile;
 	}
+	
+	
+	public static void showGUI() {
+		gui = new WelcomeGUI();
+		gui.displayWelcome();
+		setGui(gui);
+		while(fileOut == null) { //loops until valid CN is provided
+
+			}
+	}
+	
 	/** Method to read file and return a competitor list.
 	 * @see getFile method reads input file
 	 * @see Manager
 	 *
 	 * @return competitor list which was read from file.
 	 */
-	public boolean getFile()
+	public static boolean getFile()
 	  { 
-	  File file = new File(inputFile); 
+	  File file = new File(fileIn);
 	  boolean filefail = false;
 
 	try {
@@ -60,13 +122,13 @@ public class Manager {
 		  for(int i=0; i <details.length;i++) { 
 			  // Check if input has blank/null fields
 			  if (details[i].length()==0 || details[i] ==" ") {
-				  MainClass.getFileGUI().displayFileError("ERROR: There are blank fields in the input file.\nPlease correct your input file or select a valid one.");;
+				  getFileGUI().displayFileError("ERROR: There are blank fields in the input file.\nPlease correct your input file or select a valid one.");;
 				  //System.err.println("ERROR: There are blank fields in the input file. Please correct your input file or select a valid one:");
 				  filefail = true;
 			  }
 			  // Check if scores are 0, 1, 2, 4 or 5.
 			  if (i >= 4 && details[i].equals("0")==false && details[i].equals("1")==false && details[i].equals("2")==false && details[i].equals("3")==false && details[i].equals("4")==false && details[i].equals("5")==false ) {
-				  MainClass.getFileGUI().displayFileError("ERROR: Scores are incorrect. Please correct your input file with scores from 0 to 5:\n");
+				  getFileGUI().displayFileError("ERROR: Scores are incorrect. Please correct your input file with scores from 0 to 5:\n");
 				  filefail = true;
 				  break;
 			  }
@@ -87,12 +149,12 @@ public class Manager {
 		  }*/
 		  //check for missing fields
 		  if (details.length < 9) {
-			  MainClass.getFileGUI().displayFileError("ERROR: There are missing fields in the input file. Please correct your input file or enter a valid one:");
+			  getFileGUI().displayFileError("ERROR: There are missing fields in the input file. Please correct your input file or enter a valid one:");
 			  filefail=true;
 		  }
 		  // check for extra fields
 		  if (details.length > 9) {
-			  MainClass.getFileGUI().displayFileError("ERROR: There are extra fields in the input file. Please correct your input file or enter a valid one:");
+			  getFileGUI().displayFileError("ERROR: There are extra fields in the input file. Please correct your input file or enter a valid one:");
 			  filefail=true;
 		  }
 		  
@@ -107,14 +169,14 @@ public class Manager {
 			  score[i-4] = Integer.parseInt(details[i]);
 		  }
 		  //String[] A = inputFile.split("\\\\");
-		  if (MainClass.getType().equals("Haggis")) {
+		  if (getType().equals("Haggis")) {
 		  competitors.add( new HaggisChef(CN, name, score, level, attribute)); 
 		  }
-		  else if (MainClass.getType().equals("Hockey")){
+		  else if (getType().equals("Hockey")){
 		  competitors.add( new HockeyCompetitor(CN-100, name, level, score, attribute));
 		  }
 		  
-		  else if ((MainClass.getType().equals("Dart"))){
+		  else if ((getType().equals("Dart"))){
 			  competitors.add( new DartCompetitor(CN+200, name, level, score, CN-50));
 		  }
 		  
@@ -125,10 +187,10 @@ public class Manager {
 	  }
 	} catch (FileNotFoundException e) {
 		// TODO Auto-generated catch block
-		MainClass.getFileGUI().displayFileError(String.format("File '%s' not found, please enter valid file:", file));
+		getFileGUI().displayFileError(String.format("File '%s' not found, please enter valid file:", file));
 		filefail = true;
 	}
-	  this.list = new CompetitorList(competitors);
+	  list = new CompetitorList(competitors);
 	  return filefail;
 	} 
 	
@@ -141,7 +203,7 @@ public class Manager {
 	 * @throws IOException when output path is not valid
 	 * @return false if there is no problem with output file path.
 	 */
-	public boolean printFile(String outputFile) throws IOException {
+	public static boolean printFile(String outputFile) throws IOException {
 		Competitor best;
 		best = list.getBestCompetitor();
 		FileWriter file = null;
@@ -159,7 +221,7 @@ public class Manager {
 			// TODO Auto-generated catch block
 			System.err.println(String.format("Error: Filepath '%s' is not valid, please select a valid filepath", outputFile));
 			failpath = true;
-			 MainClass.getFileGUI().displayFileError(String.format("Error: Filepath '%s' is not valid, please select a valid filepath", outputFile));
+			 getFileGUI().displayFileError(String.format("Error: Filepath '%s' is not valid, please select a valid filepath", outputFile));
 		}
 		
 		try {
@@ -183,7 +245,7 @@ public class Manager {
 	}
 	
 	
-	public CompetitorList getList() {
+	public static CompetitorList getList() {
 		return list;
 	}
 	
