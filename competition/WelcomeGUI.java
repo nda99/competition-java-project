@@ -411,7 +411,12 @@ public class WelcomeGUI extends JFrame{
 	        System.out.println("getCurrentDirectory(): "+ chooser.getCurrentDirectory());
 	        System.out.println("getSelectedFile() : "+ chooser.getSelectedFile());
 	        Manager.setFileOut("" + chooser.getSelectedFile());
-	        
+	        try {
+				Manager.printFile(Manager.getFileOut());
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 	        
 	    } else {
 	        System.out.println("No Selection ");

@@ -178,7 +178,7 @@ public class Manager {
 		  list.add( new HaggisChef(CN, name, score, level, attribute)); 
 		  }
 		  else if (getType().equals("Hockey")){
-		  list.add( new HockeyCompetitor(CN-100, name, level, score, attribute));
+		  list.add( new HockeyCompetitor(CN, name, level, score, attribute));
 		  }
 		  
 		  else if ((getType().equals("Dart"))){
@@ -186,7 +186,7 @@ public class Manager {
 		  }
 		  
 		  else {
-			  list.add( new Baseballers(CN+100, name, level, score, attribute, CN-50));
+			  list.add( new Baseballers(CN+300, name, level, score, attribute, CN-50));
 		  }
 	  }
 	} catch (FileNotFoundException e) {
