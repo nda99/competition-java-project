@@ -59,8 +59,6 @@ public class WelcomeGUI extends JFrame{
 		//JPanel bottomPanel = new JPanel();
 		JLabel welcome1 = new JLabel();
 		JLabel welcome2 = new JLabel();
-		JLabel blank = new JLabel();
-		blank = createOneLabel("",Color.WHITE);
 		chooseInput = new JButton("Choose input file...");
 		chooseOutput = new JButton("Save Report");
 		seeDetails = new JButton("Competition Details");
@@ -272,8 +270,8 @@ public class WelcomeGUI extends JFrame{
 	//String speed = JOptionPane.showInputDialog(null, "Speed in miles per hour?");
 
 	
-	n = this.createOneLabel("Please enter the full path of your input file:", Color.WHITE);
-	s = this.createOneLabel("Please enter the full path of your output file:", Color.YELLOW);
+	n = WelcomeGUI.createOneLabel("Please enter the full path of your input file:", Color.WHITE);
+	s = WelcomeGUI.createOneLabel("Please enter the full path of your output file:", Color.YELLOW);
 	inputWindow.add(n,BorderLayout.NORTH);
 
 	inputWindow.add(northPanel,BorderLayout.SOUTH);
@@ -365,8 +363,8 @@ public class WelcomeGUI extends JFrame{
 	//String speed = JOptionPane.showInputDialog(null, "Speed in miles per hour?");
 
 	
-	n = this.createOneLabel("Please enter the full path of your input file:", Color.WHITE);
-	s = this.createOneLabel("Please enter the full path of your output file:", Color.YELLOW);
+	n = WelcomeGUI.createOneLabel("Please enter the full path of your input file:", Color.WHITE);
+	s = WelcomeGUI.createOneLabel("Please enter the full path of your output file:", Color.YELLOW);
 	outputWindow.add(s,BorderLayout.NORTH);
 
 	outputWindow.add(northPanel,BorderLayout.SOUTH);

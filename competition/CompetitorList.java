@@ -189,7 +189,7 @@ public class CompetitorList {
 		}
 			
 		String stats = String.format("-------------\nSTATISTICS:\nWinner of "
-				+ "Haggis Competition is %s with an overall score of %1.1f \nTotal number of competitors: "
+				+ "all the Competitions is %s with an overall score of %1.1f \nTotal number of competitors: "
 				+ "%d, Min score: %1.1f, Max score: %1.1f, Avg score: %1.1f\nScore:"
 				+ "     0  1   2   3   4   5\nFrequency: %s", 
 				winner, maxScore, total, minScore, maxScore, avgScore, Arrays.toString(getFreq()).replace("[", "").replace("]", "").replaceAll(","," "));//,getLevelFreq());
@@ -200,31 +200,32 @@ public class CompetitorList {
 	public String getHeader() {
 		
 		String header = null;
-		
-		if ((Manager.getType().equals("Haggis"))) {
-			header = String.format("--------\nREPORT:\n%20.50s %18.10s %18.30s %26.6s %15.8s\n", "Competitor", "Level", "Dish", "Scores",
-					"Overall");
-		}
-		
-		else if ((Manager.getType().equals("Hockey"))){
-			header = String.format("--------\nREPORT:\n%20.50s %18.10s %18.30s %26.6s %15.8s\n", "Competitor", "Level", "Country", "Scores",
-					"Overall");
-		}
-		
-		else if ((Manager.getType().equals("Dart"))){
-			header = String.format("--------\nREPORT:\n%20.50s %18.10s %18.30s %26.6s %15.8s\n", "Competitor", "Level", "Country", "Scores",
-					"Overall");
-		}
-		
-		else if ((Manager.getType().equals("Baseball"))){
-			header = String.format("--------\nREPORT:\n%20.50s %18.10s %18.30s %26.6s %15.8s\n", "Competitor", "Level", "Age", "Scores",
-					"Overall");
-		}
-		
-		else {
-			header = String.format("--------\nREPORT:\n%20.50s %18.10s %18.30s %26.6s %15.8s\n", "Competitor", "Level", "Attribute", "Scores",
-					"Overall");
-		}
+		header = String.format("--------\nREPORT:\n%20.50s %10.10s %18.10s %18.30s %26.6s %15.8s\n", "Competitor", "Type", "Level", "Dish", "Scores",
+				"Overall");
+//		if ((Manager.getType().equals("Haggis"))) {
+//			header = String.format("--------\nREPORT:\n%20.50s %18.10s %18.30s %26.6s %15.8s\n", "Competitor", "Level", "Dish", "Scores",
+//					"Overall");
+//		}
+//		
+//		else if ((Manager.getType().equals("Hockey"))){
+//			header = String.format("--------\nREPORT:\n%20.50s %18.10s %18.30s %26.6s %15.8s\n", "Competitor", "Level", "Country", "Scores",
+//					"Overall");
+//		}
+//		
+//		else if ((Manager.getType().equals("Dart"))){
+//			header = String.format("--------\nREPORT:\n%20.50s %18.10s %18.30s %26.6s %15.8s\n", "Competitor", "Level", "Country", "Scores",
+//					"Overall");
+//		}
+//		
+//		else if ((Manager.getType().equals("Baseball"))){
+//			header = String.format("--------\nREPORT:\n%20.50s %18.10s %18.30s %26.6s %15.8s\n", "Competitor", "Level", "Age", "Scores",
+//					"Overall");
+//		}
+//		
+//		else {
+//			header = String.format("--------\nREPORT:\n%20.50s %18.10s %18.30s %26.6s %15.8s\n", "Competitor", "Level", "Attribute", "Scores",
+//					"Overall");
+//		}
 		
 		return header;
 	}
@@ -244,7 +245,7 @@ public class CompetitorList {
 			// rep = String.format(rep + "%1.20s %10.10s %2.5d %2.5d %2.5d %2.5d %2.5d
 			// %10.8f\n",h.getName(),h.getLevel(),h.getScoreArray()[0],h.getScoreArray()[1],h.getScoreArray()[2],h.getScoreArray()[3],h.getScoreArray()[4],h.getOverallScore());
 
-			rep = String.format(rep + "%3.3s %25.25s %10.10s %31.31s %15.20s %10.1f\n", c.getCompetitorNumber(), c.getCompetitorName(),
+			rep = String.format(rep + "%3.3s %25.25s %10.10s %10.10s %31.31s %15.20s %10.1f\n", c.getCompetitorNumber(), c.getCompetitorName(),"Haggis",
 					c.getLevel(), ((HaggisChef) c).getDish(),
 					Arrays.toString(c.getScoreArray()).replace("[", "").replace("]", "").replace(",", " "),
 					c.getOverallScore());
@@ -254,7 +255,7 @@ public class CompetitorList {
 				// rep = String.format(rep + "%1.20s %10.10s %2.5d %2.5d %2.5d %2.5d %2.5d
 				// %10.8f\n",h.getName(),h.getLevel(),h.getScoreArray()[0],h.getScoreArray()[1],h.getScoreArray()[2],h.getScoreArray()[3],h.getScoreArray()[4],h.getOverallScore());
 
-				rep = String.format(rep + "%3.3s %25.25s %10.10s %31.31s %15.20s %10.1f\n", c.getCompetitorNumber(), c.getCompetitorName(),
+				rep = String.format(rep + "%3.3s %25.25s %10.10s %10.10s %31.31s %15.20s %10.1f\n", c.getCompetitorNumber(), c.getCompetitorName(),"Hockey",
 						c.getLevel(), ((HockeyCompetitor) c).getNationality(),
 						Arrays.toString(c.getScoreArray()).replace("[", "").replace("]", "").replace(",", " "),
 						c.getOverallScore());
@@ -263,7 +264,7 @@ public class CompetitorList {
 				// rep = String.format(rep + "%1.20s %10.10s %2.5d %2.5d %2.5d %2.5d %2.5d
 				// %10.8f\n",h.getName(),h.getLevel(),h.getScoreArray()[0],h.getScoreArray()[1],h.getScoreArray()[2],h.getScoreArray()[3],h.getScoreArray()[4],h.getOverallScore());
 
-				rep = String.format(rep + "%3.3s %25.25s %10.10s %31.31s %15.20s %10.1f\n", c.getCompetitorNumber(), c.getCompetitorName(),
+				rep = String.format(rep + "%3.3s %25.25s %10.10s %10.10s %31.31s %15.20s %10.1f\n", c.getCompetitorNumber(), c.getCompetitorName(),"Baseball",
 						c.getLevel(), ((Baseballers) c).getNationality(),
 						Arrays.toString(c.getScoreArray()).replace("[", "").replace("]", "").replace(",", " "),
 						c.getOverallScore());

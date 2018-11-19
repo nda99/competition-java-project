@@ -36,6 +36,13 @@ public class Manager {
 		inputFile = input;
 	}
 	
+	public static void main(String[] args) throws IOException {
+
+		setList();
+		showGUI();
+		
+	}
+	
 	public static void setList() {
 
 		  list = new CompetitorList(competitors);
@@ -95,9 +102,9 @@ public class Manager {
 		gui = new WelcomeGUI();
 		gui.displayWelcome();
 		setGui(gui);
-		while(fileOut == null) { //loops until valid CN is provided
+		//while(fileOut == null) { //loops until valid CN is provided
 
-			}
+			//}
 	}
 	
 	/** Method to read file and return a competitor list.
