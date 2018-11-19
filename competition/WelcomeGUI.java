@@ -41,7 +41,7 @@ public class WelcomeGUI extends JFrame{
 	    haggis = new JMenuItem("Haggis");
 	    hockey = new JMenuItem("Hockey");
 	    baseball = new JMenuItem("Baseball");
-	    dart = new JMenuItem("Hockey");
+	    dart = new JMenuItem("Dart");
 
 	    // Adding menu items to menu
 	    compTypes.add(haggis);
