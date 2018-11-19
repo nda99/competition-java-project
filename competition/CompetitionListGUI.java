@@ -41,16 +41,21 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 		else if (event.getSource() == view) {
 			// ViewGUI viewGui = new ViewGUI(compt);
 		}
-		else if (event.getSource() == sortByCN)
+		else if ((JRadioButton)event.getSource() == sortByCN)
 		{
+			System.out.println("radio button clicked");
 			sortCN();
 		}
-		else if (event.getSource() == sortByName)
+		else if ((JRadioButton)event.getSource() == sortByName)
 		{
+			System.out.println("radio button clicked");
+
 			sortNames();
 		}
-		else if (event.getSource() == sortByScores)
+		else if ((JRadioButton)event.getSource() == sortByScores)
 		{
+			System.out.println("radio button clicked");
+
 			sortScores();
 		}
 		
@@ -58,12 +63,18 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 	
 
 	private void sortScores() {
-		// TODO create methods in competitorlist
-		
+		/*ArrayList<Competitor> list =comptlist.listByName();
+		setupCenterPanel()*/
 	}
 
 	private void sortNames() {
-		// TODO create methods in competitorlist
+		System.out.print("sorting names");
+		centerPanel.removeAll();
+		centerPanel.repaint();
+		centerPanel.revalidate();
+		frame.add(setupCenterPanel(comptlist.listByName()));
+		centerPanel.repaint();
+		centerPanel.revalidate();
 		
 	}
 
@@ -74,32 +85,30 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 	
 	private void sortCN()
 	{
-		ArrayList<Competitor> list = new ArrayList<Competitor>();
-		list = comptlist.getCompetitorList();
-		//list.sort(list.);
-		for (Competitor c : list)
-		{
-			
-		}
+		System.out.print("sorting nos");
+
+		centerPanel.removeAll();
+		centerPanel.repaint();
+		centerPanel.revalidate();
+		frame.add(setupCenterPanel(comptlist.listByCN()));
+		centerPanel.repaint();
+		centerPanel.revalidate();
+		
+
 	}
 
 	private void searchCompetitor(String text) {
 
 		String search_text = text.trim();
 		if (search_text.length() > 0) {
-			Competitor comp = comptlist.getCompetitor(101);
+			Competitor comp = comptlist.getCompetitorName(search_text);
 			if (comp != null) {
-				/*
-				 * centerPanel.removeAll(); System.out.println("inside the method");
-				 */
-
 				ArrayList<Competitor> al = new ArrayList<Competitor>();
 				al.add(comp);
-				CompetitorList temp = new CompetitorList(al);
 				centerPanel.removeAll();
 				centerPanel.repaint();
 				centerPanel.revalidate();
-				frame.add(setupCenterPanel(temp));
+				frame.add(setupCenterPanel(al));
 				frame.setSize(600, 200);
 
 				centerPanel.repaint();
@@ -113,7 +122,7 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 				centerPanel.add(alert);
 				centerPanel.repaint();
 				centerPanel.revalidate();
-				JOptionPane.showMessageDialog(null, "My Goodness, this is so concise");
+				JOptionPane.showMessageDialog(null, "Oops couldn't find competitor!");
 				// table.setText("competitor not found");
 			}
 		}
@@ -132,6 +141,8 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 		northPanel.add(searchBtn);
 		JLabel filterBy = new JLabel("Filter by:");
 		northPanel.add(filterBy);
+		sortByCN.addActionListener(this);
+		sortByName.addActionListener(this);
 		filter.add(sortByCN);
 		filter.add(sortByName);
 		filter.add(sortByScores);
@@ -146,9 +157,8 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 	/**
 	 * Method to set the blocks inside center panel
 	 **/
-	private JPanel setupCenterPanel(CompetitorList list) {
+	private JPanel setupCenterPanel(ArrayList<Competitor> comptList) {
 
-		ArrayList<Competitor> comptList = list.getCompetitorList();
 
 		centerPanel.setLayout(new GridLayout(0, 7));
 		Font f = new Font(Font.SANS_SERIF, Font.BOLD, 14);
@@ -217,7 +227,7 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 		
 		frame.add(title, BorderLayout.NORTH);
 		frame.add(setupNorthPanel(), BorderLayout.NORTH);
-		frame.add(setupCenterPanel(comptlist), BorderLayout.CENTER);
+		frame.add(setupCenterPanel(comptlist.getCompetitorList()), BorderLayout.CENTER);
 		frame.setSize(500, 500);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
