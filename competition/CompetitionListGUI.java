@@ -79,8 +79,7 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 	}
 
 	private void displayEditFrame() {
-		// TODO : link it to plamen's class
-
+		EditCompetitors editGUI = new EditCompetitors();
 	}
 	
 	private void sortCN()

@@ -1,4 +1,4 @@
-package pdpd;
+package competition;
 import javax.swing.*;
 import java.awt.event.*;
 
