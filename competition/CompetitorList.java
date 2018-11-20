@@ -1,48 +1,50 @@
 package competition;
 
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
 public class CompetitorList {
-	
-	
+
 	private ArrayList<Competitor> competitors = new ArrayList<Competitor>();
-	
+
 	/**
-	 * Constructor for Competitor List object, which holds a list of all competitors.
+	 * Constructor for Competitor List object, which holds a list of all
+	 * competitors.
+	 * 
 	 * @param competitor is an ArrayList of all the competitor objects (Competitor).
 	 */
-	public CompetitorList(ArrayList<Competitor> competitor) 
-	{
+	public CompetitorList(ArrayList<Competitor> competitor) {
 		this.competitors = competitor;
-	
+
 	}
-	
-	
-	
-	/** Method to get the competitorList
+
+	/**
+	 * Method to get the competitorList
+	 * 
 	 * @return competitorList
-	 * **/
-	public ArrayList<Competitor> getCompetitorList()
-	{
+	 **/
+	public ArrayList<Competitor> getCompetitorList() {
 		return competitors;
 	}
-	
-	/**Method to get the size of the competitorList
-	 * 	@return int the size of the arraylist
-**/
-	public int size()
-	{
+
+	/**
+	 * Method to get the size of the competitorList
+	 * 
+	 * @return int the size of the arraylist
+	 **/
+	public int size() {
 		return competitors.size();
 	}
+
 	/**
 	 * Method to get a competitor of choice based on his/her Competitor Number (CN)
+	 * 
 	 * @param CN competitor number
-	 * @return Competitor object holding the information of the competitor of choice.
+	 * @return Competitor object holding the information of the competitor of
+	 *         choice.
 	 * @see CompetitorList
-	 * @see Competitor 
+	 * @see Competitor
 	 */
 	public Competitor getCompetitor(int CN) {
 
@@ -56,19 +58,25 @@ public class CompetitorList {
 		}
 
 		if (choice == null) {
-			System.out.format("ERROR: Competitor number %d does not exist. Please enter an existing Competitor Number\n", CN);
+			System.out.format(
+					"ERROR: Competitor number %d does not exist. Please enter an existing Competitor Number\n", CN);
 		}
 
 		return choice;
 
 	}
-	
-	/****/
+
+	/**
+	 * Returns the Competitor provided a Competitor Number
+	 * 
+	 * @param CN Competitor Number
+	 * @return Competitor
+	 */
 	public ArrayList<Competitor> getCompetitorCN(int CN) {
 
 		Competitor choice = null;
 		ArrayList<Competitor> result = new ArrayList<Competitor>();
-		
+
 		for (Competitor c : this.competitors) {
 			if (c.getCompetitorNumber() == CN) {
 				choice = c;
@@ -76,37 +84,37 @@ public class CompetitorList {
 			}
 		}
 
-		
-
 		return result;
 
 	}
-	/** Method to get competior of choice based on his/her Competitor Name
-	 * **/
+
+	/**
+	 * Method to get competior of choice based on his/her Competitor Name
+	 **/
 	public ArrayList<Competitor> getCompetitorName(String name) {
 
 		Competitor choice = null;
 		ArrayList<Competitor> result = new ArrayList<Competitor>();
 
 		for (Competitor c : this.competitors) {
-			if (c.getCompetitorName().contains(name) == true)
-			{
+			if (c.getCompetitorName().contains(name) == true) {
 				choice = c;
 				result.add(choice);
 			}
-			
-		}
 
+		}
 
 		return result;
 
 	}
-	
-    /**
-     * Method which loops through list to find competitor with HIGHEST SCORE.
-     * @return Competitor object holding the details of the competitor with highest score.
-     */
-	
+
+	/**
+	 * Method which loops through list to find competitor with HIGHEST SCORE.
+	 * 
+	 * @return Competitor object holding the details of the competitor with highest
+	 *         score.
+	 */
+
 	public HaggisChef getBestHaggisChef() {
 		double score = -1;
 		HaggisChef best = null;
@@ -119,12 +127,14 @@ public class CompetitorList {
 
 		return best;
 	}
-	
-	
-	/*** Method which loops throught the list of hockey competitotrs and returns the highest score
+
+	/***
+	 * Method which loops throught the list of hockey competitotrs and returns the
+	 * highest score
+	 * 
 	 * @return Competitor of type hockeycompetitor holding details of the competitor
 	 **/
-		public HockeyCompetitor getBestHockeyCompetitor() {
+	public HockeyCompetitor getBestHockeyCompetitor() {
 		double score = -1;
 		HockeyCompetitor best = null;
 		for (Competitor c : this.competitors) {
@@ -136,6 +146,7 @@ public class CompetitorList {
 
 		return best;
 	}
+
 	public Competitor getBestCompetitor() {
 		double score = -1;
 		Competitor best = null;
@@ -148,12 +159,12 @@ public class CompetitorList {
 
 		return best;
 	}
-	
-	
-	 /**
-	  * Method to compute Frequency of scores: [ 0 1 2 3 4 5] 
-	  * @return int[] array with frequency of each score on the list
-	  */
+
+	/**
+	 * Method to compute Frequency of scores: [ 0 1 2 3 4 5]
+	 * 
+	 * @return int[] array with frequency of each score on the list
+	 */
 	public int[] getFreq() {
 		int[] freq = new int[6];
 
@@ -178,180 +189,155 @@ public class CompetitorList {
 		}
 
 		return freq;
-}
-	
+	}
+
 	/**
 	 * Method to get STATISTICS for the Competition.
+	 * 
 	 * @return String variable holding statistical details of the competition.
 	 */
 	public String getStats() {
-		
+
 		int total;
-		double maxScore, avgScore = 0, minScore = 999; 
+		double maxScore, avgScore = 0, minScore = 999;
 		String winner;
-		
-		//get total number of competitors.
+
+		// get total number of competitors.
 		total = competitors.size();
-		
-		//get Average score;		
+
+		// get Average score;
 		for (Competitor h : competitors) {
 			avgScore += h.getOverallScore();
 		}
 		avgScore /= total;
-		
-			
-		//get Max score
+
+		// get Max score
 		maxScore = getBestCompetitor().getOverallScore();
 		winner = getBestCompetitor().getCompetitorName();
-		//getMinScore
+		// getMinScore
 		for (Competitor c : competitors) {
 			if (c.getOverallScore() < minScore) {
 				minScore = c.getOverallScore();
 			}
 		}
-			
-		String stats = String.format("-------------\nSTATISTICS:\nWinner of "
-				+ "all the Competitions is %s with an overall score of %1.1f \nTotal number of competitors: "
-				+ "%d, Min score: %1.1f, Max score: %1.1f, Avg score: %1.1f\nScore:"
-				+ "     0  1   2   3   4   5\nFrequency: %s", 
-				winner, maxScore, total, minScore, maxScore, avgScore, Arrays.toString(getFreq()).replace("[", "").replace("]", "").replaceAll(","," "));//,getLevelFreq());
-		
+
+		String stats = String.format(
+				"-------------\nSTATISTICS:\nWinner of "
+						+ "all the Competitions is %s with an overall score of %1.1f \nTotal number of competitors: "
+						+ "%d, Min score: %1.1f, Max score: %1.1f, Avg score: %1.1f\nScore:"
+						+ "     0  1   2   3   4   5\nFrequency: %s",
+				winner, maxScore, total, minScore, maxScore, avgScore,
+				Arrays.toString(getFreq()).replace("[", "").replace("]", "").replaceAll(",", " "));// ,getLevelFreq());
+
 		return stats;
-}
-	
-	public String getHeader() {
-		
-		String header = null;
-		header = String.format("--------\nREPORT:\n%20.50s %17.10s %11.10s      %18.30s %28.6s %24.8s \n", "Competitor", "Type", "Level", "Attribute", "Scores","Overall");
-//		if ((Manager.getType().equals("Haggis"))) {
-//			header = String.format("--------\nREPORT:\n%20.50s %18.10s %18.30s %26.6s %15.8s\n", "Competitor", "Level", "Dish", "Scores",
-//					"Overall");
-//		}
-//		
-//		else if ((Manager.getType().equals("Hockey"))){
-//			header = String.format("--------\nREPORT:\n%20.50s %18.10s %18.30s %26.6s %15.8s\n", "Competitor", "Level", "Country", "Scores",
-//					"Overall");
-//		}
-//		
-//		else if ((Manager.getType().equals("Dart"))){
-//			header = String.format("--------\nREPORT:\n%20.50s %18.10s %18.30s %26.6s %15.8s\n", "Competitor", "Level", "Country", "Scores",
-//					"Overall");
-//		}
-//		
-//		else if ((Manager.getType().equals("Baseball"))){
-//			header = String.format("--------\nREPORT:\n%20.50s %18.10s %18.30s %26.6s %15.8s\n", "Competitor", "Level", "Age", "Scores",
-//					"Overall");
-//		}
-//		
-//		else {
-//			header = String.format("--------\nREPORT:\n%20.50s %18.10s %18.30s %26.6s %15.8s\n", "Competitor", "Level", "Attribute", "Scores",
-//					"Overall");
-//		}
-		
-		return header;
 	}
-	
+
 	/**
 	 * Method to build the report based on the list of competitors.
+	 * 
 	 * @return String variable containing report information based on the list.
 	 * @see getFreq
 	 * @see getStats
 	 */
 	public String getReport() {
-		String rep = getHeader(); 
+		String rep = String.format("--------\nREPORT:\n%20.50s %17.10s %11.10s      %18.30s %34.6s" + " %16.8s \n",
+				"Competitor", "Type", "Level", "Attribute", "Scores", "Overall");
 		ArrayList<Competitor> cncomp = listByCN();
-		
+
 		for (Competitor c : cncomp) {
 			if (c instanceof HaggisChef) {
-			// rep = String.format(rep + "%1.20s %10.10s %2.5d %2.5d %2.5d %2.5d %2.5d
-			// %10.8f\n",h.getName(),h.getLevel(),h.getScoreArray()[0],h.getScoreArray()[1],h.getScoreArray()[2],h.getScoreArray()[3],h.getScoreArray()[4],h.getOverallScore());
+				// rep = String.format(rep + "%1.20s %10.10s %2.5d %2.5d %2.5d %2.5d %2.5d
+				// %10.8f\n",h.getName(),h.getLevel(),h.getScoreArray()[0],h.getScoreArray()[1],h.getScoreArray()[2],h.getScoreArray()[3],h.getScoreArray()[4],h.getOverallScore());
 
-				rep = String.format(rep + "%3.3s %25.25s %10.10s     %10.10s %10.10s %28.31s %15.20s %10.1f\n", c.getCompetitorNumber(), c.getCompetitorName(),"Haggis",
-					c.getLevel(), "Dish: ", ((HaggisChef) c).getDish(),
-					Arrays.toString(c.getScoreArray()).replace("[", "").replace("]", "").replace(",", " "),
-					c.getOverallScore());
+				rep = String.format(rep + "%3.3s %25.25s %10.10s     %10.10s %10.10s %31.31s %15.20s %10.1f\n",
+						c.getCompetitorNumber(), c.getCompetitorName(), "Haggis", c.getLevel(), "Dish: ",
+						((HaggisChef) c).getDish(),
+						Arrays.toString(c.getScoreArray()).replace("[", "").replace("]", "").replace(",", " "),
+						c.getOverallScore());
 			}
-			
+
 			if (c instanceof HockeyCompetitor) {
 				// rep = String.format(rep + "%1.20s %10.10s %2.5d %2.5d %2.5d %2.5d %2.5d
 				// %10.8f\n",h.getName(),h.getLevel(),h.getScoreArray()[0],h.getScoreArray()[1],h.getScoreArray()[2],h.getScoreArray()[3],h.getScoreArray()[4],h.getOverallScore());
 
-				rep = String.format(rep + "%3.3s %25.25s %10.10s     %10.10s %10.10s %28.31s %15.20s %10.1f\n", c.getCompetitorNumber(), c.getCompetitorName(),"Hockey",
-						c.getLevel(), "Country: ", ((HockeyCompetitor) c).getNationality(),
+				rep = String.format(rep + "%3.3s %25.25s %10.10s     %10.10s %10.10s %31.31s %15.20s %10.1f\n",
+						c.getCompetitorNumber(), c.getCompetitorName(), "Hockey", c.getLevel(), "Country: ",
+						((HockeyCompetitor) c).getNationality(),
 						Arrays.toString(c.getScoreArray()).replace("[", "").replace("]", "").replace(",", " "),
 						c.getOverallScore());
-				}
+			}
 			if (c instanceof Baseballers) {
 				// rep = String.format(rep + "%1.20s %10.10s %2.5d %2.5d %2.5d %2.5d %2.5d
 				// %10.8f\n",h.getName(),h.getLevel(),h.getScoreArray()[0],h.getScoreArray()[1],h.getScoreArray()[2],h.getScoreArray()[3],h.getScoreArray()[4],h.getOverallScore());
 
-				rep = String.format(rep + "%3.3s %25.25s %10.10s     %10.10s %10.10s %28.31s %15.20s %10.1f\n", c.getCompetitorNumber(), c.getCompetitorName(),"Baseball",
-						c.getLevel(), "Country: " + ((Baseballers) c).getNationality(),
+				rep = String.format(rep + "%3.3s %25.25s %10.10s     %10.10s %10.10s %31.31s %15.20s %10.1f\n",
+						c.getCompetitorNumber(), c.getCompetitorName(), "Baseball", c.getLevel(),
+						"Country: " + ((Baseballers) c).getNationality(),
 						Arrays.toString(c.getScoreArray()).replace("[", "").replace("]", "").replace(",", " "),
 						c.getOverallScore());
-				}
+			}
 
 			if (c instanceof DartCompetitor) {
 				// rep = String.format(rep + "%1.20s %10.10s %2.5d %2.5d %2.5d %2.5d %2.5d
 				// %10.8f\n",h.getName(),h.getLevel(),h.getScoreArray()[0],h.getScoreArray()[1],h.getScoreArray()[2],h.getScoreArray()[3],h.getScoreArray()[4],h.getOverallScore());
 
-				rep = String.format(rep + "%3.3s %25.25s %10.10s     %10.10s Age: %28.31d %15.20s %10.1f\n", c.getCompetitorNumber(), c.getCompetitorName(),"Baseball",
-						c.getLevel(), "Age: " + (((DartCompetitor) c).getAge()),
+				rep = String.format(rep + "%3.3s %25.25s %10.10s     %10.10s Age: %31.31d %15.20s %10.1f\n",
+						c.getCompetitorNumber(), c.getCompetitorName(), "Baseball", c.getLevel(),
+						"Age: " + (((DartCompetitor) c).getAge()),
 						Arrays.toString(c.getScoreArray()).replace("[", "").replace("]", "").replace(",", " "),
 						c.getOverallScore());
-				}
+			}
 		}
 		return rep;
 	}
-	
+
 	/**
 	 * Method to append a new competitor to existing list
+	 * 
 	 * @param c Competitor to be added
 	 */
 	public void add(Competitor c) {
 		this.competitors.add(c);
 	}
-/**
- * Method to get frequency of competitor levels.
- */
+	/**
+	 * Method to get frequency of competitor levels.
+	 */
 //public abstract String getLevelFreq();
-	
-	 /**
-	  * Method to list all the competitors
-    * @return All the competitor details
-    */
-   public ArrayList<Competitor> listDetails()
-   {
-       
-       return competitors;
-   }
-   
-   /**
-    * Method which sorts competitors based on names
-    * @return All the competitor details in name order
-    */
-   public ArrayList<Competitor> listByName()
-   {
-   	Collections.sort(competitors, new CompetitorNameComprator());
-   	return listDetails();
-   }
-   
-   /**
-    * @return All the competitors details ordered by competitor competitor 
-    *     */
-   public  ArrayList<Competitor> listByCN()
-   {
-   	Collections.sort(this.competitors,new CompetitorNoComparator());
-   	return listDetails();
-   }
-   /**
-    * @return All the competitors details ordered by competitor competitor 
-    *     */
-   public  ArrayList<Competitor> listByScores()
-   {
-   	Collections.sort(this.competitors,new CompetitorScoresComparator());
-   	return listDetails();
-   }
 
-	
+	/**
+	 * Method to list all the competitors
+	 * 
+	 * @return All the competitor details
+	 */
+	public ArrayList<Competitor> listDetails() {
+
+		return competitors;
+	}
+
+	/**
+	 * Method which sorts competitors based on names
+	 * 
+	 * @return All the competitor details in name order
+	 */
+	public ArrayList<Competitor> listByName() {
+		Collections.sort(competitors, new CompetitorNameComprator());
+		return listDetails();
+	}
+
+	/**
+	 * @return All the competitors details ordered by competitor competitor
+	 */
+	public ArrayList<Competitor> listByCN() {
+		Collections.sort(this.competitors, new CompetitorNoComparator());
+		return listDetails();
+	}
+
+	/**
+	 * @return All the competitors details ordered by competitor competitor
+	 */
+	public ArrayList<Competitor> listByScores() {
+		Collections.sort(this.competitors, new CompetitorScoresComparator());
+		return listDetails();
+	}
+
 }

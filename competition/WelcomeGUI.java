@@ -26,10 +26,11 @@ public class WelcomeGUI extends JFrame{
 	public WelcomeGUI()
 	{
 		
-		
-		//i just added this comment
 	}
 
+	/**
+	 * Displays the main GUI welcome window
+	 */
 	public void displayWelcome() {
 
 	    JMenuBar menuBar = new JMenuBar();
@@ -217,7 +218,10 @@ public class WelcomeGUI extends JFrame{
 		    });
 	}
 	
-	
+	/**
+	 * Displays a dialog window which shows a provided message
+	 * @param message Text to be displayed
+	 */
 	public void displayDialog(String message) {
 		
 		JOptionPane.showMessageDialog(welcomeFrame,
@@ -227,7 +231,8 @@ public class WelcomeGUI extends JFrame{
 	}
 	
 	/**
-	 * Method to show error message window given a String input.
+	 * Shows an error message window given a String input.
+	 * @param error Text to be displayed
 	 */
 	public void displayFileError(String error) {
 		
@@ -236,7 +241,10 @@ public class WelcomeGUI extends JFrame{
 			    "ERROR :(",
 			    JOptionPane.ERROR_MESSAGE);
 	}
-	
+	/**
+	 * Rebuilds Welcome GUI to reflect new information
+	 * @param frame
+	 */
 	public void buildInfoPanel(JFrame frame) {
         file.removeAll();
         type.removeAll();
@@ -261,9 +269,6 @@ public class WelcomeGUI extends JFrame{
         
         displayWelcome();
 
-		
-		
-		//frame.setVisible(true); 
 	}
 	
 	static JLabel createOneLabel (String s, Color c, int size) {
@@ -277,7 +282,7 @@ public class WelcomeGUI extends JFrame{
 	
 	
 	/**
-	 * Method to show default error message window if no String is provided.
+	 * Shows default error message window if no String is provided.
 	 */
 	public void displayFileError() {
 		
@@ -288,7 +293,7 @@ public class WelcomeGUI extends JFrame{
 	}
 	
 	/**
-	 * Method to generate a window for the user to enter the input file name
+	 * Generates a window for the user to enter the input file name
 	 */
 	public void getInputName() {
 		JButton openFile, browseFile, goBack;
@@ -301,18 +306,15 @@ public class WelcomeGUI extends JFrame{
 		northPanel.add(goBack);
 		inputWindow.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		JPanel southPanel = new JPanel();
-		//southPanel.setLayout(new GridLayout(2,1));
 		JTextField searchField = new JTextField(20);
 		southPanel.add(searchField);
 		
-	//JFrame inputWindow = new JFrame();
 	this.inputWindow.setSize(400,200);
 	inputWindow.setLocation(200,200);
 	inputWindow.setLayout(new BorderLayout(0,0));
 	inputWindow.setTitle("File selector");
 	inputWindow.setVisible(true);
 	
-	//String speed = JOptionPane.showInputDialog(null, "Speed in miles per hour?");
 
 	
 	n = WelcomeGUI.createOneLabel("Please enter the full path of your input file:", Color.WHITE,18);
@@ -327,15 +329,14 @@ public class WelcomeGUI extends JFrame{
 		    public void actionPerformed(ActionEvent e) {
 		    	
 		    	String searchString = searchField.getText();
-		    	
-		    	//Manager in = new Manager(searchString);
-				Manager.setFileIn(searchString);
+				if (searchString.equals(Manager.getFileIn())) {
+					displayDialog("File already selected!");
+				}
+				else {
+					Manager.setFileIn(searchString);
 				if(Manager.getFile()==false) {
 
-		    	
-		    	System.out.println(searchString);
 		        Manager.setFileIn(searchString);
-		    	//MainClass.in = in;
 				CompetitorList list = Manager.getList();
 				
 				Manager.compList = new CompetitionListGUI(list);
@@ -343,7 +344,7 @@ public class WelcomeGUI extends JFrame{
 				displayDialog("The file " + searchString + " has been loaded successfully" );
 				buildInfoPanel(welcomeFrame);
 				
-		    	//System.exit(0);
+				}
 				}
 		      }
 		    });
@@ -363,8 +364,12 @@ public class WelcomeGUI extends JFrame{
 	        System.out.println("getCurrentDirectory(): "+ chooser.getCurrentDirectory());
 	        System.out.println("getSelectedFile() : "+ chooser.getSelectedFile());
 	        
-	        
-	        Manager.setFileIn(chooser.getSelectedFile().toString());
+			if (chooser.getSelectedFile().toString().equals(Manager.getFileIn())) {
+				displayDialog("File already selected!");
+			}
+			else {
+				Manager.setFileIn(chooser.getSelectedFile().toString());
+			
 	        if(Manager.getFile()==false) {   
 	        	Manager.setFileIn(chooser.getSelectedFile().toString());
 	        	//MainClass.in = in;
@@ -376,8 +381,9 @@ public class WelcomeGUI extends JFrame{
 				buildInfoPanel(welcomeFrame);
 
 	        }
+			}
 	    } else {
-	        System.out.println("No Selection ");
+	    	displayDialog("No selection");
 	    }
 	}});
 	
@@ -390,6 +396,9 @@ public class WelcomeGUI extends JFrame{
 	
 	}
 	
+	/**
+	 * Displays window for output 
+	 */
 	public void getOutputFile() {
 		JButton openFile, browseFile;
 		JPanel northPanel = new JPanel();
@@ -472,6 +481,10 @@ public class WelcomeGUI extends JFrame{
 	}});
 }
 
+	/**
+	 * Closes a window (Input or Output)
+	 * @param window Window to be closed (Input or Output)
+	 */
 public void closeWindow(String window){
 	
 	if (window.equals("input")){

@@ -35,55 +35,92 @@ public class Manager {
 	public Manager(String input) {
 		inputFile = input;
 	}
-	
-	public static void main(String[] args) throws IOException {
+	/**
+	 * Main method
+	 * @param args
+	 */
+	public static void main(String[] args) {
 
 		setList();
 		showGUI();
 		
 	}
-	
+	/**
+	 * Initialises list of competitors
+	 */
 	public static void setList() {
 
 		  list = new CompetitorList(competitors);
 	}
-	
+	/**
+	 * Gets current type of competition
+	 * @return Competition type
+	 */
 	public static String getType() {
 		return type;
 	}
-	
+	/**
+	 * Sets Welcome GUI
+	 * @param g Welcome GUI
+	 */
 	public static void setGui(WelcomeGUI g) {
 		gui = g;
 	}
-	
+	/**
+	 * Sets current competition type to be worked with
+	 * @param t Type of competition
+	 */
 	public static void setType(String t) {
 		type = t;
 	}
-	
-	public static CompetitionListGUI setListGUI() {
-		return compList;
-	}
-	
+	/**
+	 * Method to set 
+	 * @return
+	 */
+	//public static CompetitionListGUI setListGUI() {
+		//return compList;
+	//}
+	/**
+	 * Method to get the List GUI
+	 * @return GUI of competitionList
+	 */
 	public static CompetitionListGUI getListGUI() {
 		return compList;
 	}
 	
+	/**
+	 * Method to get the name of input file
+	 * @return input file name
+	 */
 	public static String getFileIn() {
 		return fileIn;
 	}
-	
+	/**
+	 * Gets the name of the file to be read
+	 * @return
+	 */
 	public static String getFileOut() {
 		return fileOut;
 	}
 	
+	/**
+	 * Gets main GUI window
+	 * @return Main GUI window
+	 */
 	public static WelcomeGUI getFileGUI() {
 		return gui;
 	}
-		
+	/**
+	 * Sets the file name to be read from
+	 * @param fileName Name of output file
+	 */
 	public static void setFileIn(String fileName) {
 		fileIn = fileName;
 	}
-	
+	/**
+	 * Sets the file name to be saved
+	 * @param fileName Name of output file
+	 */
 	public static void setFileOut(String fileName) {
 		fileOut = fileName;
 	}
@@ -93,18 +130,17 @@ public class Manager {
 	 * Method to get the name of input file
 	 * @return input file name
 	 */
-	public static String getInputName() {
-		return inputFile;
-	}
+	//public static String getInputName() {
+		//return inputFile;
+	//}
 	
-	
+	/**
+	 * Sets and display main Welcome GUI window
+	 */
 	public static void showGUI() {
 		gui = new WelcomeGUI();
 		gui.displayWelcome();
 		setGui(gui);
-		//while(fileOut == null) { //loops until valid CN is provided
-
-			//}
 	}
 	
 	/** Method to read file and return a competitor list.
@@ -115,7 +151,7 @@ public class Manager {
 	 */
 	public static boolean getFile()
 	  { 
-	  File file = new File(fileIn);
+		File file = new File(fileIn);
 	  boolean filefail = false;
 
 	try {

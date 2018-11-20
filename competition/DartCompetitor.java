@@ -32,14 +32,19 @@ public class DartCompetitor extends Competitor{
 		}
 				
 	}
-	
-		//method
-		
+		/**
+		 * Method to get age of Commpetitor
+		 * @return
+		 */
 		public  int getAge() {
 			return age;
 		}
 		
 
+		/**
+		 * Method to get Full Details of Commpetitor
+		 * @return
+		 */
 		public String getFullDetails()  {
 			
 			int[] cscores = super.getScoreArray();
@@ -51,8 +56,11 @@ public class DartCompetitor extends Competitor{
 		public  String getShortDetails() {
 			return String.format(" CN %d (%s) has Overall score %2.2f", super.competitorNumber,super.competitorName.getInitials(),getOverallScore());}
 		
-		
-		// Main Method
+
+		/**
+		 * Method to get Overall Score
+		 * @return Overall 
+		 */
 		@Override
 		public double getOverallScore() {
 			double w = 1.0/levelWeight;
