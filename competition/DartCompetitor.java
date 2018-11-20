@@ -11,7 +11,6 @@ public class DartCompetitor extends Competitor{
 	private int age;	
 	private int competitorNumber;
 	private Name competitorName;
-	private int[] score;
 	private String level;
 	private int levelWeight = 3;
 	//Constructor
@@ -50,13 +49,13 @@ public class DartCompetitor extends Competitor{
 			}
 			
 		public  String getShortDetails() {
-			return " CN" + super.competitorNumber + " has Overall score 5" + "stands for Competitor's Number";}
+			return String.format(" CN %d (%s) has Overall score %2.2f", super.competitorNumber,super.competitorName.getInitials(),getOverallScore());}
 		
 		
 		// Main Method
 		@Override
 		public double getOverallScore() {
-			double w = 1/levelWeight;
+			double w = 1.0/levelWeight;
 			int sumall = 0;
 			for(int i=0; i< 4; ++i) {
 				sumall = sumall + super.score[i];
