@@ -97,13 +97,10 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 	}
 
 	private void searchCompetitor(String text) {
-
-		String search_text = text.trim();
-		if (search_text.length() > 0) {
-			Competitor comp = comptlist.getCompetitorName(search_text);
-			if (comp != null) {
-				ArrayList<Competitor> al = new ArrayList<Competitor>();
-				al.add(comp);
+		ArrayList<Competitor> al = new ArrayList<Competitor>();
+		try {
+			al = comptlist.getCompetitorCN(Integer.parseInt(text));
+			if (!al.isEmpty()) {
 				centerPanel.removeAll();
 				centerPanel.repaint();
 				centerPanel.revalidate();
@@ -125,7 +122,38 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 				// table.setText("competitor not found");
 			
 			}
+			
+		}catch(NumberFormatException x)
+		{
+			String search_text = text.trim();
+			if (search_text.length() > 0) {
+				al = comptlist.getCompetitorName(search_text);
+				
+				if (!al.isEmpty()) {
+					centerPanel.removeAll();
+					centerPanel.repaint();
+					centerPanel.revalidate();
+					frame.add(setupCenterPanel(al));
+					frame.setSize(600, 200);
+
+					centerPanel.repaint();
+					centerPanel.revalidate();
+
+				} else {
+					centerPanel.removeAll();
+					centerPanel.repaint();
+					centerPanel.revalidate();
+					JLabel alert = new JLabel("competitor not found");
+					centerPanel.add(alert);
+					centerPanel.repaint();
+					centerPanel.revalidate();
+					JOptionPane.showMessageDialog(null, "Oops couldn't find competitor!");
+					// table.setText("competitor not found");
+				
+				}
+			}
 		}
+		
 		
 	}
 

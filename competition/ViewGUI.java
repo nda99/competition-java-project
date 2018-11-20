@@ -29,11 +29,7 @@ public class ViewGUI extends JFrame implements ActionListener{
 
 	public ViewGUI(Competitor c)
 	{
-		compt = c;
-		
-		
-		
-		
+		compt = c;	
 	}
 	
 
