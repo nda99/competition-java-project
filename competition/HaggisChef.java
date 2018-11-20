@@ -115,5 +115,11 @@ public class HaggisChef extends Competitor {
 	public String getDish() {
 		return dish;
 	}
+	/**Simple method to return the extra attribute for the competitor
+	 * @return String with extra attribute used**/
+	public String getAttribute()
+	{
+		return dish;
+	}
 
 }

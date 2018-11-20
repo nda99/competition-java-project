@@ -89,7 +89,7 @@ public class CompetitorList {
 	}
 
 	/**
-	 * Method to get competior of choice based on his/her Competitor Name
+	 * Method to get competitor of choice based on his/her Competitor Name
 	 **/
 	public ArrayList<Competitor> getCompetitorName(String name) {
 
@@ -107,7 +107,19 @@ public class CompetitorList {
 		return result;
 
 	}
-
+	/**Method to filter the list by chosen type
+	 * @return arraylist of the chosen type**/
+	public ArrayList<Competitor> filterByType(String type){
+		ArrayList<Competitor> temperoryList = new ArrayList<Competitor>();
+		for(Competitor c : getCompetitorList())
+		{
+			if(c.getCompetitorType() == type)
+			{
+				temperoryList.add(c);
+			}
+		}
+		return temperoryList;
+	}
 	/**
 	 * Method which loops through list to find competitor with HIGHEST SCORE.
 	 * 

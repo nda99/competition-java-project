@@ -128,12 +128,16 @@ public abstract class Competitor {
 		this.level = level;
 	}
 	
+	/** Method to return the competitor type
+	 * @return String which is the type
+	 * **/
 	public String getCompetitorType()
 	{
 		
-
 		return this.type;
 	}
+	public abstract String getAttribute();
+	
 	
 	
 

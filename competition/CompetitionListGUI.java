@@ -25,11 +25,15 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 	JRadioButton sortByCN = new JRadioButton("CN");
 	JRadioButton sortByName = new JRadioButton("Name");
 	JRadioButton sortByScores = new JRadioButton("Score");
-	ButtonGroup filter = new ButtonGroup();
+	ButtonGroup sort = new ButtonGroup();
 	CompetitorList comptlist;
 	JFrame frame = new JFrame();
 	JPanel centerPanel = new JPanel();
 	JPanel northPanel = new JPanel();
+	JScrollPane scroll = new JScrollPane(centerPanel);
+	String[] types= {"All","Hockey","Haggis","Baseball","Dart"};
+	JComboBox<String> filter = new JComboBox<String>(types);
+
 
 	/** Constructor to receive the list **/
 	public CompetitionListGUI(CompetitorList c) {
@@ -58,30 +62,57 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 			}
 			
 		}
-		else if ((JRadioButton)event.getSource() == sortByCN)
+		else if (event.getSource() == sortByCN)
 		{
 			System.out.println("radio button clicked");
 			sortCN();
 		}
-		else if ((JRadioButton)event.getSource() == sortByName)
+		else if (event.getSource() == sortByName)
 		{
 			System.out.println("radio button clicked");
 
 			sortNames();
 		}
-		else if ((JRadioButton)event.getSource() == sortByScores)
+		else if (event.getSource() == sortByScores)
 		{
 			System.out.println("radio button clicked");
 
 			sortScores();
 		}
-		else if ((JTextField)event.getSource()== searchtext)
+		else if (event.getSource()== searchtext)
 		{
 			searchCompetitor(searchtext.getText());
+		}
+		else if(event.getSource() == filter)
+		{
+			filterTheList(filter.getSelectedItem().toString());
+			System.out.println(filter.getSelectedItem());
 		}
 		
 	}
 	
+
+	private void filterTheList(String selectedItem) {
+		ArrayList<Competitor> filtered =comptlist.filterByType(selectedItem);
+		if(!filtered.isEmpty())
+		{
+			centerPanel.removeAll();
+			centerPanel.repaint();
+			centerPanel.revalidate();
+			frame.add(setupCenterPanel(filtered));
+
+			centerPanel.repaint();
+			centerPanel.revalidate();
+		}
+		else
+		{
+			JOptionPane.showMessageDialog(null, "Oops couldn't filter the list by "+selectedItem+
+					". You did not upload it!");
+		}
+		
+		
+		
+	}
 
 	private void sortScores() {
 		System.out.print("sorting scores");
@@ -144,7 +175,6 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 				centerPanel.repaint();
 				centerPanel.revalidate();
 				JOptionPane.showMessageDialog(null, "Oops couldn't find competitor!");
-				// table.setText("competitor not found");
 			
 			}
 			
@@ -192,19 +222,20 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 		searchBtn.addActionListener(this);
 		northPanel.add(searchtext);
 		northPanel.add(searchBtn);
-		JLabel filterBy = new JLabel("Filter by:");
-		northPanel.add(filterBy);
+		JLabel sortBy = new JLabel("Sort by:");
+		northPanel.add(sortBy);
 		sortByCN.addActionListener(this);
 		sortByName.addActionListener(this);
 		sortByScores.addActionListener(this);
-		filter.add(sortByCN);
-		filter.add(sortByName);
-		filter.add(sortByScores);
+		sort.add(sortByCN);
+		sort.add(sortByName);
+		sort.add(sortByScores);
 		sortByCN.setSelected(true);
 		northPanel.add(sortByCN);
 		northPanel.add(sortByName);
 		northPanel.add(sortByScores);
-
+		filter.addActionListener(this);
+		northPanel.add(filter);
 		return northPanel;
 	}
 
@@ -212,7 +243,7 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 	 * Method to set the blocks inside center panel
 	 **/
 	private JPanel setupCenterPanel(ArrayList<Competitor> comptList) {
-		centerPanel.setLayout(new GridLayout(0, 7));
+		centerPanel.setLayout(new GridLayout(0, 8));
 		scrollList.add(centerPanel);
 		if(comptlist.equals(null))
 		{
@@ -249,14 +280,14 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 			JLabel name = new JLabel("" + c.competitorName.getFullName(), JLabel.CENTER);
 			JLabel type = new JLabel(c.getCompetitorType(), JLabel.CENTER);
 			JLabel level = new JLabel(c.level, JLabel.CENTER);
-			JLabel score = new JLabel("" + c.getOverallScore(), JLabel.CENTER);
-			// JLabel extra = new JLabel(c.getCompetitorType(),JLabel.CENTER);
+			JLabel score = new JLabel("" +String.format("%10.1f",  c.getOverallScore()), JLabel.CENTER);
+			 JLabel extra = new JLabel(c.getAttribute(),JLabel.CENTER);
 			centerPanel.add(no);
 			centerPanel.add(name);
 			centerPanel.add(type);
 			centerPanel.add(level);
 			centerPanel.add(score);
-			// myPanel.add(extra);
+			centerPanel.add(extra);
 			edit = new JButton("Edit");
 			edit.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -287,6 +318,8 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 		frame.setTitle("Competition App");
 		frame.setVisible(true);
 		frame.setLayout(new BorderLayout(10, 10));
+        frame.add(scroll, BorderLayout.CENTER);
+		frame.setVisible(true);
 
 		JLabel title;
 		title = new JLabel("Competition List", JLabel.CENTER);
@@ -296,7 +329,7 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 		frame.add(title, BorderLayout.NORTH);
 		frame.add(setupNorthPanel(), BorderLayout.NORTH);
 		frame.add(setupCenterPanel(comptlist.getCompetitorList()), BorderLayout.CENTER);
-		frame.setSize(500, 500);
+		frame.setSize(700, 700);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 

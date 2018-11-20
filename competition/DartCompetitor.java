@@ -81,6 +81,9 @@ public class DartCompetitor extends Competitor{
 	//return 	super.getCompetitorName()+ " is a level " + level + " aged " + age + " has a score of: " + wscore;
 				
 	//}
-
+		public String getAttribute()
+		{
+			return ""+age;
+		}
 	}
 

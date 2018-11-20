@@ -91,5 +91,9 @@ public class HockeyCompetitor extends Competitor{
 	{
 		return country;
 	}
+	public String getAttribute()
+	{
+		return this.country;
+	}
 	
 }
