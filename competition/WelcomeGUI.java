@@ -138,6 +138,8 @@ public class WelcomeGUI extends JFrame{
 		      }
 		    });
 		
+		// Drop down menu listeners
+		
 		baseball.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 	    		welcomeFrame.dispose();
@@ -152,7 +154,6 @@ public class WelcomeGUI extends JFrame{
 	    		welcomeFrame.dispose();
 		    	Manager.setType("Dart");
 		    	buildInfoPanel(welcomeFrame);
-		    	//welcomeFrame.setVisible(false); 
 		      }
 		    });
 		
@@ -162,7 +163,6 @@ public class WelcomeGUI extends JFrame{
 	    		welcomeFrame.dispose();
 		    	Manager.setType("Hockey");
 		    	buildInfoPanel(welcomeFrame);
-		    	//welcomeFrame.setVisible(false); 
 		      }
 		    });
 		
@@ -175,6 +175,7 @@ public class WelcomeGUI extends JFrame{
 		      }
 		    });
 		
+		// Choose input file listener
 		
 		chooseInput.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
@@ -190,6 +191,7 @@ public class WelcomeGUI extends JFrame{
 	      }
 	    });
 		
+		// Choose output file listener
 		chooseOutput.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	if (Manager.getFileIn()==null) {
@@ -202,6 +204,7 @@ public class WelcomeGUI extends JFrame{
 		      }
 		    });
 		
+		// See short details listener
 		seeDetails.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	if (Manager.getFileIn()==null) {
@@ -320,8 +323,6 @@ public class WelcomeGUI extends JFrame{
 	inputWindow.add(southPanel,BorderLayout.CENTER);
 
 
-		String searchString = null;
-		
 		openFile.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	
@@ -419,8 +420,6 @@ public class WelcomeGUI extends JFrame{
 	outputWindow.add(northPanel,BorderLayout.SOUTH);
 	outputWindow.add(southPanel,BorderLayout.CENTER);
 
-
-		String searchString = null;
 		
 			openFile.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
