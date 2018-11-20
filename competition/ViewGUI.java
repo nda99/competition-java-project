@@ -9,16 +9,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
+/**@author alaat
+ * **/
 
 public class ViewGUI extends JFrame implements ActionListener{
+	
 	JFrame frame = new JFrame();
 	Competitor compt;
 	JPanel centerPanel=new JPanel();
-	 static JButton edit;
-	 static JButton view;
+	JButton edit;
+	JButton view;
 	JLabel n, s,e,w,c;
-	JTextArea fullDetails = new JTextArea(1,5);
-	JTextArea shortDetails = new  JTextArea(1,5);
+	JTextArea fullDetails = new JTextArea(1,1);
+	JTextArea shortDetails = new  JTextArea(1,1);
     JScrollPane scrollList;
     JScrollPane scrollList2;
 
@@ -26,11 +29,7 @@ public class ViewGUI extends JFrame implements ActionListener{
 
 	public ViewGUI(Competitor c)
 	{
-		compt = c;
-		
-		
-		
-		
+		compt = c;	
 	}
 	
 
@@ -47,7 +46,7 @@ public class ViewGUI extends JFrame implements ActionListener{
 		title = new JLabel("Competitor Details",JLabel.CENTER);
 		Font f = new Font(Font.SANS_SERIF, Font.BOLD, 20); 
 		title.setFont(f);
-		frame.add(title);
+		frame.add(title,BorderLayout.NORTH);
 		frame.pack();
 		frame.setVisible(true);
 		frame.add(setupCenterPanel(compt),BorderLayout.CENTER);
@@ -69,9 +68,11 @@ public class ViewGUI extends JFrame implements ActionListener{
 		fullDetailsHDR.setFont(f);
 		shortDetailsHDR.setFont(f);
 		fullDetails.setFont(f);
+		fullDetails.setBackground(Color.lightGray);
 		fullDetails.setEditable(false);
 		shortDetails.setFont(f);
 		shortDetails.setEditable(false);
+		shortDetails.setBackground(Color.lightGray);
 		centerPanel.add(fullDetailsHDR);
 		scrollList = new JScrollPane(fullDetails);
         centerPanel.add(scrollList,BorderLayout.CENTER);

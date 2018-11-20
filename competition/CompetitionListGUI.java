@@ -1,6 +1,9 @@
 package competition;
 
 import java.awt.BorderLayout;
+/**
+ * @author alaat
+ * **/
 import java.awt.event.*;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -15,7 +18,7 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 	// GUI components
 	static JButton edit;
 	static JButton view;
-	JScrollPane scrollList;
+	JScrollPane scrollList = new JScrollPane();
 	JTextArea table;
 	JTextField searchtext;
 	JButton searchBtn;
@@ -23,7 +26,6 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 	JRadioButton sortByName = new JRadioButton("Name");
 	JRadioButton sortByScores = new JRadioButton("Score");
 	ButtonGroup filter = new ButtonGroup();
-
 	CompetitorList comptlist;
 	JFrame frame = new JFrame();
 	JPanel centerPanel = new JPanel();
@@ -37,8 +39,24 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent event) {
 		if (event.getSource() == searchBtn) {
-			searchCompetitor(searchtext.getText());
-			System.out.println(searchtext.getText());
+			if(searchtext.getText().length()>0)
+			{
+				searchCompetitor(searchtext.getText());
+				System.out.println(searchtext.getText());
+			}
+			else
+			{
+				centerPanel.removeAll();
+				centerPanel.repaint();
+				centerPanel.revalidate();
+				frame.add(setupCenterPanel(comptlist.getCompetitorList()));
+				frame.setSize(500, 500);
+
+				centerPanel.repaint();
+				centerPanel.revalidate();
+
+			}
+			
 		}
 		else if ((JRadioButton)event.getSource() == sortByCN)
 		{
@@ -57,13 +75,22 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 
 			sortScores();
 		}
+		else if ((JTextField)event.getSource()== searchtext)
+		{
+			searchCompetitor(searchtext.getText());
+		}
 		
 	}
 	
 
 	private void sortScores() {
-		/*ArrayList<Competitor> list =comptlist.listByName();
-		setupCenterPanel()*/
+		System.out.print("sorting scores");
+		centerPanel.removeAll();
+		centerPanel.repaint();
+		centerPanel.revalidate();
+		frame.add(setupCenterPanel(comptlist.listByScores()));
+		centerPanel.repaint();
+		centerPanel.revalidate();
 	}
 
 	private void sortNames() {
@@ -84,7 +111,6 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 	private void sortCN()
 	{
 		System.out.print("sorting nos");
-
 		centerPanel.removeAll();
 		centerPanel.repaint();
 		centerPanel.revalidate();
@@ -96,13 +122,10 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 	}
 
 	private void searchCompetitor(String text) {
-
-		String search_text = text.trim();
-		if (search_text.length() > 0) {
-			Competitor comp = comptlist.getCompetitorName(search_text);
-			if (comp != null) {
-				ArrayList<Competitor> al = new ArrayList<Competitor>();
-				al.add(comp);
+		ArrayList<Competitor> al = new ArrayList<Competitor>();
+		try {
+			al = comptlist.getCompetitorCN(Integer.parseInt(text));
+			if (!al.isEmpty()) {
 				centerPanel.removeAll();
 				centerPanel.repaint();
 				centerPanel.revalidate();
@@ -122,9 +145,41 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 				centerPanel.revalidate();
 				JOptionPane.showMessageDialog(null, "Oops couldn't find competitor!");
 				// table.setText("competitor not found");
+			
+			}
+			
+		}catch(NumberFormatException x)
+		{
+			String search_text = text.trim();
+			if (search_text.length() > 0) {
+				al = comptlist.getCompetitorName(search_text);
+				
+				if (!al.isEmpty()) {
+					centerPanel.removeAll();
+					centerPanel.repaint();
+					centerPanel.revalidate();
+					frame.add(setupCenterPanel(al));
+					frame.setSize(600, 200);
+
+					centerPanel.repaint();
+					centerPanel.revalidate();
+
+				} else {
+					centerPanel.removeAll();
+					centerPanel.repaint();
+					centerPanel.revalidate();
+					JLabel alert = new JLabel("competitor not found");
+					centerPanel.add(alert);
+					centerPanel.repaint();
+					centerPanel.revalidate();
+					JOptionPane.showMessageDialog(null, "Oops couldn't find competitor!");
+					// table.setText("competitor not found");
+				
+				}
 			}
 		}
-
+		
+		
 	}
 
 	/**
@@ -141,6 +196,7 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 		northPanel.add(filterBy);
 		sortByCN.addActionListener(this);
 		sortByName.addActionListener(this);
+		sortByScores.addActionListener(this);
 		filter.add(sortByCN);
 		filter.add(sortByName);
 		filter.add(sortByScores);
@@ -156,9 +212,12 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 	 * Method to set the blocks inside center panel
 	 **/
 	private JPanel setupCenterPanel(ArrayList<Competitor> comptList) {
-
-
 		centerPanel.setLayout(new GridLayout(0, 7));
+		scrollList.add(centerPanel);
+		if(comptlist.equals(null))
+		{
+			
+		
 		Font f = new Font(Font.SANS_SERIF, Font.BOLD, 14);
 		JLabel noHDR = new JLabel("No#", JLabel.LEFT);
 		JLabel nameHDR = new JLabel("Name", JLabel.CENTER);
@@ -183,6 +242,8 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 		centerPanel.add(editHDR);
 		centerPanel.add(viewHDR);
 
+		}
+		
 		for (Competitor c : comptList) {
 			JLabel no = new JLabel("" + c.competitorNumber, JLabel.LEFT);
 			JLabel name = new JLabel("" + c.competitorName.getFullName(), JLabel.CENTER);

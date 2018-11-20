@@ -62,21 +62,43 @@ public class CompetitorList {
 		return choice;
 
 	}
-	/** Method to get competior of choice based on his/her Competitor Name
-	 * **/
-	public Competitor getCompetitorName(String name) {
+	
+	/****/
+	public ArrayList<Competitor> getCompetitorCN(int CN) {
 
 		Competitor choice = null;
-
+		ArrayList<Competitor> result = new ArrayList<Competitor>();
+		
 		for (Competitor c : this.competitors) {
-			if (c.getCompetitorName() == name) {
+			if (c.getCompetitorNumber() == CN) {
 				choice = c;
-				break;
+				result.add(choice);
 			}
 		}
 
+		
 
-		return choice;
+		return result;
+
+	}
+	/** Method to get competior of choice based on his/her Competitor Name
+	 * **/
+	public ArrayList<Competitor> getCompetitorName(String name) {
+
+		Competitor choice = null;
+		ArrayList<Competitor> result = new ArrayList<Competitor>();
+
+		for (Competitor c : this.competitors) {
+			if (c.getCompetitorName().contains(name) == true)
+			{
+				choice = c;
+				result.add(choice);
+			}
+			
+		}
+
+
+		return result;
 
 	}
 	
@@ -315,11 +337,19 @@ public class CompetitorList {
    }
    
    /**
-    * @return All the competitors details in id order
-    */
+    * @return All the competitors details ordered by competitor competitor 
+    *     */
    public  ArrayList<Competitor> listByCN()
    {
    	Collections.sort(this.competitors,new CompetitorNoComparator());
+   	return listDetails();
+   }
+   /**
+    * @return All the competitors details ordered by competitor competitor 
+    *     */
+   public  ArrayList<Competitor> listByScores()
+   {
+   	Collections.sort(this.competitors,new CompetitorScoresComparator());
    	return listDetails();
    }
 
