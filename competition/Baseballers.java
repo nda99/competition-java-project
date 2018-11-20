@@ -11,8 +11,8 @@ public class Baseballers extends Competitor {
 	private String FullDetails;
 	private String ShortDetails;
 
-	public Baseballers(int competitorNumber, Name competitorName, String level, int[] score,  String nationality, int age) {
-		super(competitorNumber,competitorName,score,level);
+	public Baseballers(int competitorNumber, Name competitorName, String level, int[] score,  String nationality, int age, String type) {
+		super(competitorNumber,competitorName,score,level,type);
 		this.competitorNumber = competitorNumber;
 		this.competitorName = competitorName;
 		this.level = level;

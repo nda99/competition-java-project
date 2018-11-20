@@ -1,6 +1,9 @@
 package competition;
 
 import java.awt.BorderLayout;
+/**
+ * @author alaat
+ * **/
 import java.awt.event.*;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -15,7 +18,7 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 	// GUI components
 	static JButton edit;
 	static JButton view;
-	JScrollPane scrollList;
+	JScrollPane scrollList = new JScrollPane();
 	JTextArea table;
 	JTextField searchtext;
 	JButton searchBtn;
@@ -23,7 +26,6 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 	JRadioButton sortByName = new JRadioButton("Name");
 	JRadioButton sortByScores = new JRadioButton("Score");
 	ButtonGroup filter = new ButtonGroup();
-
 	CompetitorList comptlist;
 	JFrame frame = new JFrame();
 	JPanel centerPanel = new JPanel();
@@ -84,7 +86,6 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 	private void sortCN()
 	{
 		System.out.print("sorting nos");
-
 		centerPanel.removeAll();
 		centerPanel.repaint();
 		centerPanel.revalidate();
@@ -122,9 +123,10 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 				centerPanel.revalidate();
 				JOptionPane.showMessageDialog(null, "Oops couldn't find competitor!");
 				// table.setText("competitor not found");
+			
 			}
 		}
-
+		
 	}
 
 	/**
@@ -156,9 +158,12 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 	 * Method to set the blocks inside center panel
 	 **/
 	private JPanel setupCenterPanel(ArrayList<Competitor> comptList) {
-
-
 		centerPanel.setLayout(new GridLayout(0, 7));
+		scrollList.add(centerPanel);
+		if(comptlist.equals(null))
+		{
+			
+		
 		Font f = new Font(Font.SANS_SERIF, Font.BOLD, 14);
 		JLabel noHDR = new JLabel("No#", JLabel.LEFT);
 		JLabel nameHDR = new JLabel("Name", JLabel.CENTER);
@@ -183,6 +188,8 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 		centerPanel.add(editHDR);
 		centerPanel.add(viewHDR);
 
+		}
+		
 		for (Competitor c : comptList) {
 			JLabel no = new JLabel("" + c.competitorNumber, JLabel.LEFT);
 			JLabel name = new JLabel("" + c.competitorName.getFullName(), JLabel.CENTER);

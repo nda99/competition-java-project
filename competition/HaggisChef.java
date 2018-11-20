@@ -26,8 +26,8 @@ public class HaggisChef extends Competitor{
 	 * @param dish String containing the name of dish prepared by competitor
 	 * @see HaggisChef
 	 */
-	public HaggisChef(int competitorNumber, Name competitorName, int[] score, String level, String dish) {
-		super(competitorNumber, competitorName, score, level);
+	public HaggisChef(int competitorNumber, Name competitorName, int[] score, String level, String dish,String type) {
+		super(competitorNumber, competitorName, score, level,type);
 		this.competitorNumber = competitorNumber;
 		this.competitorName = competitorName;
 		this.score = Arrays.copyOf(score, score.length); //prevents modification of values in array

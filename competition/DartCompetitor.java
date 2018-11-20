@@ -15,9 +15,9 @@ public class DartCompetitor extends Competitor{
 	private String level;
 	private int levelWeight = 3;
 	//Constructor
-	public DartCompetitor(int competitorNumber, Name competitorName,  String level, int[] score, int age) 
+	public DartCompetitor(int competitorNumber, Name competitorName,  String level, int[] score, int age,String type) 
 	{
-		super(competitorNumber,competitorName,score,level);
+		super(competitorNumber,competitorName,score,level,type);
 		
 		this.competitorNumber = competitorNumber;
 		this.competitorName = competitorName;

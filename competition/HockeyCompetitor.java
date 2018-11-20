@@ -4,9 +4,9 @@ public class HockeyCompetitor extends Competitor{
 
 	private String country;
 	
-	public HockeyCompetitor(int comptNo,Name comptName,String comptLevel,int[] score,String nationality) {
+	public HockeyCompetitor(int comptNo,Name comptName,String comptLevel,int[] score,String nationality,String type) {
 		
-		super(comptNo,comptName,score,comptLevel);
+		super(comptNo,comptName,score,comptLevel,type);
 		this.country=nationality;
 	}
 	

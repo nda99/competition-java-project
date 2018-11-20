@@ -182,18 +182,18 @@ public class Manager {
 		  }
 		  //String[] A = inputFile.split("\\\\");
 		  if (getType().equals("Haggis")) {
-		  list.add( new HaggisChef(CN, name, score, level, attribute)); 
+		  list.add( new HaggisChef(CN, name, score, level, attribute,type)); 
 		  }
 		  else if (getType().equals("Hockey")){
-		  list.add( new HockeyCompetitor(CN, name, level, score, attribute));
+		  list.add( new HockeyCompetitor(CN, name, level, score, attribute,type));
 		  }
 		  
 		  else if ((getType().equals("Dart"))){
-			  list.add( new DartCompetitor(CN+200, name, level, score, CN-50));
+			  list.add( new DartCompetitor(CN+200, name, level, score, CN-50,type));
 		  }
 		  
 		  else {
-			  list.add( new Baseballers(CN+300, name, level, score, attribute, CN-50));
+			  list.add( new Baseballers(CN+300, name, level, score, attribute, CN-50,type));
 		  }
 	  }
 	} catch (FileNotFoundException e) {

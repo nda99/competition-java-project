@@ -7,6 +7,7 @@ public abstract class Competitor {
 	protected Name competitorName;
 	protected int[] score;
 	protected String level;
+	protected String type;
 	
 	
 	
@@ -18,12 +19,13 @@ public abstract class Competitor {
 	 * @param level String of the competitor's level
 	 * @see Competitor
 	 */
-	public Competitor (int competitorNumber, Name competitorName, int[] score, String level)
+	public Competitor (int competitorNumber, Name competitorName, int[] score, String level,String type)
 	{
 		this.competitorNumber = competitorNumber;
 		this.competitorName = competitorName;
 		this.score = score.clone();
 		this.level = level;
+		this.type = type;
 	}
 	
 	
@@ -128,10 +130,9 @@ public abstract class Competitor {
 	
 	public String getCompetitorType()
 	{
-		String type = Manager.getType();
-		//String type = "Hockey";
+		
 
-		return type;
+		return this.type;
 	}
 	
 	
