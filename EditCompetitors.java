@@ -1,28 +1,36 @@
-
+import java.io.*; 
 import javax.swing.*;
 import java.awt.event.*;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 
+
+/**
+ * @author Plamen
+ *
+ */
+/**
+ * @author Plamen
+ *
+ */
 public class EditCompetitors extends JFrame  implements ActionListener{
-	
+
 	JPanel pnl = new JPanel();
-	
+
 	String[] box = {"Hockey", "HaggisCheff", "Baseball","Darts"};
-	String[] style = {"<Please Select>","100", "102", "302","304","404","301","307","309","304","308"};
+	String[] style = {"<Please Select>"};
 	String[] stuff = {"Please choose a competitor number to edit. "};
-	
+
 	JCheckBox check1 = new JCheckBox(box[0]);
 	JCheckBox check2 = new JCheckBox(box[1],true);
 	JCheckBox check3 = new JCheckBox(box[2]);
 	JCheckBox check4 = new JCheckBox(box[3]);
-	
+
 	JButton btn = new JButton("Ok");
-	
+
+	JLabel lbl = new JLabel("Select someone");
+
 	JComboBox<String> box1 = new JComboBox<String>(style);
 	JList<String> lst1 = new JList<String>(stuff);
-	
+
 	public EditCompetitors() {
 		super("Competitors Editor");
 		setSize(510, 221);
@@ -33,27 +41,70 @@ public class EditCompetitors extends JFrame  implements ActionListener{
 		pnl.add(lst1);
 		box1.setSelectedIndex(0);
 		pnl.add(box1);
-	    pnl.add(btn);
+		pnl.add(btn);
 		btn.addActionListener(this);
+
+		pnl.add(check1);
+		pnl.add(check2);
+		pnl.add(check3);
+		pnl.add(check4);
 		
-	
-			pnl.add(check1);
-			pnl.add(check2);
-			pnl.add(check3);
-			pnl.add(check4);
+		pnl.add(lbl);
 	}
-	
+
 	public void actionPerformed(ActionEvent event){	
 		if(event.getSource()==btn){
 			int n = JOptionPane.showConfirmDialog(this, "Are you sure? ", "Confirmation Dialog", JOptionPane.YES_NO_CANCEL_OPTION);
+			if(n==0){
+				int index = box1.getSelectedIndex();
+				getInfos(index);
+			}
 		}}
-	
-//	public static void main(String[] args){
-	
+
+	public void getInfos(int index) {
+		try {
+			FileReader f = new FileReader("CList.csv");
+			BufferedReader buf = new BufferedReader(f);
+			String l = "";
+			for(int i = 0; i < index; i++)
+				buf.readLine();
+			l = buf.readLine();
+			lbl.setText(l);
+			
+			buf.close();
+		}
+		catch(IOException e)
+		{
+			System.out.println("A read error occured.");
+			e.printStackTrace();
+		}
+	}
+
+	public void init(){
+		try {
+			FileReader f = new FileReader("CList.csv");
+			BufferedReader buf = new BufferedReader(f);
+			String l = "";
+			while ((l = buf.readLine())!=null){
+				//System.out.println(l);
+				String[] words = l.split(",");
+				box1.addItem(words[0]);
+			}
+			buf.close();
+		}
+		catch(IOException e)
+		{
+			System.out.println("A read error occured.");
+			e.printStackTrace();
+		}
+	}
+
+
+	public static void main(String[] args){
+
 		EditCompetitors gui = new EditCompetitors();
-		
-		
-		 
-		
-	//}
+
+		gui.init();
+
+	}
 }
