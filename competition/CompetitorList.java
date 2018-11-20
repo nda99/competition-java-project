@@ -200,8 +200,7 @@ public class CompetitorList {
 	public String getHeader() {
 		
 		String header = null;
-		header = String.format("--------\nREPORT:\n%20.50s %10.10s %18.10s %18.30s %26.6s %15.8s\n", "Competitor", "Type", "Level", "Dish", "Scores",
-				"Overall");
+		header = String.format("--------\nREPORT:\n%20.50s %17.10s %11.10s      %18.30s %28.6s %24.8s \n", "Competitor", "Type", "Level", "Attribute", "Scores","Overall");
 //		if ((Manager.getType().equals("Haggis"))) {
 //			header = String.format("--------\nREPORT:\n%20.50s %18.10s %18.30s %26.6s %15.8s\n", "Competitor", "Level", "Dish", "Scores",
 //					"Overall");
@@ -237,16 +236,16 @@ public class CompetitorList {
 	 * @see getStats
 	 */
 	public String getReport() {
-		String rep = getHeader(); String.format("--------\nREPORT:\n%20.50s %18.10s %18.30s %26.6s %15.8s\n", "Competitor", "Level", "Dish", "Scores",
-				"Overall");
-
-		for (Competitor c : competitors) {
+		String rep = getHeader(); 
+		ArrayList<Competitor> cncomp = listByCN();
+		
+		for (Competitor c : cncomp) {
 			if (c instanceof HaggisChef) {
 			// rep = String.format(rep + "%1.20s %10.10s %2.5d %2.5d %2.5d %2.5d %2.5d
 			// %10.8f\n",h.getName(),h.getLevel(),h.getScoreArray()[0],h.getScoreArray()[1],h.getScoreArray()[2],h.getScoreArray()[3],h.getScoreArray()[4],h.getOverallScore());
 
-			rep = String.format(rep + "%3.3s %25.25s %10.10s %10.10s %31.31s %15.20s %10.1f\n", c.getCompetitorNumber(), c.getCompetitorName(),"Haggis",
-					c.getLevel(), ((HaggisChef) c).getDish(),
+				rep = String.format(rep + "%3.3s %25.25s %10.10s     %10.10s %10.10s %28.31s %15.20s %10.1f\n", c.getCompetitorNumber(), c.getCompetitorName(),"Haggis",
+					c.getLevel(), "Dish: ", ((HaggisChef) c).getDish(),
 					Arrays.toString(c.getScoreArray()).replace("[", "").replace("]", "").replace(",", " "),
 					c.getOverallScore());
 			}
@@ -255,8 +254,8 @@ public class CompetitorList {
 				// rep = String.format(rep + "%1.20s %10.10s %2.5d %2.5d %2.5d %2.5d %2.5d
 				// %10.8f\n",h.getName(),h.getLevel(),h.getScoreArray()[0],h.getScoreArray()[1],h.getScoreArray()[2],h.getScoreArray()[3],h.getScoreArray()[4],h.getOverallScore());
 
-				rep = String.format(rep + "%3.3s %25.25s %10.10s %10.10s %31.31s %15.20s %10.1f\n", c.getCompetitorNumber(), c.getCompetitorName(),"Hockey",
-						c.getLevel(), ((HockeyCompetitor) c).getNationality(),
+				rep = String.format(rep + "%3.3s %25.25s %10.10s     %10.10s %10.10s %28.31s %15.20s %10.1f\n", c.getCompetitorNumber(), c.getCompetitorName(),"Hockey",
+						c.getLevel(), "Country: ", ((HockeyCompetitor) c).getNationality(),
 						Arrays.toString(c.getScoreArray()).replace("[", "").replace("]", "").replace(",", " "),
 						c.getOverallScore());
 				}
@@ -264,16 +263,29 @@ public class CompetitorList {
 				// rep = String.format(rep + "%1.20s %10.10s %2.5d %2.5d %2.5d %2.5d %2.5d
 				// %10.8f\n",h.getName(),h.getLevel(),h.getScoreArray()[0],h.getScoreArray()[1],h.getScoreArray()[2],h.getScoreArray()[3],h.getScoreArray()[4],h.getOverallScore());
 
-				rep = String.format(rep + "%3.3s %25.25s %10.10s %10.10s %31.31s %15.20s %10.1f\n", c.getCompetitorNumber(), c.getCompetitorName(),"Baseball",
-						c.getLevel(), ((Baseballers) c).getNationality(),
+				rep = String.format(rep + "%3.3s %25.25s %10.10s     %10.10s %10.10s %28.31s %15.20s %10.1f\n", c.getCompetitorNumber(), c.getCompetitorName(),"Baseball",
+						c.getLevel(), "Country: " + ((Baseballers) c).getNationality(),
 						Arrays.toString(c.getScoreArray()).replace("[", "").replace("]", "").replace(",", " "),
 						c.getOverallScore());
 				}
 
+			if (c instanceof DartCompetitor) {
+				// rep = String.format(rep + "%1.20s %10.10s %2.5d %2.5d %2.5d %2.5d %2.5d
+				// %10.8f\n",h.getName(),h.getLevel(),h.getScoreArray()[0],h.getScoreArray()[1],h.getScoreArray()[2],h.getScoreArray()[3],h.getScoreArray()[4],h.getOverallScore());
+
+				rep = String.format(rep + "%3.3s %25.25s %10.10s     %10.10s Age: %28.31d %15.20s %10.1f\n", c.getCompetitorNumber(), c.getCompetitorName(),"Baseball",
+						c.getLevel(), "Age: " + (((DartCompetitor) c).getAge()),
+						Arrays.toString(c.getScoreArray()).replace("[", "").replace("]", "").replace(",", " "),
+						c.getOverallScore());
+				}
 		}
 		return rep;
 	}
 	
+	/**
+	 * Method to append a new competitor to existing list
+	 * @param c Competitor to be added
+	 */
 	public void add(Competitor c) {
 		this.competitors.add(c);
 	}

@@ -35,7 +35,7 @@ public class DartCompetitor extends Competitor{
 	
 		//method
 		
-		public  int getage() {
+		public  int getAge() {
 			return age;
 		}
 		
