@@ -39,8 +39,24 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent event) {
 		if (event.getSource() == searchBtn) {
-			searchCompetitor(searchtext.getText());
-			System.out.println(searchtext.getText());
+			if(searchtext.getText().length()>0)
+			{
+				searchCompetitor(searchtext.getText());
+				System.out.println(searchtext.getText());
+			}
+			else
+			{
+				centerPanel.removeAll();
+				centerPanel.repaint();
+				centerPanel.revalidate();
+				frame.add(setupCenterPanel(comptlist.getCompetitorList()));
+				frame.setSize(500, 500);
+
+				centerPanel.repaint();
+				centerPanel.revalidate();
+
+			}
+			
 		}
 		else if ((JRadioButton)event.getSource() == sortByCN)
 		{
@@ -58,6 +74,10 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 			System.out.println("radio button clicked");
 
 			sortScores();
+		}
+		else if ((JTextField)event.getSource()== searchtext)
+		{
+			searchCompetitor(searchtext.getText());
 		}
 		
 	}
