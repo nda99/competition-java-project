@@ -325,11 +325,19 @@ public class CompetitorList {
    }
    
    /**
-    * @return All the competitors details in id order
-    */
+    * @return All the competitors details ordered by competitor competitor 
+    *     */
    public  ArrayList<Competitor> listByCN()
    {
    	Collections.sort(this.competitors,new CompetitorNoComparator());
+   	return listDetails();
+   }
+   /**
+    * @return All the competitors details ordered by competitor competitor 
+    *     */
+   public  ArrayList<Competitor> listByScores()
+   {
+   	Collections.sort(this.competitors,new CompetitorScoresComparator());
    	return listDetails();
    }
 

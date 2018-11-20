@@ -84,8 +84,13 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 	
 
 	private void sortScores() {
-		/*ArrayList<Competitor> list =comptlist.listByName();
-		setupCenterPanel()*/
+		System.out.print("sorting scores");
+		centerPanel.removeAll();
+		centerPanel.repaint();
+		centerPanel.revalidate();
+		frame.add(setupCenterPanel(comptlist.listByScores()));
+		centerPanel.repaint();
+		centerPanel.revalidate();
 	}
 
 	private void sortNames() {
@@ -191,6 +196,7 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 		northPanel.add(filterBy);
 		sortByCN.addActionListener(this);
 		sortByName.addActionListener(this);
+		sortByScores.addActionListener(this);
 		filter.add(sortByCN);
 		filter.add(sortByName);
 		filter.add(sortByScores);
