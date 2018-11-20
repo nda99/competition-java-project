@@ -1,0 +1,1 @@
+John	G	Owona	24	2	4	6	5	3	4\BertrandD	Lagarde	32	3	3	2	4	2	2\Mary	A	Essome	40	3	3	3	4	5	4\Bakary	B	Mohammed25	4	5	5	5	5	4\Lewis	A	McLellan22	3	5	5	5	4	2\Zachary	J	Thomson	30	3	3	3	3	4	4\Guy	F	Tchappi	35	4	4	4	5	2	2\Herve	D	Nokam	37	4	2	2	3	3	4\Olivier	T	Ouaffo	40	4	5	5	5	5	4\Armand	N	Tene	45	4	5	5	5	5	4\
