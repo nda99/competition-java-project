@@ -17,8 +17,8 @@ public class ViewGUI extends JFrame implements ActionListener{
 	 static JButton edit;
 	 static JButton view;
 	JLabel n, s,e,w,c;
-	JTextArea fullDetails = new JTextArea(3,5);
-	JTextArea shortDetails = new  JTextArea(3,5);
+	JTextArea fullDetails = new JTextArea(1,5);
+	JTextArea shortDetails = new  JTextArea(1,5);
     JScrollPane scrollList;
     JScrollPane scrollList2;
 
@@ -27,10 +27,22 @@ public class ViewGUI extends JFrame implements ActionListener{
 	public ViewGUI(Competitor c)
 	{
 		compt = c;
-		frame.setLayout(new BorderLayout(100,100));
-		frame.setSize(800,900);
-		frame.setLocation(100, 100);
+		
+		
+		
+		
+	}
+	
+
+
+	
+	public void setupGUI() {
+	
+		frame.setPreferredSize(new Dimension(500, 600));
+		frame.setLayout(new BorderLayout(10, 10));
+		frame.setLocation(200, 200);
 		frame.setTitle("View Details");
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		JLabel title;
 		title = new JLabel("Competitor Details",JLabel.CENTER);
 		Font f = new Font(Font.SANS_SERIF, Font.BOLD, 20); 
@@ -38,24 +50,6 @@ public class ViewGUI extends JFrame implements ActionListener{
 		frame.add(title);
 		frame.pack();
 		frame.setVisible(true);
-		
-		
-		
-	}
-	
-	/*private JLabel createOneLabel (String s, Color c) {
-		Font f = new Font(Font.SANS_SERIF, Font.BOLD, 18);
-		JLabel label= new JLabel(s, JLabel.CENTER);
-		label.setFont(f);
-		label.setBackground(c);
-		label.setOpaque(true);
-		return label;
-	}*/
-
-	
-	public void setupGUI() {
-	
-		//centerPanel.setPreferredSize(new Dimension(200, 100));
 		frame.add(setupCenterPanel(compt),BorderLayout.CENTER);
 		
 		

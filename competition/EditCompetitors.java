@@ -46,7 +46,7 @@ public class EditCompetitors extends JFrame  implements ActionListener{
 	
 	//public static void main(String[] args){
 	
-		EditCompetitors gui = new EditCompetitors();
+		//EditCompetitors gui = new EditCompetitors();
 		
 	}
 //}

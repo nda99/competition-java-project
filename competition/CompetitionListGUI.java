@@ -6,7 +6,9 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import javax.swing.*;
-//this comment is added 13:01
+//TODO:
+// Refine search
+//Refine sizes of viewGUI
 
 public class CompetitionListGUI extends JFrame implements ActionListener {
 
@@ -37,9 +39,6 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 		if (event.getSource() == searchBtn) {
 			searchCompetitor(searchtext.getText());
 			System.out.println(searchtext.getText());
-		}
-		else if (event.getSource() == view) {
-			// ViewGUI viewGui = new ViewGUI(compt);
 		}
 		else if ((JRadioButton)event.getSource() == sortByCN)
 		{
@@ -198,6 +197,10 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 			centerPanel.add(score);
 			// myPanel.add(extra);
 			edit = new JButton("Edit");
+			edit.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				  displayEditFrame();
+			} });
 			view = new JButton("View");
 			view.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
@@ -219,7 +222,6 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 	public void setupGUI() {
 
 	
-		frame.setSize(100, 300);
 		frame.setLocation(100, 100);
 		frame.setTitle("Competition App");
 		frame.setVisible(true);
