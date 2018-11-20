@@ -12,18 +12,17 @@ import javax.swing.*;
 /**@author alaat
  * **/
 
-public class ViewGUI extends JFrame implements ActionListener{
+public class ViewGUI extends JFrame{
 	
-	JFrame frame = new JFrame();
-	Competitor compt;
-	JPanel centerPanel=new JPanel();
-	JButton edit;
-	JButton view;
-	JLabel n, s,e,w,c;
-	JTextArea fullDetails = new JTextArea(1,1);
-	JTextArea shortDetails = new  JTextArea(1,1);
-    JScrollPane scrollList;
-    JScrollPane scrollList2;
+	private JFrame frame = new JFrame();
+	private Competitor compt;
+	private JPanel centerPanel=new JPanel();
+	private JButton edit;
+	private JButton view;
+	private JTextArea fullDetails = new JTextArea(1,1);
+	private JTextArea shortDetails = new  JTextArea(1,1);
+	private  JScrollPane scrollList;
+	private  JScrollPane scrollList2;
 
 
 
@@ -89,9 +88,4 @@ public class ViewGUI extends JFrame implements ActionListener{
 	}
 
 
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
 }

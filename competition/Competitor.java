@@ -113,7 +113,7 @@ public abstract class Competitor {
 	}
 
 
-	/** Simple method to set the scorea of the competitor 
+	/** Simple method to set the score of the competitor 
 	 * 
 	 */
 	public void setScore(int[] score) {
@@ -136,6 +136,9 @@ public abstract class Competitor {
 		
 		return this.type;
 	}
+	/**Method to return the extra attribute for each competitor
+	 * @return String for the attribute
+	 * **/
 	public abstract String getAttribute();
 	
 	

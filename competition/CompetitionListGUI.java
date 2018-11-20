@@ -9,30 +9,29 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import javax.swing.*;
-//TODO:
-// Refine search
-//Refine sizes of viewGUI
+/**@author alaat
+ @see ViewGUI**/
 
 public class CompetitionListGUI extends JFrame implements ActionListener {
 
 	// GUI components
-	static JButton edit;
-	static JButton view;
-	JScrollPane scrollList = new JScrollPane();
-	JTextArea table;
-	JTextField searchtext;
-	JButton searchBtn;
-	JRadioButton sortByCN = new JRadioButton("CN");
-	JRadioButton sortByName = new JRadioButton("Name");
-	JRadioButton sortByScores = new JRadioButton("Score");
-	ButtonGroup sort = new ButtonGroup();
-	CompetitorList comptlist;
-	JFrame frame = new JFrame();
-	JPanel centerPanel = new JPanel();
-	JPanel northPanel = new JPanel();
-	JScrollPane scroll = new JScrollPane(centerPanel);
-	String[] types= {"All","Hockey","Haggis","Baseball","Dart"};
-	JComboBox<String> filter = new JComboBox<String>(types);
+	private JButton edit;
+	private JButton view;
+	private JScrollPane scrollList = new JScrollPane();
+	private JTextArea table;
+	private JTextField searchtext;
+	private JButton searchBtn;
+	private JRadioButton sortByCN = new JRadioButton("CN");
+	private JRadioButton sortByName = new JRadioButton("Name");
+	private JRadioButton sortByScores = new JRadioButton("Score");
+	private ButtonGroup sort = new ButtonGroup();
+	private CompetitorList comptlist;
+	private JFrame frame = new JFrame();
+	private JPanel centerPanel = new JPanel();
+	private JPanel northPanel = new JPanel();
+	private JScrollPane scroll = new JScrollPane(centerPanel);
+	private String[] types= {"All","Hockey","Haggis","Baseball","Dart"};
+	private JComboBox<String> filter = new JComboBox<String>(types);
 
 
 	/** Constructor to receive the list **/
