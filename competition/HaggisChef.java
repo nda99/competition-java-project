@@ -57,7 +57,7 @@ public class HaggisChef extends Competitor{
 			break;
 		case "Amateur": weight=0;
 			break;
-		default: System.err.printf("ERROR: '%s' is an invalid competitor LEVEL. Please provide a valid competitor LEVEL!", level);
+		default: 
 			break;
 		}
 
