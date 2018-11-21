@@ -27,7 +27,7 @@ public class Manager {
 	
 	private static WelcomeGUI gui = null;
 	
-	static CompetitionListGUI compList =null;
+	private static CompetitionListGUI compList = null;
 	/**
 	 * Constructor for a a Manager object related to a specific file.
 	 * @param inputFile String variable holding the path of the desired input file.
@@ -51,6 +51,11 @@ public class Manager {
 	public static void setList() {
 
 		  list = new CompetitorList(competitors);
+	}
+	
+	public static void setCompListGUI(CompetitionListGUI lg) {
+
+		  compList = lg;
 	}
 	/**
 	 * Gets current type of competition
