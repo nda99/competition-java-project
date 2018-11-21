@@ -372,9 +372,8 @@ public class WelcomeGUI extends JFrame{
 			
 	        if(Manager.getFile()==false) {   
 	        	Manager.setFileIn(chooser.getSelectedFile().toString());
-	        	//MainClass.in = in;
-				CompetitorList list = Manager.getList();		
-				Manager.setCompListGUI(new CompetitionListGUI(list));
+	        	//MainClass.in = in;	
+				Manager.setCompListGUI(new CompetitionListGUI(Manager.getList()));
 				displayDialog("The file '" + chooser.getSelectedFile() + "' has been loaded successfully" );
 
 				inputWindow.dispose();

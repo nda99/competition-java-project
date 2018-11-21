@@ -1,7 +1,7 @@
 package competition;
 import java.util.Comparator;
 
-
+/**@author alaat**/
 public class CompetitorNoComparator implements Comparator<Competitor>{
 
 	//Class to compare to competitors based on numbers

@@ -6,10 +6,8 @@ import java.util.Arrays;
  * Class to build individual competitors and get their details.
  * 
  * @author Nathan
- * @version 1.0 15 Oct 2018
  * @see getOverallScore
- * @see ndaAssignment1.MainClass
- * @see ndaAssignment1.Name
+
  */
 public class HaggisChef extends Competitor {
 	private int competitorNumber;

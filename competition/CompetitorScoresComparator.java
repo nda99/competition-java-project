@@ -1,6 +1,7 @@
 package competition;
 import java.util.Comparator;
 
+/**@author alaat**/
 
 public class CompetitorScoresComparator implements Comparator<Competitor>{
 

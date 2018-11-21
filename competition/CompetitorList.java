@@ -3,6 +3,8 @@ package competition;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+/**@author Nathan**/
+/**@author alaat**/
 
 public class CompetitorList {
 
