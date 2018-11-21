@@ -26,7 +26,7 @@ public class EditCompetitors extends JFrame  implements ActionListener{
 
 	JButton btn = new JButton("Ok");
 
-	JLabel lbl = new JLabel("Select someone");
+	JLabel lbl = new JLabel("Please check a box");
 
 	JComboBox<String> box1 = new JComboBox<String>(style);
 	JList<String> lst1 = new JList<String>(stuff);
@@ -107,7 +107,7 @@ public class EditCompetitors extends JFrame  implements ActionListener{
 	}
 
 
-//	public static void main(String[] args){
+	//public static void main(String[] args){
 
 		EditCompetitors gui = new EditCompetitors();
 
