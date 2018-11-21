@@ -134,8 +134,8 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 		
 	}
 
-	private void displayEditFrame() {
-		EditCompetitors editGUI = new EditCompetitors();
+	private void displayEditFrame(Competitor c) {
+		EditCompetitors editGUI = new EditCompetitors(c);
 	}
 	
 	private void sortCN()
@@ -290,7 +290,7 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 			edit = new JButton("Edit");
 			edit.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-				  displayEditFrame();
+				  displayEditFrame(c);
 			} });
 			view = new JButton("View");
 			view.addActionListener(new ActionListener() {
