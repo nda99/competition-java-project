@@ -1,6 +1,7 @@
 package competition;
 import java.util.Comparator;
 
+/**@author alaat**/
 public class CompetitorNameComprator implements Comparator<Competitor>
 {
 	public int compare(Competitor c1, Competitor c2) {

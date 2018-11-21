@@ -7,9 +7,6 @@ import java.util.Scanner;
 /**
  * IO class to read competitors file and output report
  * @author Nathan
- * @version 1.0 15 Oct 2018
- * @see ndaAssignment1.HaggisChef
- * @see ndaAssignment1.MainClass
  * @see getFile method reads input file
  * @see printFile method to output files.
  */
@@ -27,7 +24,7 @@ public class Manager {
 	
 	private static WelcomeGUI gui = null;
 	
-	static CompetitionListGUI compList =null;
+	static CompetitionListGUI compList = null;
 	/**
 	 * Constructor for a a Manager object related to a specific file.
 	 * @param inputFile String variable holding the path of the desired input file.
@@ -85,6 +82,7 @@ public class Manager {
 	 * @return GUI of competitionList
 	 */
 	public static CompetitionListGUI getListGUI() {
+		compList = new CompetitionListGUI(list);
 		return compList;
 	}
 	

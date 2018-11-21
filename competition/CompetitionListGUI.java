@@ -25,7 +25,7 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 	private JRadioButton sortByName = new JRadioButton("Name");
 	private JRadioButton sortByScores = new JRadioButton("Score");
 	private ButtonGroup sort = new ButtonGroup();
-	private CompetitorList comptlist;
+	private static CompetitorList comptlist;
 	private JFrame frame = new JFrame();
 	private JPanel centerPanel = new JPanel();
 	private JPanel northPanel = new JPanel();
