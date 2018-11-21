@@ -1,0 +1,32 @@
+---------------
+Full Details:
+Competitor number 104, name Hagrid MacHaggis 
+Hagrid is a MasterChef level chef, prepared the dish 'Haggis-stuffed Pigeon' and got the scores: 5, 5, 4, 3, 4.
+This gives him an overall score of 4.1.
+
+--------
+REPORT:
+          Competitor              Type       Level               Attribute                             Scores          Overall 
+100         Keith John Talbot     Haggis           Cook     Dish:                     Sushi Haggis   0  4  2  3  0        1.8
+101            Jane MacDonald     Haggis           Chef     Dish:        Whisky Haggis With Salmon   5  3  4  2  4        3.7
+102           Dwayne MacLovin     Haggis     MasterChef     Dish:                    Haggis Burger   4  3  3  0  0        1.3
+103             Siobhon Grant     Haggis        Amateur     Dish:               IPA infused Haggis   3  4  4  2  1        3.3
+104          Hagrid MacHaggis     Haggis     MasterChef     Dish:            Haggis-stuffed Pigeon   5  5  4  3  4        4.1
+105            Florent Dubois     Haggis           Cook     Dish:               Haggis Tartiflette   4  2  1  3  2        2.4
+106     Sarah Jean MacNaughty     Haggis        Amateur     Dish:  Cranberry and Haggis Bruschetta   3  2  2  1  1        2.0
+107             Gordon Ramsey     Haggis     MasterChef     Dish:               Haggis Shepard Pie   5  5  3  1  4        3.8
+108            Yukio Nakamura     Haggis           Chef     Dish:                Haggis Teppanyaki   2  5  3  1  2        2.5
+109               Pedro Silva     Haggis           Cook     Dish:                  Haggis Feijoada   5  0  2  3  2        2.4
+110               Yi Min Miao     Haggis        Amateur     Dish:                   Haggis Dim Sum   2  5  3  1  2        2.8
+111         Giancarlo Bordini     Haggis           Chef     Dish:           Lasagna al Haggis Ragu   5  4  3  1  3        3.2
+112               Rosa Valdez     Haggis           Cook     Dish:             Chilli Haggis Paella   3  0  2  2  1        1.6
+113    Shiba Vishwadeep Naidu     Haggis        Amateur     Dish:         Haggis Curry with Paneer   3  1  2  2  0        2.0
+114 Vladimir Nikolai Dimitrov     Haggis           Cook     Dish:      Haggis and Vodka Strogonnof   2  2  3  2  4        2.6
+115             Tiffany Smith     Haggis        Amateur     Dish:                  American Haggis   0  0  2  1  1        0.8
+116              Jamie Oliver     Haggis     MasterChef     Dish:              Appropriated Haggis   5  5  4  1  3        3.4
+-------------
+STATISTICS:
+Winner of all the Competitions is Hagrid MacHaggis with an overall score of 4.1 
+Total number of competitors: 17, Min score: 0.8, Max score: 4.1, Avg score: 2.6
+Score:     0  1   2   3   4   5
+Frequency: 9  13  21  18  13  11

@@ -14,14 +14,14 @@ import java.util.InputMismatchException;
  */
 public class WelcomeGUI extends JFrame{
 	
-	JFrame welcomeFrame = new JFrame();
-	JPanel stat = new JPanel();
-	JLabel n,s,e,w,c;
+	private JFrame welcomeFrame = new JFrame();
+	private JPanel stat = new JPanel();
+	private JLabel n,s;
 
-	JLabel file = createOneLabel("File selected: NONE",Color.WHITE,18);
-	JLabel type = createOneLabel("Type selected: NONE",Color.WHITE,18);
-	JFrame inputWindow = new JFrame();
-	JFrame outputWindow = new JFrame();
+	private JLabel file = createOneLabel("File selected: NONE",Color.WHITE,18);
+	private JLabel type = createOneLabel("Type selected: NONE",Color.WHITE,18);
+	private JFrame inputWindow = new JFrame();
+	private JFrame outputWindow = new JFrame();
 	
 	public WelcomeGUI()
 	{
@@ -69,7 +69,7 @@ public class WelcomeGUI extends JFrame{
 		JLabel welcome2 = new JLabel();
 		JLabel shortDetails = new JLabel();
 		chooseInput = new JButton("Choose input file...");
-		chooseOutput = new JButton("Save Report");
+		chooseOutput = new JButton("Save Report and Close app");
 		seeDetails = new JButton("Competition Details");
 		confirmCN = new JButton("Go");
 		//centralPanel.setLayout(new BorderLayout(5,5));
@@ -271,7 +271,7 @@ public class WelcomeGUI extends JFrame{
 
 	}
 	
-	static JLabel createOneLabel (String s, Color c, int size) {
+	public static JLabel createOneLabel (String s, Color c, int size) {
 		Font f = new Font(Font.SANS_SERIF, Font.BOLD, size);
 		JLabel label= new JLabel(s, JLabel.CENTER);
 		label.setFont(f);
@@ -339,7 +339,7 @@ public class WelcomeGUI extends JFrame{
 		        Manager.setFileIn(searchString);
 				CompetitorList list = Manager.getList();
 				
-				Manager.compList = new CompetitionListGUI(list);
+				Manager.setCompListGUI(new CompetitionListGUI(list));
 				inputWindow.dispose();
 				displayDialog("The file " + searchString + " has been loaded successfully" );
 				buildInfoPanel(welcomeFrame);
@@ -373,8 +373,8 @@ public class WelcomeGUI extends JFrame{
 	        if(Manager.getFile()==false) {   
 	        	Manager.setFileIn(chooser.getSelectedFile().toString());
 	        	//MainClass.in = in;
-				CompetitorList list = Manager.getList();				
-				Manager.compList = new CompetitionListGUI(list);
+				CompetitorList list = Manager.getList();		
+				Manager.setCompListGUI(new CompetitionListGUI(list));
 				displayDialog("The file '" + chooser.getSelectedFile() + "' has been loaded successfully" );
 
 				inputWindow.dispose();
@@ -470,6 +470,7 @@ public class WelcomeGUI extends JFrame{
 				Manager.printFile(Manager.getFileOut());
 				displayDialog(String.format("Report %s saved successfully!", chooser.getSelectedFile()));
 				outputWindow.dispose();
+				System.exit(0);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

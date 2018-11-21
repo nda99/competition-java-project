@@ -14,14 +14,14 @@ public class DartCompetitor extends Competitor{
 	private String level;
 	private int levelWeight = 3;
 	//Constructor
-	public DartCompetitor(int competitorNumber, Name competitorName,  String level, int[] score, int age,String type) 
+	public DartCompetitor(int competitorNumber, Name competitorName,  String level, int[] score, String attribute,String type) 
 	{
 		super(competitorNumber,competitorName,score,level,type);
 		
 		this.competitorNumber = competitorNumber;
 		this.competitorName = competitorName;
 		this.level = level;
-		this.age = age;
+		this.age = Integer.parseInt(attribute);
 		
 		if (level == "1") {
 			levelWeight = 1;
