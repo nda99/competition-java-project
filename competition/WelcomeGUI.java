@@ -69,7 +69,7 @@ public class WelcomeGUI extends JFrame{
 		JLabel welcome2 = new JLabel();
 		JLabel shortDetails = new JLabel();
 		chooseInput = new JButton("Choose input file...");
-		chooseOutput = new JButton("Save Report");
+		chooseOutput = new JButton("Save Report and Close app");
 		seeDetails = new JButton("Competition Details");
 		confirmCN = new JButton("Go");
 		//centralPanel.setLayout(new BorderLayout(5,5));
@@ -470,6 +470,7 @@ public class WelcomeGUI extends JFrame{
 				Manager.printFile(Manager.getFileOut());
 				displayDialog(String.format("Report %s saved successfully!", chooser.getSelectedFile()));
 				outputWindow.dispose();
+				System.exit(0);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

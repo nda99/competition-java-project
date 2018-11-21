@@ -218,14 +218,14 @@ public class Manager {
 		  }
 		  //String[] A = inputFile.split("\\\\");
 		  if (getType().equals("Haggis")) {
-		  list.add( new HaggisChef(CN, name, score, level, attribute,type)); 
+		  list.add( new HaggisChef(CN+100, name, score, level, attribute,type)); 
 		  }
 		  else if (getType().equals("Hockey")){
 		  list.add( new HockeyCompetitor(CN, name, level, score, attribute,type));
 		  }
 		  
 		  else if ((getType().equals("Dart"))){
-			  list.add( new DartCompetitor(CN+200, name, level, score, CN-50,type));
+			  list.add( new DartCompetitor(CN+200, name, level, score, attribute,type));
 		  }
 		  
 		  else {
