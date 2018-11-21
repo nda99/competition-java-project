@@ -31,6 +31,9 @@ public class EditCompetitors extends JFrame  implements ActionListener{
 	JComboBox<String> box1 = new JComboBox<String>(style);
 	JList<String> lst1 = new JList<String>(stuff);
 
+	JTextArea txtArea = new JTextArea(5,37);
+	JScrollPane pane = new JScrollPane(txtArea);
+	
 	public EditCompetitors() {
 		super("Competitors Editor");
 		setSize(510, 221);
@@ -43,13 +46,17 @@ public class EditCompetitors extends JFrame  implements ActionListener{
 		pnl.add(box1);
 		pnl.add(btn);
 		btn.addActionListener(this);
-
 		pnl.add(check1);
 		pnl.add(check2);
 		pnl.add(check3);
 		pnl.add(check4);
-		
 		pnl.add(lbl);
+		
+		 txtArea.setLineWrap(true);
+		    txtArea.setWrapStyleWord(true);
+		    pane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		
+		    pnl.add(pane);
 	}
 
 	public void actionPerformed(ActionEvent event){	
@@ -66,7 +73,7 @@ public class EditCompetitors extends JFrame  implements ActionListener{
 			FileReader f = new FileReader("CList.csv");
 			BufferedReader buf = new BufferedReader(f);
 			String l = "";
-			for(int i = 0; i < index; i++)
+			for(int i = 1; i < index; i++)
 				buf.readLine();
 			l = buf.readLine();
 			lbl.setText(l);
@@ -86,7 +93,7 @@ public class EditCompetitors extends JFrame  implements ActionListener{
 			BufferedReader buf = new BufferedReader(f);
 			String l = "";
 			while ((l = buf.readLine())!=null){
-				//System.out.println(l);
+				
 				String[] words = l.split(",");
 				box1.addItem(words[0]);
 			}
@@ -100,11 +107,11 @@ public class EditCompetitors extends JFrame  implements ActionListener{
 	}
 
 
-	public static void main(String[] args){
+//	public static void main(String[] args){
 
 		EditCompetitors gui = new EditCompetitors();
 
 		gui.init();
 
-	}
+	//}
 }
