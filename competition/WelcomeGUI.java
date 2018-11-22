@@ -23,6 +23,9 @@ public class WelcomeGUI extends JFrame{
 	private JFrame inputWindow = new JFrame();
 	private JFrame outputWindow = new JFrame();
 	
+	/**
+	 * Constructor: does not set any variable
+	 */
 	public WelcomeGUI()
 	{
 		
@@ -39,6 +42,7 @@ public class WelcomeGUI extends JFrame{
 	    // Menu
 	    JMenu compTypes = new JMenu("Select Competition Type");
         welcomeFrame = new JFrame();
+        
 	    // Menu Item (Drop down menus)
 	    haggis = new JMenuItem("Haggis");
 	    hockey = new JMenuItem("Hockey");
@@ -50,7 +54,8 @@ public class WelcomeGUI extends JFrame{
 	    compTypes.add(hockey);
 	    compTypes.add(baseball);
 	    compTypes.add(dart);
-	    // adding menu to menu bar
+	    
+	    // Adding menu to menu bar
 	    menuBar.add(compTypes);
 		
 	    //Creating Search Field
@@ -64,34 +69,35 @@ public class WelcomeGUI extends JFrame{
 		JPanel southPanel = new JPanel();
 		JPanel searchPanel = new JPanel();
 		JPanel Panel = new JPanel();
-		//JPanel bottomPanel = new JPanel();
 		JLabel welcome1 = new JLabel();
 		JLabel welcome2 = new JLabel();
 		JLabel shortDetails = new JLabel();
+		
 		chooseInput = new JButton("Choose input file...");
 		chooseOutput = new JButton("Save Report and Close app");
 		seeDetails = new JButton("Competition Details");
 		confirmCN = new JButton("Go");
-		//centralPanel.setLayout(new BorderLayout(5,5));
+		
 		Panel.setLayout(new GridLayout(3,1));
 		
 		southPanel.add(chooseInput);
 		southPanel.add(chooseOutput);
 		southPanel.add(seeDetails);
 		southPanel.setBackground(Color.WHITE);
+		
 		centralPanel.add(menuBar);
 		centralPanel.setBackground(Color.WHITE);
+		
 		shortDetails = createOneLabel("Enter Competitor Number for short details:", Color.WHITE,12);
 		searchPanel.add(shortDetails);
 		searchPanel.add(searchCompetitor);
 		searchPanel.add(confirmCN);
 		searchPanel.setBackground(Color.WHITE);
+		
 		Panel.add(centralPanel);
 		Panel.add(southPanel);
 		Panel.add(searchPanel);
 		Panel.setBackground(Color.WHITE);
-		//centralPanel.add(compTypes);
-		//welcomeFrame.add
 		
 		welcome1 = createOneLabel("Welcome to the Competition Manager Applet", Color.WHITE,18);
 		welcome2 = createOneLabel("Please select an option:", Color.WHITE,18);
@@ -112,9 +118,9 @@ public class WelcomeGUI extends JFrame{
 		stat.add(file);
 		stat.add(type);
 		welcomeFrame.add(stat,BorderLayout.SOUTH);
-		//welcomeFrame.add(menuBar,BorderLayout.CENTER);
 		welcomeFrame.setVisible(true);
 		
+		// Listener for Competitor Number
 		confirmCN.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	if (Manager.getFileIn()==null) {
@@ -186,7 +192,7 @@ public class WelcomeGUI extends JFrame{
 	    	}
 	    	else {
     		welcomeFrame.dispose();
-	    	Manager.getFileGUI().getInputName();
+	    	getInputName();
 	    	}
 	    	//welcomeFrame.setVisible(false); 
 	      }
@@ -200,7 +206,7 @@ public class WelcomeGUI extends JFrame{
 		    		displayFileError("ERROR: You can't save a file before chosing the input!\nPlease open a file by clicking on 'Choose a File'.");
 		    	}
 		    	else {
-		    		Manager.getFileGUI().getOutputFile();
+		    		getOutputFile();
 		    	}
 		      }
 		    });
@@ -245,7 +251,7 @@ public class WelcomeGUI extends JFrame{
 	 * Rebuilds Welcome GUI to reflect new information
 	 * @param frame
 	 */
-	public void buildInfoPanel(JFrame frame) {
+	private void buildInfoPanel(JFrame frame) {
         file.removeAll();
         type.removeAll();
 		
@@ -295,7 +301,7 @@ public class WelcomeGUI extends JFrame{
 	/**
 	 * Generates a window for the user to enter the input file name
 	 */
-	public void getInputName() {
+	private void getInputName() {
 		JButton openFile, browseFile, goBack;
 		JPanel northPanel = new JPanel();
 		openFile = new JButton("Open file");
@@ -324,7 +330,7 @@ public class WelcomeGUI extends JFrame{
 	inputWindow.add(northPanel,BorderLayout.SOUTH);
 	inputWindow.add(southPanel,BorderLayout.CENTER);
 
-
+ // File opener
 		openFile.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	
@@ -351,7 +357,7 @@ public class WelcomeGUI extends JFrame{
 
 
 
-	
+		// File Browser:
 	browseFile.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) {
 		
 		JFileChooser chooser = new JFileChooser();
@@ -398,7 +404,7 @@ public class WelcomeGUI extends JFrame{
 	/**
 	 * Displays window for output 
 	 */
-	public void getOutputFile() {
+	private void getOutputFile() {
 		JButton openFile, browseFile;
 		JPanel northPanel = new JPanel();
 		openFile = new JButton("Open file");
@@ -485,7 +491,7 @@ public class WelcomeGUI extends JFrame{
 	 * Closes a window (Input or Output)
 	 * @param window Window to be closed (Input or Output)
 	 */
-public void closeWindow(String window){
+private void closeWindow(String window){
 	
 	if (window.equals("input")){
 		inputWindow.dispose();

@@ -113,6 +113,16 @@ public class HaggisChef extends Competitor {
 	public String getDish() {
 		return dish;
 	}
+	
+	/**
+	 * Simple method to set the name of the dish prepared by the competitor
+	 * 
+	 * @return String with the name of the dish
+	 */
+	public void setDish(String dishName) {
+		this.dish = dishName;
+	}
+	
 	/**Simple method to return the extra attribute for the competitor
 	 * @return String with extra attribute used**/
 	public String getAttribute()
