@@ -32,6 +32,9 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 	private String[] types= {"All","Hockey","Haggis","Baseball","Dart"};
 	private JScrollPane scrollPane ;
 	private JComboBox<String> filter = new JComboBox<String>(types);
+	private ArrayList<Competitor> filtered;
+	private CompetitorList filteredList= comptlist;
+
 
 
 	/** Constructor to receive the list **/
@@ -95,14 +98,17 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 			centerPanel.removeAll();
 			centerPanel.repaint();
 			centerPanel.revalidate();
-	        scrollPane.setViewportView(setupCenterPanel(comptlist.getCompetitorList()));
+			filtered =comptlist.getCompetitorList();
+			filteredList =comptlist;
+	        scrollPane.setViewportView(setupCenterPanel(filteredList.getCompetitorList()));
 
 			centerPanel.repaint();
 			centerPanel.revalidate();
 		}
 		else
 		{
-			ArrayList<Competitor> filtered =comptlist.filterByType(selectedItem);
+			 filtered =comptlist.filterByType(selectedItem);
+			 filteredList = new CompetitorList(filtered);
 			if(!filtered.isEmpty())
 			{
 				System.out.println(filter.getSelectedItem());
@@ -132,7 +138,7 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 		centerPanel.removeAll();
 		centerPanel.repaint();
 		centerPanel.revalidate();
-		frame.add(setupCenterPanel(comptlist.listByScores()));
+		frame.add(setupCenterPanel(filteredList.listByScores()));
 		centerPanel.repaint();
 		centerPanel.revalidate();
 	}
@@ -142,7 +148,7 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 		centerPanel.removeAll();
 		centerPanel.repaint();
 		centerPanel.revalidate();
-		frame.add(setupCenterPanel(comptlist.listByName()));
+		frame.add(setupCenterPanel(filteredList.listByName()));
 		centerPanel.repaint();
 		centerPanel.revalidate();
 		
@@ -158,7 +164,7 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 		centerPanel.removeAll();
 		centerPanel.repaint();
 		centerPanel.revalidate();
-		frame.add(setupCenterPanel(comptlist.listByCN()));
+		frame.add(setupCenterPanel(filteredList.listByCN()));
 		centerPanel.repaint();
 		centerPanel.revalidate();
 		
