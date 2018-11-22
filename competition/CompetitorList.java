@@ -334,7 +334,8 @@ public class CompetitorList {
 	 * @return All the competitor details in name order
 	 */
 	public ArrayList<Competitor> listByName() {
-		Collections.sort(competitors, new CompetitorNameComprator());
+		ArrayList<Competitor> clone = this.competitors;
+		Collections.sort(clone, new CompetitorNameComprator());
 		return listDetails();
 	}
 
@@ -342,7 +343,9 @@ public class CompetitorList {
 	 * @return All the competitors details ordered by competitor competitor
 	 */
 	public ArrayList<Competitor> listByCN() {
-		Collections.sort(this.competitors, new CompetitorNoComparator());
+		ArrayList<Competitor> clone = this.competitors;
+
+		Collections.sort(clone, new CompetitorNoComparator());
 		return listDetails();
 	}
 
@@ -350,7 +353,9 @@ public class CompetitorList {
 	 * @return All the competitors details ordered by competitor competitor
 	 */
 	public ArrayList<Competitor> listByScores() {
-		Collections.sort(this.competitors, new CompetitorScoresComparator());
+		ArrayList<Competitor> clone = this.competitors;
+
+		Collections.sort(clone, new CompetitorScoresComparator());
 		return listDetails();
 	}
 

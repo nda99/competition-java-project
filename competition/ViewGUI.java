@@ -36,7 +36,7 @@ public class ViewGUI extends JFrame{
 	
 	public void setupGUI() {
 	
-		frame.setPreferredSize(new Dimension(500, 900));
+		frame.setPreferredSize(new Dimension(900, 400));
 		frame.setBackground(Color.WHITE);
 		frame.setLayout(new BorderLayout(10, 10));
 		frame.setLocation(200, 200);

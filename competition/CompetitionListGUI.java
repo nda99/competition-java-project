@@ -84,29 +84,44 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 		else if(event.getSource() == filter)
 		{
 			filterTheList(filter.getSelectedItem().toString());
-			System.out.println(filter.getSelectedItem());
 		}
 		
 	}
 	
 
 	private void filterTheList(String selectedItem) {
-		ArrayList<Competitor> filtered =comptlist.filterByType(selectedItem);
-		if(!filtered.isEmpty())
+		if(selectedItem =="All")
 		{
 			centerPanel.removeAll();
 			centerPanel.repaint();
 			centerPanel.revalidate();
-			frame.add(setupCenterPanel(filtered));
+	        scrollPane.setViewportView(setupCenterPanel(comptlist.getCompetitorList()));
 
 			centerPanel.repaint();
 			centerPanel.revalidate();
 		}
 		else
 		{
-			JOptionPane.showMessageDialog(null, "Oops couldn't filter the list by "+selectedItem+
-					". You did not upload it!");
+			ArrayList<Competitor> filtered =comptlist.filterByType(selectedItem);
+			if(!filtered.isEmpty())
+			{
+				System.out.println(filter.getSelectedItem());
+
+				centerPanel.removeAll();
+				centerPanel.repaint();
+				centerPanel.revalidate();
+		        scrollPane.setViewportView(setupCenterPanel(filtered));
+
+				centerPanel.repaint();
+				centerPanel.revalidate();
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(null, "Oops couldn't filter the list by "+selectedItem+
+						". You did not upload it!");
+			}
 		}
+		
 		
 		
 		
@@ -269,6 +284,7 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 	 * Method to set the blocks inside center panel
 	 **/
 	private JPanel setupCenterPanel(ArrayList<Competitor> comptList) {
+
 		centerPanel.setLayout(new GridLayout(0,8));
 		
 		for (Competitor c : comptList) {
@@ -311,7 +327,7 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 
 
 		frame.setLocation(100, 100);
-		frame.setSize(900,700);
+		frame.setSize(1300,1300);
 		frame.setTitle("Competition App");
 		frame.setVisible(true);
 		frame.setLayout(new BorderLayout(10, 10));
