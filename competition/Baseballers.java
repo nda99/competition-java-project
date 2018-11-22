@@ -40,7 +40,7 @@ public class Baseballers extends Competitor {
 		}
 			
 		
-		double overall = (double) weight*(this.score[0] + this.score[1] + this.score[2] + this.score[3] + this.score[4])
+		double overall = (double) 0.625*weight*(this.score[0] + this.score[1] + this.score[2] + this.score[3] + this.score[4])
 				/ this.score.length;
 		
 		return overall;

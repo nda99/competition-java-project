@@ -1,0 +1,75 @@
+John Cena is a level 2 aged 35 has a score of: 5.666667--------
+REPORT:
+          Competitor              Type       Level               Attribute                             Scores          Overall 
+  1               Alaa Tounsi     Hockey         Expert  Country:                     Saudi Arabia   3  2  3  2  2        4.8
+  2                Zaid Osama     Hockey         Expert  Country:                     Saudi Arabia   3  1  2  3  2        4.4
+  3                 Yara Eyad     Hockey         Novice  Country:                            India   3  3  2  1  3        2.4
+  4                Sara Green     Hockey         Novice  Country:                          America   2  1  3  2  3        2.2
+  5          Shahryar Shehzad     Hockey         Expert  Country:                         Pakistan   3  1  1  1  1        2.8
+  6             Jane Mcdonald     Hockey         Novice  Country:                          Ireland   2  1  1  3  2        1.8
+  7             Karen Harding     Hockey         Novice  Country:                          Germany   2  2  3  3  3        2.6
+  8                John Lewis     Hockey         Expert  Country:                         Scotland   2  1  1  1  2        2.8
+  9            Serene Mukhtar     Hockey         Novice  Country:                          Malasia   3  3  1  3  2        2.4
+ 10                 Dima Rami     Hockey         Novice  Country:                            India   2  2  3  2  1        2.0
+ 11              Shatha Fahad     Hockey         Expert  Country:                         Pakistan   1  3  1  1  2        3.2
+ 12               Maryam Kadi     Hockey         Expert  Country:                            Syria   2  3  1  2  2        4.0
+ 13              Aseel Tounsi     Hockey         Novice  Country:                     Saudi Arabia   1  2  1  1  3        1.6
+ 14                Lama Osama     Hockey         Novice  Country:                     Saudi Arabia   3  3  2  3  2        2.6
+ 15                Waad Fahad     Hockey         Expert  Country:                            Kwuit   1  2  2  1  3        3.6
+101            Jane MacDonald     Haggis           Chef     Dish:        Whisky Haggis With Salmon   5  3  4  2  4        3.7
+102           Dwayne MacLovin     Haggis     MasterChef     Dish:                    Haggis Burger   4  3  3  0  0        1.3
+103             Siobhon Grant     Haggis        Amateur     Dish:               IPA infused Haggis   3  4  4  2  1        3.3
+104          Hagrid MacHaggis     Haggis     MasterChef     Dish:            Haggis-stuffed Pigeon   5  5  4  3  4        4.1
+105            Florent Dubois     Haggis           Cook     Dish:               Haggis Tartiflette   4  2  1  3  2        2.4
+106     Sarah Jean MacNaughty     Haggis        Amateur     Dish:  Cranberry and Haggis Bruschetta   3  2  2  1  1        2.0
+107             Gordon Ramsey     Haggis     MasterChef     Dish:               Haggis Shepard Pie   5  5  3  1  4        3.8
+108            Yukio Nakamura     Haggis           Chef     Dish:                Haggis Teppanyaki   2  5  3  1  2        2.5
+109               Pedro Silva     Haggis           Cook     Dish:                  Haggis Feijoada   5  0  2  3  2        2.4
+110               Yi Min Miao     Haggis        Amateur     Dish:                   Haggis Dim Sum   2  5  3  1  2        2.8
+111         Giancarlo Bordini     Haggis           Chef     Dish:           Lasagna al Haggis Ragu   5  4  3  1  3        3.2
+112               Rosa Valdez     Haggis           Cook     Dish:             Chilli Haggis Paella   3  0  2  2  1        1.6
+113    Shiba Vishwadeep Naidu     Haggis        Amateur     Dish:         Haggis Curry with Paneer   3  1  2  2  0        2.0
+114 Vladimir Nikolai Dimitrov     Haggis           Cook     Dish:      Haggis and Vodka Strogonnof   2  2  3  2  4        2.6
+115             Tiffany Smith     Haggis        Amateur     Dish:                  American Haggis   0  0  2  1  1        0.8
+116              Jamie Oliver     Haggis     MasterChef     Dish:              Appropriated Haggis   5  5  4  1  3        3.4
+117         Keith John Talbot     Haggis           Cook     Dish:                     Sushi Haggis   0  4  2  3  0        1.8
+201                  John Doe       Dart              1      Age:                               28   5  3  4  2  4        4.7
+202                 Brad Pitt       Dart              2      Age:                               53   4  3  3  0  0        3.3
+203              Jessica Alba       Dart              3      Age:                               38   3  4  4  2  1        4.3
+204                 John Cena       Dart              2      Age:                               35   5  5  4  3  4        5.7
+205               Marie Curie       Dart              1      Age:                               23   4  2  1  3  2        3.3
+206          Ronald MacDonald       Dart              3      Age:                               47   3  2  2  1  1        2.7
+207             Neymar Junior       Dart              2      Age:                               26   5  5  3  1  4        4.7
+208               Hugh Nisbet       Dart              1      Age:                               69   2  5  3  1  2        3.7
+209         Elizabeth Windsor       Dart              1      Age:                               92   5  0  2  3  2        3.3
+210       Phillip Mountbatten       Dart              3      Age:                               96   2  5  3  1  2        3.7
+211          Earl Mountbatten       Dart              1      Age:                               72   5  4  3  1  3        4.3
+212            David Brewster       Dart              1      Age:                               88   3  0  2  2  1        2.3
+213            William Perkin       Dart              3      Age:                               57   3  1  2  2  0        2.7
+214                James Watt       Dart              1      Age:                              150   2  2  3  2  4        3.0
+215           Colin MacLaurin       Dart              3      Age:                               98   0  0  2  1  1        1.0
+216             George Heriot       Dart              2      Age:                              114   5  5  4  1  3        5.0
+217              Scott Russel       Dart              1      Age:                               16   0  4  2  3  0        3.0
+301     Spongebob Squarepants   Baseball         Rookie  Country:                          Bahamas   5  3  4  2  4        2.3
+302             Gustavo Fring   Baseball       Advanced  Country:                         Colombia   4  3  3  0  0        2.5
+303           Mike Zuckerberg   Baseball         Rookie  Country:                              USA   3  4  4  2  1        1.8
+304               Hulk Holgan   Baseball       Advanced  Country:                           Canada   5  5  4  3  4        5.3
+305                Spider Man   Baseball       Standard  Country:                              USA   4  2  1  3  2        4.5
+306                  Iron Man   Baseball         Rookie  Country:                              USA   3  2  2  1  1        1.1
+307                Hulk Smash   Baseball       Advanced  Country:                      Planet Hulk   5  5  3  1  4        4.5
+308                Dr Strange   Baseball         Rookie  Country:                               UK   2  5  3  1  2        1.6
+309                  Stan Lee   Baseball       Standard  Country:                              USA   5  0  2  3  2        4.5
+310               Black Widow   Baseball         Rookie  Country:                           Russia   2  5  3  1  2        1.6
+311          Patrick Starfish   Baseball         Rookie  Country:                         Barbados   5  4  3  1  3        2.0
+312         Squidward MacFish   Baseball       Standard  Country:                           Belize   3  0  2  2  1        3.0
+313               Krusty Krab   Baseball         Rookie  Country:                          Jamaica   3  1  2  2  0        1.0
+314                James Bond   Baseball       Standard  Country:                               UK   2  2  3  2  4        4.9
+315              Jason Bourne   Baseball         Rookie  Country:                          Germany   0  0  2  1  1        0.5
+316              Walter White   Baseball       Advanced  Country:                           Mexico   5  5  4  1  3        4.5
+317            Michael Jordan   Baseball       Standard  Country:                              USA   0  4  2  3  0        3.4
+-------------
+STATISTICS:
+Winner of all the Competitions is John Cena with an overall score of 5.7 
+Total number of competitors: 66, Min score: 0.5, Max score: 5.7, Avg score: 3.0
+Score:     0  1   2   3   4   5
+Frequency: 27  62  90  79  39  33
