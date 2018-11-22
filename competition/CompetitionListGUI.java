@@ -1,6 +1,7 @@
 package competition;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 /**
  * @author alaat
  * **/
@@ -9,6 +10,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import javax.swing.*;
+import javax.swing.text.JTextComponent;
 /**@author alaat
  @see ViewGUI**/
 
@@ -17,8 +19,6 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 	// GUI components
 	private JButton edit;
 	private JButton view;
-	private JScrollPane scrollList = new JScrollPane();
-	private JTextArea table;
 	private JTextField searchtext;
 	private JButton searchBtn;
 	private JRadioButton sortByCN = new JRadioButton("CN");
@@ -29,8 +29,8 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 	private JFrame frame = new JFrame();
 	private JPanel centerPanel = new JPanel();
 	private JPanel northPanel = new JPanel();
-	private JScrollPane scroll = new JScrollPane(centerPanel);
 	private String[] types= {"All","Hockey","Haggis","Baseball","Dart"};
+	private JScrollPane scrollPane ;
 	private JComboBox<String> filter = new JComboBox<String>(types);
 
 
@@ -54,7 +54,6 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 				centerPanel.revalidate();
 				frame.add(setupCenterPanel(comptlist.getCompetitorList()));
 				frame.setSize(500, 500);
-
 				centerPanel.repaint();
 				centerPanel.revalidate();
 
@@ -215,7 +214,7 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 	 * Method to set the blocks inside north panel
 	 **/
 	private JPanel setupNorthPanel() {
-		northPanel.setLayout(new GridLayout(1, 6));
+		northPanel.setLayout(new GridLayout(2, 8,10,10));
 		searchtext = new JTextField(10);
 		searchBtn = new JButton("Search");
 		searchBtn.addActionListener(this);
@@ -235,6 +234,34 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 		northPanel.add(sortByScores);
 		filter.addActionListener(this);
 		northPanel.add(filter);
+		northPanel.add(new JLabel());
+		JLabel noHDR = new JLabel("No#", JLabel.CENTER);
+		JLabel nameHDR = new JLabel("Name", JLabel.CENTER);
+		JLabel typeHDR = new JLabel("Competiton", JLabel.CENTER);
+		JLabel levelHDR = new JLabel("Level", JLabel.CENTER);
+		JLabel scoreHDR = new JLabel("Overall", JLabel.CENTER);
+		JLabel  extraHDR = new JLabel("Extra", JLabel.CENTER);
+		JLabel editHDR = new JLabel("EDIT", JLabel.CENTER);
+		JLabel viewHDR = new JLabel("VIEW", JLabel.CENTER);
+		Font f = new Font(Font.SANS_SERIF, Font.BOLD, 14);
+
+		noHDR.setFont(f);
+		nameHDR.setFont(f);
+		typeHDR.setFont(f);
+		levelHDR.setFont(f);
+		scoreHDR.setFont(f);
+		extraHDR.setFont(f);
+		editHDR.setFont(f);
+		viewHDR.setFont(f);
+		northPanel.add(noHDR);
+		northPanel.add(nameHDR);
+		northPanel.add(typeHDR);
+		northPanel.add(levelHDR);
+		northPanel.add(scoreHDR);
+		northPanel.add(extraHDR);
+
+		northPanel.add(editHDR);
+		northPanel.add(viewHDR);
 		return northPanel;
 	}
 
@@ -242,40 +269,10 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 	 * Method to set the blocks inside center panel
 	 **/
 	private JPanel setupCenterPanel(ArrayList<Competitor> comptList) {
-		centerPanel.setLayout(new GridLayout(0, 8));
-		scrollList.add(centerPanel);
-		if(comptlist.equals(null))
-		{
-			
-		
-		Font f = new Font(Font.SANS_SERIF, Font.BOLD, 14);
-		JLabel noHDR = new JLabel("No#", JLabel.LEFT);
-		JLabel nameHDR = new JLabel("Name", JLabel.CENTER);
-		JLabel typeHDR = new JLabel("Competiton", JLabel.CENTER);
-		JLabel levelHDR = new JLabel("Level", JLabel.CENTER);
-		JLabel scoreHDR = new JLabel("Overall", JLabel.CENTER);
-		JLabel editHDR = new JLabel("EDIT", JLabel.CENTER);
-		JLabel viewHDR = new JLabel("VIEW", JLabel.CENTER);
-
-		noHDR.setFont(f);
-		nameHDR.setFont(f);
-		typeHDR.setFont(f);
-		levelHDR.setFont(f);
-		scoreHDR.setFont(f);
-		editHDR.setFont(f);
-		viewHDR.setFont(f);
-		centerPanel.add(noHDR);
-		centerPanel.add(nameHDR);
-		centerPanel.add(typeHDR);
-		centerPanel.add(levelHDR);
-		centerPanel.add(scoreHDR);
-		centerPanel.add(editHDR);
-		centerPanel.add(viewHDR);
-
-		}
+		centerPanel.setLayout(new GridLayout(0,8));
 		
 		for (Competitor c : comptList) {
-			JLabel no = new JLabel("" + c.competitorNumber, JLabel.LEFT);
+			JLabel no = new JLabel("" + c.competitorNumber, JLabel.CENTER);
 			JLabel name = new JLabel("" + c.competitorName.getFullName(), JLabel.CENTER);
 			JLabel type = new JLabel(c.getCompetitorType(), JLabel.CENTER);
 			JLabel level = new JLabel(c.level, JLabel.CENTER);
@@ -312,12 +309,12 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 
 	public void setupGUI() {
 
-	
+
 		frame.setLocation(100, 100);
+		frame.setSize(900,700);
 		frame.setTitle("Competition App");
 		frame.setVisible(true);
 		frame.setLayout(new BorderLayout(10, 10));
-        frame.add(scroll, BorderLayout.CENTER);
 		frame.setVisible(true);
 
 		JLabel title;
@@ -327,8 +324,11 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 		
 		frame.add(title, BorderLayout.NORTH);
 		frame.add(setupNorthPanel(), BorderLayout.NORTH);
-		frame.add(setupCenterPanel(comptlist.getCompetitorList()), BorderLayout.CENTER);
-		frame.setSize(700, 700);
+		scrollPane= new JScrollPane();
+        scrollPane.setViewportView(setupCenterPanel(comptlist.getCompetitorList()));
+        scrollPane.setAutoscrolls(true);
+        scrollPane.revalidate();
+		frame.add(scrollPane, BorderLayout.CENTER);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 

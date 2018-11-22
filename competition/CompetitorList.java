@@ -99,7 +99,7 @@ public class CompetitorList {
 		ArrayList<Competitor> result = new ArrayList<Competitor>();
 
 		for (Competitor c : this.competitors) {
-			if (c.getCompetitorName().contains(name) == true) {
+			if (c.getCompetitorName().toLowerCase().contains(name.toLowerCase()) == true) {
 				choice = c;
 				result.add(choice);
 			}
