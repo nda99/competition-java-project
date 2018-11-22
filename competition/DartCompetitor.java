@@ -21,7 +21,12 @@ public class DartCompetitor extends Competitor{
 		this.competitorNumber = competitorNumber;
 		this.competitorName = competitorName;
 		this.level = level;
+		try {
 		this.age = Integer.parseInt(attribute);
+		}
+		catch(NumberFormatException n){
+			System.out.println("ERROR: Invalid Attribute.");
+		}
 		
 		if (level == "1") {
 			levelWeight = 1;

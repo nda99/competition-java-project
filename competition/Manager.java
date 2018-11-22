@@ -24,11 +24,9 @@ public class Manager {
 	
 	private static WelcomeGUI gui = null;
 	
-//<<<<<<< HEAD
+
 	private static CompetitionListGUI compList = null;
-//=======
-	//static CompetitionListGUI compList = null;
-//>>>>>>> f11c6a90b85776432032b7f59b919da58f7bf392
+
 	/**
 	 * Constructor for a a Manager object related to a specific file.
 	 * @param inputFile String variable holding the path of the desired input file.
