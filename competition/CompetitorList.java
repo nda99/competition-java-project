@@ -340,7 +340,7 @@ public class CompetitorList {
 	}
 
 	/**
-	 * @return All the competitors details ordered by competitor competitor
+	 * @return All the competitors details ordered by competitor number
 	 */
 	public ArrayList<Competitor> listByCN() {
 		ArrayList<Competitor> clone = this.competitors;
@@ -350,7 +350,7 @@ public class CompetitorList {
 	}
 
 	/**
-	 * @return All the competitors details ordered by competitor competitor
+	 * @return All the competitors details ordered by competitor score
 	 */
 	public ArrayList<Competitor> listByScores() {
 		ArrayList<Competitor> clone = this.competitors;

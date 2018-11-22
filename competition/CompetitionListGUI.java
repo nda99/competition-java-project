@@ -333,7 +333,16 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 
 
 		frame.setLocation(100, 100);
-		frame.setSize(1300,1300);
+		if(comptlist.getCompetitorList().size()>20)
+		{
+			frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+			frame.setVisible(true);
+		}
+		else
+		{
+			frame.setSize(1300,1300);
+
+		}
 		frame.setTitle("Competition App");
 		frame.setVisible(true);
 		frame.setLayout(new BorderLayout(10, 10));
@@ -346,7 +355,7 @@ public class CompetitionListGUI extends JFrame implements ActionListener {
 		
 		frame.add(title, BorderLayout.NORTH);
 		frame.add(setupNorthPanel(), BorderLayout.NORTH);
-		scrollPane= new JScrollPane();
+		scrollPane= new JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setViewportView(setupCenterPanel(comptlist.getCompetitorList()));
         scrollPane.setAutoscrolls(true);
         scrollPane.revalidate();
