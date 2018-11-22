@@ -113,7 +113,7 @@ private void setupCenterPanel() {
 	}
 
 	
-	public static void main(String [] args)
+	public void initialise(String [] args)
 	{
 		JFrame dbf = new JFrame("DartBorderLayout");
 		dbf.setDefaultCloseOperation(EXIT_ON_CLOSE);
